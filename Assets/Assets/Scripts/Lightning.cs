@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Lightning : MonoBehaviour
 {
+    public Shooting shooting;
+
     private bool struck = false;
     private GameObject[] enemies;
     private List<GameObject> validEnemies = new List<GameObject>();
@@ -19,13 +21,14 @@ public class Lightning : MonoBehaviour
     private GameObject target;
 
     private Vector2 dir;
-    private float speed = Shooting.lightningSpeed * 1.5f;
+    private float speed; 
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        speed = shooting.lightningSpeed * 1.5f;
     }
 
     // Update is called once per frame

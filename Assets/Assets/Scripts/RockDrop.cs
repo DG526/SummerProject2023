@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class RockDrop : MonoBehaviour
 {
-    float timeToLive = Shooting.rockTime;
+    public Shooting shooting;
+    float timeToLive;
     // Start is called before the first frame update
     void Start()
     {
+        timeToLive = shooting.rockTime;
+
         StartCoroutine(ScaleOverTime(timeToLive));
         Destroy(gameObject, timeToLive + 0.1f);
     }

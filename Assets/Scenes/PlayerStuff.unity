@@ -531,7 +531,7 @@ MonoBehaviour:
   rockDrop: {fileID: 5050060338024106810, guid: 110ffb115d6aa804faca25d741033235, type: 3}
   rock: {fileID: 6433465653111375530, guid: 48262dc843ab2eb4f995c73025d923b6, type: 3}
   wind: {fileID: 8371420399167695548, guid: 7b4fcc15485b22347ba013b91bba0e34, type: 3}
-  lightning: {fileID: 0}
+  lightning: {fileID: 4438351389737746520, guid: 7d20d134f735b6f42b4ae1ec625ec16d, type: 3}
   numBullets: 5
   triangleSpreadInterval: 0.2
   circleBulletForce: 20
@@ -550,5 +550,5 @@ MonoBehaviour:
   windCDI: 1
   lightningCDI: 0.75
   lightningTTL: 1.5
-  Fire1: circle
+  Fire1: lightning
   Fire2: triangle

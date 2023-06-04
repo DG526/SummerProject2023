@@ -23,12 +23,12 @@ public class Shooting : MonoBehaviour
     public float circleBulletForce = 20f;
     public float triangleBulletForce = 20f;
     public float poisonForce = 10f;
-    public static float lightningSpeed = 80f;
+    public float lightningSpeed = 80f;
 
     //speed of wind
     public float windSpeed = 15f;
     //force with which wind pushes objects
-    public static float windForce = 30f;
+    public float windForce = 30f;
 
     //Circle Cooldown Interval
     public float circleCDI = 0.1f;
@@ -64,7 +64,7 @@ public class Shooting : MonoBehaviour
     private float rockCD = 0f;
 
     //Rock Spawn Time
-    public static float rockTime = 0.5f;
+    public float rockTime = 0.5f;
 
     //Rock Time to Live
     public float rockTTL = 5f;
@@ -79,7 +79,7 @@ public class Shooting : MonoBehaviour
     private float windCD = 0f;
 
     //Wind Time to Live
-    public static float windTTL = 1.5f;
+    public float windTTL = 1.5f;
 
     //Lightning Cooldown Interval
     public float lightningCDI = 0.75f;
@@ -166,6 +166,9 @@ public class Shooting : MonoBehaviour
             bullet = Instantiate(rockDrop, firePoint.position + firePoint.up * rockDist, new Quaternion(0,0,0,0));
             StartCoroutine(Rock(bullet));
             rockCD = Time.time + rockCDI;
+
+            RockDrop script = bullet.GetComponent<RockDrop>();
+            script.shooting = gameObject.GetComponent<Shooting>();
         }
 
         if (type == "wind" && Time.time > windCD)
@@ -174,6 +177,9 @@ public class Shooting : MonoBehaviour
             Rigidbody2D windRB = bullet.GetComponent<Rigidbody2D>();
             windRB.AddForce(firePoint.up * windSpeed, ForceMode2D.Impulse);
             windCD = Time.time + windCDI;
+
+            WindAttack windAttack = bullet.GetComponent<WindAttack>();
+            windAttack.shooting = gameObject.GetComponent<Shooting>();
             Destroy(bullet, windTTL);
         }
 
@@ -183,6 +189,9 @@ public class Shooting : MonoBehaviour
             Rigidbody2D lightningRB = bullet.GetComponent<Rigidbody2D>();
             lightningRB.velocity = firePoint.up * lightningSpeed;
             lightningCD = Time.time + lightningCDI;
+
+            Lightning script = bullet.GetComponent<Lightning>();
+            script.shooting = gameObject.GetComponent<Shooting>();
             Destroy(bullet, lightningTTL);
         }
     }

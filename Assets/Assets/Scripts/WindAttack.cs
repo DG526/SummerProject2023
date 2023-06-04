@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WindAttack : MonoBehaviour
 {
-    float timeToLive = Shooting.windTTL;
-    float force = Shooting.windForce;
+    public Shooting shooting;
+    float timeToLive;
+    float force;
 
     public Vector2 destinationScale = new Vector2(1.5f, 0.75f);
     private Rigidbody2D rb;
@@ -13,6 +14,10 @@ public class WindAttack : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        timeToLive = shooting.windTTL;
+        force = shooting.windForce;
+
         StartCoroutine(ScaleOverTime(timeToLive));
     }
 

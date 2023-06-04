@@ -7,6 +7,7 @@ public class WindAttack : MonoBehaviour
     float timeToLive = Shooting.windTTL;
     float force = Shooting.windForce;
 
+    public Vector2 destinationScale = new Vector2(1.5f, 0.75f);
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,7 @@ public class WindAttack : MonoBehaviour
     IEnumerator ScaleOverTime(float time)
     {
         Vector2 originalScale = gameObject.transform.localScale;
-        Vector2 destinationScale = new Vector2(2f, 2f);
+        //Vector2 destinationScale = new Vector2(1.5f, 0.75f);
 
         float currentTime = 0f;
 

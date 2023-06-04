@@ -162,7 +162,8 @@ public class Shooting : MonoBehaviour
 
         if (type == "rockDrop" && Time.time > rockCD)
         {
-            bullet = Instantiate(rockDrop, firePoint.position + firePoint.up * rockDist, firePoint.rotation);
+            //firePoint.rotation changed to 0
+            bullet = Instantiate(rockDrop, firePoint.position + firePoint.up * rockDist, new Quaternion(0,0,0,0));
             StartCoroutine(Rock(bullet));
             rockCD = Time.time + rockCDI;
         }

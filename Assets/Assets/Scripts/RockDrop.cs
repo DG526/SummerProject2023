@@ -21,7 +21,7 @@ public class RockDrop : MonoBehaviour
     IEnumerator ScaleOverTime(float time)
     {
         Vector2 originalScale = gameObject.transform.localScale;
-        Vector2 destinationScale = new Vector2(3f, 3f);
+        Vector2 destinationScale = new Vector2(0.5f,0.5f);
 
         float currentTime = 0f;
 

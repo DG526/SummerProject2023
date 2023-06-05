@@ -4,21 +4,38 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public PlayerHealth playerHealth;
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
 
     private Vector2 moveDir;
     private Vector2 lookDir;
+    
+    void Start()
+    {
+        playerHealth = gameObject.GetComponent<PlayerHealth>();
+    }
     // Update is called once per frame
     void Update()
     {
-        GetInput();
+        if (!playerHealth.dead)
+        {
+            GetInput();
+        }
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if (!playerHealth.dead)
+        {
+            Move();
+        }
+
+        if(playerHealth.dead)
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 
     void GetInput()

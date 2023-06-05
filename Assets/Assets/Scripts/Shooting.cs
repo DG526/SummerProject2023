@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    public PlayerHealth playerHealth;
     public Transform firePoint;
     public GameObject triangleBullet;
     public GameObject circleBullet;
@@ -92,33 +93,42 @@ public class Shooting : MonoBehaviour
 
     public string Fire1 = "circle";
     public string Fire2 = "triangle";
+
+    void start()
+    {
+        playerHealth = gameObject.GetComponent<PlayerHealth>();
+    }
     // Update is called once per frame
     void Update()
     {
         //you should not be able to hold down both mouse buttons and fire both weapons at the same time
 
-        //left click
-        if (Input.GetButton("Fire1") && !Input.GetButton("Fire2"))
+        //can't shoot if you're dead
+        if (!playerHealth.dead)
         {
-            Fire(Fire1);
-        }
+            //left click
+            if (Input.GetButton("Fire1") && !Input.GetButton("Fire2"))
+            {
+                Fire(Fire1);
+            }
 
-        //right click
-        if (Input.GetButton("Fire2") && !Input.GetButton("Fire1"))
-        {
-            Fire(Fire2);
-        }
+            //right click
+            if (Input.GetButton("Fire2") && !Input.GetButton("Fire1"))
+            {
+                Fire(Fire2);
+            }
 
-        if (Input.GetButton("Fire3"))
-        {
-            Fire("poison");
-        }
+            if (Input.GetButton("Fire3"))
+            {
+                Fire("poison");
+            }
 
-        //wind and rock drop
-        if (Input.GetButtonDown("Jump"))
-        {
-            //Fire("rockDrop");
-            Fire("wind");
+            //wind and rock drop
+            if (Input.GetButtonDown("Jump"))
+            {
+                //Fire("rockDrop");
+                Fire("wind");
+            }
         }
     }
 

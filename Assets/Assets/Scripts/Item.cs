@@ -44,7 +44,6 @@ public class Item : MonoBehaviour
         }
     }
 
-    //should make it ignore collisions with anything other than players
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")

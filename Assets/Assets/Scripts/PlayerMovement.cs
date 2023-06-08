@@ -11,10 +11,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveDir;
     private Vector2 lookDir;
-    
+
+    public PlayerSpeed playerSpeed;
     void Start()
     {
         playerHealth = gameObject.GetComponent<PlayerHealth>();
+        playerSpeed = gameObject.GetComponent<PlayerSpeed>();
     }
     // Update is called once per frame
     void Update()
@@ -70,8 +72,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        //movement
-        rb.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
+        if(playerSpeed.speed)
+        {
+            //movement
+            rb.velocity = new Vector2(moveDir.x * (moveSpeed * playerSpeed.speedUp), moveDir.y * (moveSpeed * playerSpeed.speedUp));
+        }
+        else
+        {
+            //movement
+            rb.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
+        }
 
         //looking
         transform.up = lookDir * Time.deltaTime;

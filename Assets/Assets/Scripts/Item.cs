@@ -22,6 +22,8 @@ public class Item : MonoBehaviour
     public PlayerHealth playerHealth;
     public int healing = 1;
 
+    public PlayerSpeed playerSpeed;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
@@ -60,6 +62,15 @@ public class Item : MonoBehaviour
                     Debug.Log(playerHealth.health);
                 }
             }
+
+            if (gameObject.tag == "Speed Potion")
+            {
+                playerSpeed = collision.gameObject.GetComponent<PlayerSpeed>();
+                playerSpeed.speed = true;
+                playerSpeed.speedEnd = Time.time + playerSpeed.speedDuration;
+                Debug.Log("You got a speed potion!");
+            }
+
             Destroy(gameObject);
         }
     }

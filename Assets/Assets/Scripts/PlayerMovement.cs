@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         //looking
         if (Input.GetJoystickNames().Length > 0 && Input.GetJoystickNames()[0] == "Wireless Controller")
         {
+
             if (Input.GetAxisRaw("Mouse X") == 0f && Input.GetAxisRaw("Mouse Y") * -1f == 0f)
             {
                 lookDir = transform.up;

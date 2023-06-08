@@ -19,6 +19,9 @@ public class Item : MonoBehaviour
     //direction to player
     private Vector2 dir = Vector2.zero;
 
+    public PlayerHealth playerHealth;
+    public int healing = 1;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
@@ -48,6 +51,15 @@ public class Item : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            if (gameObject.tag == "Healing Heart")
+            {
+                playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+                if (playerHealth.health < playerHealth.maxHealth)
+                {
+                    playerHealth.health = playerHealth.health + 1;
+                    Debug.Log(playerHealth.health);
+                }
+            }
             Destroy(gameObject);
         }
     }

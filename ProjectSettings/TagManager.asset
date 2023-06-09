@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Healing Heart
   - Speed Potion
+  - Catalyst
   layers:
   - Default
   - TransparentFX

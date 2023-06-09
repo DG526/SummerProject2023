@@ -6,6 +6,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     public PlayerHealth playerHealth;
+    public PlayerSpeed playerSpeed;
     public Transform firePoint;
     public GameObject triangleBullet;
     public GameObject circleBullet;
@@ -94,7 +95,6 @@ public class Shooting : MonoBehaviour
     public string Fire1 = "circle";
     public string Fire2 = "triangle";
 
-    public PlayerSpeed playerSpeed;
     void start()
     {
         playerHealth = gameObject.GetComponent<PlayerHealth>();
@@ -120,7 +120,7 @@ public class Shooting : MonoBehaviour
                 Fire(Fire2);
             }
 
-            if (Input.GetButton("Fire3"))
+            /*if (Input.GetButton("Fire3"))
             {
                 Fire("poison");
             }
@@ -130,7 +130,7 @@ public class Shooting : MonoBehaviour
             {
                 //Fire("rockDrop");
                 Fire("wind");
-            }
+            }*/
         }
     }
 

@@ -17,12 +17,12 @@ public class PlayerHealth : MonoBehaviour
     }
     void Update()
     {
-        if(grace && graceTime < Time.time)
+        if (grace && graceTime < Time.time)
         {
             grace = false;
         }
 
-        if(!dead && health <= 0)
+        if (!dead && health <= 0)
         {
             dead = true;
             Debug.Log("You Died!");

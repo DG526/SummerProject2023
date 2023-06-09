@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class MenuManager : MonoBehaviour
+public class MainMenuManager : MonoBehaviour
 {
     public void StartGame()
     {

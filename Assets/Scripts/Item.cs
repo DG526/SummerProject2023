@@ -24,6 +24,7 @@ public class Item : MonoBehaviour
 
     public PlayerSpeed playerSpeed;
 
+    public PlayerCatalyst playerCatalyst;
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
@@ -69,6 +70,15 @@ public class Item : MonoBehaviour
                 playerSpeed.speed = true;
                 playerSpeed.speedEnd = Time.time + playerSpeed.speedDuration;
                 Debug.Log("You got a speed potion!");
+            }
+
+            if(gameObject.tag == "Catalyst")
+            {
+                playerCatalyst = collision.gameObject.GetComponent<PlayerCatalyst>();
+                playerCatalyst.catalyst = true;
+                
+                playerCatalyst.catalystEnd = Time.time + playerCatalyst.catalystDuration;
+                Debug.Log("You picked up a magic catalyst!");
             }
 
             Destroy(gameObject);

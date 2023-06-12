@@ -6,6 +6,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     public PlayerHealth playerHealth;
+    public PlayerSpeed playerSpeed;
     public Transform firePoint;
     public GameObject triangleBullet;
     public GameObject circleBullet;
@@ -97,6 +98,7 @@ public class Shooting : MonoBehaviour
     void start()
     {
         playerHealth = gameObject.GetComponent<PlayerHealth>();
+        playerSpeed = gameObject.GetComponent<PlayerSpeed>();
     }
     // Update is called once per frame
     void Update()
@@ -118,7 +120,7 @@ public class Shooting : MonoBehaviour
                 Fire(Fire2);
             }
 
-            if (Input.GetButton("Fire3"))
+            /*if (Input.GetButton("Fire3"))
             {
                 Fire("poison");
             }
@@ -128,7 +130,7 @@ public class Shooting : MonoBehaviour
             {
                 //Fire("rockDrop");
                 Fire("wind");
-            }
+            }*/
         }
     }
 
@@ -153,6 +155,10 @@ public class Shooting : MonoBehaviour
             bulletRB.velocity = (dir + pdir).normalized * circleBulletForce;
             //bulletRB.velocity = firePoint.up * circleBulletForce;
             circleCD = Time.time + circleCDI;
+            if(playerSpeed.speed)
+            {
+                circleCD -= playerSpeed.fireSpeedUp;
+            }
             Destroy(bullet, circleTTL);
         }
 
@@ -160,6 +166,10 @@ public class Shooting : MonoBehaviour
         {
             FireTriangle(bullet);
             triangleCD = Time.time + triangleCDI;
+            if (playerSpeed.speed)
+            {
+                triangleCD -= playerSpeed.fireSpeedUp;
+            }
         }
 
         if (type == "poison" && Time.time > poisonCD)
@@ -168,6 +178,10 @@ public class Shooting : MonoBehaviour
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bulletRB.velocity = firePoint.up * poisonForce;
             poisonCD = Time.time + poisonCDI;
+            if (playerSpeed.speed)
+            {
+                poisonCD -= playerSpeed.fireSpeedUp;
+            }
         }
 
         if (type == "rockDrop" && Time.time > rockCD)
@@ -176,6 +190,11 @@ public class Shooting : MonoBehaviour
             bullet = Instantiate(rockDrop, firePoint.position + firePoint.up * rockDist, new Quaternion(0,0,0,0));
             StartCoroutine(Rock(bullet));
             rockCD = Time.time + rockCDI;
+            
+            if (playerSpeed.speed)
+            {
+                rockCD -= playerSpeed.fireSpeedUp;
+            }
 
             RockDrop script = bullet.GetComponent<RockDrop>();
             script.shooting = gameObject.GetComponent<Shooting>();
@@ -187,6 +206,10 @@ public class Shooting : MonoBehaviour
             Rigidbody2D windRB = bullet.GetComponent<Rigidbody2D>();
             windRB.AddForce(firePoint.up * windSpeed, ForceMode2D.Impulse);
             windCD = Time.time + windCDI;
+            if (playerSpeed.speed)
+            {
+                windCD -= playerSpeed.fireSpeedUp;
+            }
 
             WindAttack windAttack = bullet.GetComponent<WindAttack>();
             windAttack.shooting = gameObject.GetComponent<Shooting>();
@@ -199,6 +222,10 @@ public class Shooting : MonoBehaviour
             Rigidbody2D lightningRB = bullet.GetComponent<Rigidbody2D>();
             lightningRB.velocity = firePoint.up * lightningSpeed;
             lightningCD = Time.time + lightningCDI;
+            if (playerSpeed.speed)
+            {
+                lightningCD -= playerSpeed.fireSpeedUp;
+            }
 
             Lightning script = bullet.GetComponent<Lightning>();
             script.shooting = gameObject.GetComponent<Shooting>();

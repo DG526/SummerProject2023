@@ -99,7 +99,6 @@ public class Shooting : MonoBehaviour
 
     void Start()
     {
-        //playerCatalyst = gameObject.GetComponent<PlayerCatalyst>();
         playerHealth = gameObject.GetComponent<PlayerHealth>();
         playerSpeed = gameObject.GetComponent<PlayerSpeed>();
         playerCatalyst = GetComponent<PlayerCatalyst>();

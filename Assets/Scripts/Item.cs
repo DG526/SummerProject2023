@@ -34,6 +34,7 @@ public class Item : MonoBehaviour
             Debug.Log("You didn't do it right brother");
         }
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     void FixedUpdate()
@@ -81,6 +82,27 @@ public class Item : MonoBehaviour
                 Debug.Log("You picked up a magic catalyst!");
             }
 
+            if(gameObject.tag == "Shield Item")
+            {
+                foreach(Transform child in collision.gameObject.transform)
+                {
+                    Debug.Log(child.name);
+
+                    if(child.name != "Shields")
+                    {
+                        continue;
+                    }
+
+                    if(!child.gameObject.activeInHierarchy)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+
+                    Shields shields = child.GetComponent<Shields>();
+                    shields.active = true;
+                    shields.shieldEnd = Time.time + shields.shieldDuration;
+                }
+            }
             Destroy(gameObject);
         }
     }

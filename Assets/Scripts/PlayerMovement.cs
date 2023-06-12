@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 lookDir;
 
     public PlayerSpeed playerSpeed;
+
     void Start()
     {
         playerHealth = gameObject.GetComponent<PlayerHealth>();

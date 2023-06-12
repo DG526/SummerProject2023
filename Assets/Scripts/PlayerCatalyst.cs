@@ -16,7 +16,6 @@ public class PlayerCatalyst : MonoBehaviour
     {
         catalyst = false;
 
-        Debug.Log("Please I exist");
     }
     // Update is called once per frame
     void Update()

@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Ultimate : MonoBehaviour
 {
+    public GameObject clone;
+
+    public float cloneCDI = 30f;
+    public float cloneCD = 0f;
+
+    public float cloneDuration = 15f;
+
+    public Vector3 cloneSpawnPos = Vector3.zero;
+
     public PlayerHealth playerHealth;
 
     //AoE cooldown
@@ -47,6 +56,7 @@ public class Ultimate : MonoBehaviour
             {
                 FireUltimate(ultimate);
             }
+
         }
     }
 
@@ -61,6 +71,14 @@ public class Ultimate : MonoBehaviour
                 AoE.SetActive(true);
             }
             StartCoroutine(ScaleOverTime(aoeTime));
+        }
+
+        if(ult == "clone" && Time.time > cloneCD)
+        {
+            cloneCD = Time.time + cloneCDI;
+
+            GameObject spawnClone = Instantiate(clone, gameObject.transform.position + cloneSpawnPos, gameObject.transform.rotation);
+            Destroy(spawnClone, cloneDuration);
         }
     }
 

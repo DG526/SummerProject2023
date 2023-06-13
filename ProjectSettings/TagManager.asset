@@ -8,6 +8,7 @@ TagManager:
   - Speed Potion
   - Catalyst
   - Shield Item
+  - Player Clone
   layers:
   - Default
   - TransparentFX

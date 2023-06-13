@@ -51,7 +51,9 @@ public class WyrmHeadBehavior : MonoBehaviour
                 segments[i].GetComponent<WyrmSegmentBehavior>().nextSeg = segments[i + 1];
             segments[i].GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
             segments[i].transform.localScale = transform.localScale;
+            segments[i].GetComponent<EnemyHealth>().SetRedirection(gameObject);
         }
+        GetComponent<EnemyHealth>().SetParts(segments);
     }
 
     // Update is called once per frame

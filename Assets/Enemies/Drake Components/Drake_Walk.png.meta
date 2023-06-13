@@ -1,0 +1,1007 @@
+fileFormatVersion: 2
+guid: d0a30ea2e5ff6bd49b967a925f74f369
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Drake_Walk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3552
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c209db4e4e6e2f74086561bb1aeebacf
+      internalID: 1654152889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_1
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 3552
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0c8d315c5d6a7c4aa3c5e3a17656eb7
+      internalID: 89725332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_2
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 3552
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ef8e6e07b6d48c4eb928dfedd9e817f
+      internalID: 622558968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_3
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 3552
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5473cd2cef7ad9b4ca1a9bbf035f5bc8
+      internalID: -668107805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_4
+      rect:
+        serializedVersion: 2
+        x: 3368
+        y: 3552
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 447d11b22594c1d4d8b169f8cf521563
+      internalID: 525403259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_5
+      rect:
+        serializedVersion: 2
+        x: 4210
+        y: 3552
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f074c7ca40fe0b848869f00852331f6a
+      internalID: 1442862034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_6
+      rect:
+        serializedVersion: 2
+        x: 5052
+        y: 3552
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3ab30464a986364da6bcf5268223466
+      internalID: 1888696781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_7
+      rect:
+        serializedVersion: 2
+        x: 5894
+        y: 3552
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65c80f4f0d221c24392a10b773099109
+      internalID: 49429718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2664
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 908075cf63d0ba948951b99a9b150c21
+      internalID: 814617546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_9
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 2664
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0c24305090cfb049ad880c465cda27d
+      internalID: -907173750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_10
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 2664
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0629291b30bbcbd4e9884f5262bea71b
+      internalID: 1808312675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_11
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 2664
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 032dd6eab7a20dc4c9ce8a7958a5088b
+      internalID: 1193326706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_12
+      rect:
+        serializedVersion: 2
+        x: 3368
+        y: 2664
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ae5c69c704d811449fda131dbd0514e
+      internalID: 289627333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_13
+      rect:
+        serializedVersion: 2
+        x: 4210
+        y: 2664
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab9eb0c226cfc064cb30d5935bef3ece
+      internalID: 1308042185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_14
+      rect:
+        serializedVersion: 2
+        x: 5052
+        y: 2664
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6b1a178b51fbf84c9ad31c2268c1f6b
+      internalID: 210911958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_15
+      rect:
+        serializedVersion: 2
+        x: 5894
+        y: 2664
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975a1100b91791942bc17265f3c27069
+      internalID: -1653081413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1776
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c5be4fa4e3e3ee44ab375149ca6ce1a
+      internalID: 1205373011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_17
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 1776
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ab7059ddb1d1b4469d9c56bc04f0d9b
+      internalID: -1701815305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_18
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 1776
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94c78aad48c0d874eb8f03ae55872176
+      internalID: -534789838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_19
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 1776
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcf0bb4e7eb8e9d48a4e982e674f20e0
+      internalID: -845846150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_20
+      rect:
+        serializedVersion: 2
+        x: 3368
+        y: 1776
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6045a1053b911a04a9964b5b08c50e2e
+      internalID: -1633594393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_21
+      rect:
+        serializedVersion: 2
+        x: 4210
+        y: 1776
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2fdfb2cada517848b706587fd842309
+      internalID: -504317476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_22
+      rect:
+        serializedVersion: 2
+        x: 5052
+        y: 1776
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d0300f2c4b6ab942b267a16b72108ff
+      internalID: -432983756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_23
+      rect:
+        serializedVersion: 2
+        x: 5894
+        y: 1776
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 324b7f72c2e745b49b321043b9d24f56
+      internalID: 690174661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 888
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 497fe02a41bdb0943bcde6df0df8e5de
+      internalID: 1090848215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_25
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 888
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5082d4a2135165d43a32515b15c46fbc
+      internalID: 1573734566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_26
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 888
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 115bfc74b244f104096be7b110b10d25
+      internalID: -714230121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_27
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 888
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b585827b7d8c3f459c8f2421acf657b
+      internalID: 1752930853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_28
+      rect:
+        serializedVersion: 2
+        x: 3368
+        y: 888
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab903e690169fe141b6e108d4e13c23e
+      internalID: -1670783573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_29
+      rect:
+        serializedVersion: 2
+        x: 4210
+        y: 888
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5b88d2ab223ea343b76645216abe69c
+      internalID: -1007475543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_30
+      rect:
+        serializedVersion: 2
+        x: 5052
+        y: 888
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 415fc3664b1a16d4d8c3fbc7afb7d68b
+      internalID: -1525463773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_31
+      rect:
+        serializedVersion: 2
+        x: 5894
+        y: 888
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5191233564dc2be4e87cfea0c4d7c11e
+      internalID: -12734355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8f1702d0d75c8c4a94cfdc302cc8e79
+      internalID: -932519600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_33
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 0
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2b1b0a2c6046954a903d9d55e4001de
+      internalID: 1159790938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_34
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 0
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41435f58dc58c664780b5d633e759cf1
+      internalID: -394925719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_35
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 0
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed300dc9a00a6944faec27dc4692c7e9
+      internalID: -1882314445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_36
+      rect:
+        serializedVersion: 2
+        x: 3368
+        y: 0
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56607eff55ef27f4198ac8a0ea2c90f0
+      internalID: -1333879969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_37
+      rect:
+        serializedVersion: 2
+        x: 4210
+        y: 0
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f01c024d96893d46bf9ab06c484a030
+      internalID: -1612842821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_38
+      rect:
+        serializedVersion: 2
+        x: 5052
+        y: 0
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9c87b5fa1f753547abf2d924fd9e04b
+      internalID: -1352751532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drake_Walk_39
+      rect:
+        serializedVersion: 2
+        x: 5894
+        y: 0
+        width: 842
+        height: 888
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d3ac12e9f9326548a6f2652aa45abbf
+      internalID: -45415770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Drake_Walk_0: 1654152889
+      Drake_Walk_1: 89725332
+      Drake_Walk_10: 1808312675
+      Drake_Walk_11: 1193326706
+      Drake_Walk_12: 289627333
+      Drake_Walk_13: 1308042185
+      Drake_Walk_14: 210911958
+      Drake_Walk_15: -1653081413
+      Drake_Walk_16: 1205373011
+      Drake_Walk_17: -1701815305
+      Drake_Walk_18: -534789838
+      Drake_Walk_19: -845846150
+      Drake_Walk_2: 622558968
+      Drake_Walk_20: -1633594393
+      Drake_Walk_21: -504317476
+      Drake_Walk_22: -432983756
+      Drake_Walk_23: 690174661
+      Drake_Walk_24: 1090848215
+      Drake_Walk_25: 1573734566
+      Drake_Walk_26: -714230121
+      Drake_Walk_27: 1752930853
+      Drake_Walk_28: -1670783573
+      Drake_Walk_29: -1007475543
+      Drake_Walk_3: -668107805
+      Drake_Walk_30: -1525463773
+      Drake_Walk_31: -12734355
+      Drake_Walk_32: -932519600
+      Drake_Walk_33: 1159790938
+      Drake_Walk_34: -394925719
+      Drake_Walk_35: -1882314445
+      Drake_Walk_36: -1333879969
+      Drake_Walk_37: -1612842821
+      Drake_Walk_38: -1352751532
+      Drake_Walk_39: -45415770
+      Drake_Walk_4: 525403259
+      Drake_Walk_5: 1442862034
+      Drake_Walk_6: 1888696781
+      Drake_Walk_7: 49429718
+      Drake_Walk_8: 814617546
+      Drake_Walk_9: -907173750
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

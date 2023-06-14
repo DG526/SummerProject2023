@@ -610,6 +610,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 41464402024980848, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3776281760952695892, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -657,6 +661,30 @@ PrefabInstance:
     - target: {fileID: 4767738261484142100, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5036241453204184478, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7729190062512634640, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078588443737594384, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
+      propertyPath: ultimate
+      value: beam
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078588443737594384, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
+      propertyPath: beamSize.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078588443737594384, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
+      propertyPath: beamSize.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8078588443737594384, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
+      propertyPath: beamTickSpeed
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8078588443737594384, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: cloneSpawnPos.x

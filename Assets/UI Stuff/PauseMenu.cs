@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class PauseMenu : MonoBehaviour
     //Settings Menu
     [SerializeField] private GameObject settingsCanvas;
 
+    //sets the first button
+    [SerializeField] private GameObject pauseFirstButton;
+    [SerializeField] private GameObject settingFirstButton;
+
     private bool isPaused;
 
     private void Start()
@@ -17,6 +23,10 @@ public class PauseMenu : MonoBehaviour
         //Makes sure the menus are deactivated
         pauseCanvas.SetActive(false);
         settingsCanvas.SetActive(false);
+    }
+    public void Change()
+    {
+        Screen.fullScreen = !Screen.fullScreen;
     }
 
     private void Update()
@@ -27,21 +37,28 @@ public class PauseMenu : MonoBehaviour
             if (!isPaused)
             {
                 Pause();
+
+                //freezes everything
+                Time.timeScale = 0;
             }
 
             else
             {
                 Unpause();
+
+                //unfreezes
+                Time.timeScale = 1;
             }
         }
     }
 
+    #region Pausing
     private void Pause()
     {
         isPaused = true;
         Time.timeScale = 0f;
 
-        OpenMainMenu();
+        OpenPauseMenu();
     }
 
     private void Unpause()
@@ -51,19 +68,68 @@ public class PauseMenu : MonoBehaviour
 
         CloseAllMenus();
     }
+    #endregion
 
-    private void OpenMainMenu()
+    #region First Button Clicked
+    private void OpenPauseMenu()
     {
         pauseCanvas.SetActive(true);
         Debug.Log("Paused");
         settingsCanvas.SetActive(false);
-        Time.timeScale = 0;
+
+        //sets the first button when menu opens
+        EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+    }
+    private void OpenSettingMenu()
+    {
+        pauseCanvas.SetActive(false);
+        settingsCanvas.SetActive(true);
+
+        //sets the first button when menu opens
+        EventSystem.current.SetSelectedGameObject(settingFirstButton);
     }
 
     private void CloseAllMenus()
     {
         pauseCanvas.SetActive(false);
         settingsCanvas.SetActive(false);
-        Time.timeScale = 1;
+
+        //sets the button to null 
+        EventSystem.current.SetSelectedGameObject(null);
     }
+    #endregion
+
+    #region Navigation
+    //Pause Menu Navigation
+    public void OpenMainMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public void ClickSettings()
+    {
+        OpenSettingMenu();
+    }
+
+    public void ClickResume()
+    {
+        Unpause();
+    }
+
+    //Setting Navigation
+    public void ClickKeyboardConfig()
+    {
+
+    }
+
+    public void ClickControllerConfig()
+    {
+
+    }
+
+    public void OpenPause()
+    {
+        OpenPauseMenu();
+    }
+    #endregion
 }

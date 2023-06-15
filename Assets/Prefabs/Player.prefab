@@ -609,7 +609,7 @@ MonoBehaviour:
   cloneCDI: 30
   cloneCD: 0
   cloneDuration: 15
-  cloneSpawnPos: {x: 1, y: -0.75, z: 0}
+  cloneSpawnPos: {x: 2.5, y: -1.5, z: 0}
   playerHealth: {fileID: 0}
   aoeCDI: 20
   aoeCD: 0
@@ -618,12 +618,13 @@ MonoBehaviour:
   aoeTime: 1
   beamCDI: 30
   beamCD: 0
-  beamTickSpeed: 0.1
-  beamSize: {x: 0, y: 0}
+  beamTickSpeed: 0.15
+  beamTickDuration: 0.1
+  beamSize: {x: 0.5, y: 3}
   beamStart: {x: 0.1, y: 1}
   beamChargeTime: 1
   beamDuration: 5
-  ultimate: clone
+  ultimate: beam
 --- !u!50 &952979684238027788
 Rigidbody2D:
   serializedVersion: 4

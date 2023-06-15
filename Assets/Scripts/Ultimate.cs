@@ -31,7 +31,10 @@ public class Ultimate : MonoBehaviour
 
     public float beamCDI = 30f;
     public float beamCD = 0f;
-    public float beamTickSpeed = 0.1f;
+
+    //used to determine damage frequency
+    public float beamTickSpeed = 0.15f;
+    public float beamTickDuration = 0.1f;
 
 
     public Vector2 beamSize = Vector2.zero;
@@ -108,7 +111,7 @@ public class Ultimate : MonoBehaviour
 
                 beamTick = Time.time + beamTickSpeed;
 
-                StartCoroutine(BeamTickDamage(0.1f));
+                StartCoroutine(BeamTickDamage(beamTickDuration));
             }
         }
     }

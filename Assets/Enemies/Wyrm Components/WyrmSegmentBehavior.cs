@@ -24,7 +24,7 @@ public class WyrmSegmentBehavior : MonoBehaviour
     {
         transform.up = new Vector2(following.transform.position.x - transform.position.x, following.transform.position.y - transform.position.y);
         transform.up.Normalize();
-        rb.MovePosition(following.transform.position - transform.up * transform.localScale.y * 0.4f);
+        rb.MovePosition(this.following.transform.position - transform.up * transform.localScale.y * 0.4f);
 
         if (nextSeg)
             nextSeg.GetComponent<WyrmSegmentBehavior>().Slither();

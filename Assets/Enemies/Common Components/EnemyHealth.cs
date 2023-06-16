@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     GameObject[] partsToDestroy;
     public int maxHealth;
     public float multiplier = 1;
-    int health;
+    public int health;
     // Start is called before the first frame update
     void Start()
     {

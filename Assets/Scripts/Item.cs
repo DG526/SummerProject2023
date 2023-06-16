@@ -24,6 +24,7 @@ public class Item : MonoBehaviour
 
     public PlayerSpeed playerSpeed;
 
+    public PlayerCatalyst playerCatalyst;
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
@@ -33,6 +34,7 @@ public class Item : MonoBehaviour
             Debug.Log("You didn't do it right brother");
         }
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     void FixedUpdate()
@@ -71,6 +73,36 @@ public class Item : MonoBehaviour
                 Debug.Log("You got a speed potion!");
             }
 
+            if(gameObject.tag == "Catalyst")
+            {
+                playerCatalyst = collision.gameObject.GetComponent<PlayerCatalyst>();
+                playerCatalyst.catalyst = true;
+                
+                playerCatalyst.catalystEnd = Time.time + playerCatalyst.catalystDuration;
+                Debug.Log("You picked up a magic catalyst!");
+            }
+
+            if(gameObject.tag == "Shield Item")
+            {
+                foreach(Transform child in collision.gameObject.transform)
+                {
+                    Debug.Log(child.name);
+
+                    if(child.name != "Shields")
+                    {
+                        continue;
+                    }
+
+                    if(!child.gameObject.activeInHierarchy)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+
+                    Shields shields = child.GetComponent<Shields>();
+                    shields.active = true;
+                    shields.shieldEnd = Time.time + shields.shieldDuration;
+                }
+            }
             Destroy(gameObject);
         }
     }

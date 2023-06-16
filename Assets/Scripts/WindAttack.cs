@@ -18,7 +18,13 @@ public class WindAttack : MonoBehaviour
         timeToLive = shooting.windTTL;
         force = shooting.windForce;
 
+        if (shooting.playerCatalyst.catalyst)
+        {
+            destinationScale = destinationScale * shooting.playerCatalyst.catalystFactor;
+        }
+
         StartCoroutine(ScaleOverTime(timeToLive));
+
     }
 
     // Update is called once per frame

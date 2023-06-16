@@ -6,10 +6,24 @@ public class RockDrop : MonoBehaviour
 {
     public Shooting shooting;
     float timeToLive;
+
+    //public PlayerCatalyst playerCatalyst;
+
+    public Vector2 destinationScale = new Vector2(0.5f, 0.5f);
     // Start is called before the first frame update
     void Start()
     {
         timeToLive = shooting.rockTime;
+
+        /*if(playerCatalyst == null )
+        {
+            Debug.Log("RockDrop no cat");
+        }
+        else*/
+        if (shooting.playerCatalyst.catalyst)
+        {
+            destinationScale *= shooting.playerCatalyst.catalystFactor;
+        }
 
         StartCoroutine(ScaleOverTime(timeToLive));
         Destroy(gameObject, timeToLive + 0.1f);
@@ -24,7 +38,7 @@ public class RockDrop : MonoBehaviour
     IEnumerator ScaleOverTime(float time)
     {
         Vector2 originalScale = gameObject.transform.localScale;
-        Vector2 destinationScale = new Vector2(0.5f,0.5f);
+
 
         float currentTime = 0f;
 

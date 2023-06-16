@@ -45,7 +45,7 @@ public class Poison : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
 
-        if(collision.gameObject.layer == 8)
+        if(collision.gameObject.layer == 8 || collision.gameObject.layer == 10)
         {
             Debug.Log("Hit an enemy");
         }

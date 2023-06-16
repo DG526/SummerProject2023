@@ -18,7 +18,7 @@ public class Beam : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 8)
+        if(collision.gameObject.layer == 8 || collision.gameObject.layer == 10)
         {
             Debug.Log("Beam hit an enemy");
         }

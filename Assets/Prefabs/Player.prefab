@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39fbf7432493a948ae79387b1ebae97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 6
+  maxHealth: 5
   health: 0
   dead: 0
   grace: 0
@@ -973,7 +973,7 @@ MonoBehaviour:
   active: 0
   shieldDuration: 5
   shieldEnd: 0
-  rotationSpeed: 20
+  rotationSpeed: 180
 --- !u!1 &7973806346960912559
 GameObject:
   m_ObjectHideFlags: 0

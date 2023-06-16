@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7729190062512634640}
   - component: {fileID: 5036241453204184478}
   - component: {fileID: 684247169881830925}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Beam Ult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 2735918395949096210}
   - component: {fileID: 6402878018207587861}
   - component: {fileID: 3131944116821244495}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Shield1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 7494316450523164854}
   - component: {fileID: 4038928753933164432}
   - component: {fileID: 7918931728688326255}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Shield4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 7310580173543284125}
   - component: {fileID: 2647365224747629306}
   - component: {fileID: 3950658690599264585}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Shield2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,7 +932,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2145691816178219244}
   - component: {fileID: 2003396052320949582}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Shields
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,7 +986,7 @@ GameObject:
   - component: {fileID: 9142524065296788345}
   - component: {fileID: 2563811653644403938}
   - component: {fileID: 934272411590798821}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: AoE Ult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1118,7 +1118,7 @@ GameObject:
   - component: {fileID: 8014227146300984559}
   - component: {fileID: 6171264803162928925}
   - component: {fileID: 360092476042417277}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Shield3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

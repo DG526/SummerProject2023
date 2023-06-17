@@ -161,6 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c2f125702a9e29468c6e3af9867c194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shooting: {fileID: 0}
+  damage: 10
   lifetime: 5
   tickSpeed: 0.3
   tickDuration: 0.1

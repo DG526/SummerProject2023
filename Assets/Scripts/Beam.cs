@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Beam : MonoBehaviour
 {
+    public int damage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +20,9 @@ public class Beam : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 8)
+        if(collision.gameObject.layer == 8 || collision.gameObject.layer == 10)
         {
-            Debug.Log("Beam hit an enemy");
+            collision.gameObject.GetComponent<EnemyHealth>().Damage(damage);
         }
     }
 }

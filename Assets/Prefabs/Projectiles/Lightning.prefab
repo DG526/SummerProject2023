@@ -201,4 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73e88fe985238c4ba9fca10293aa7ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shooting: {fileID: 0}
+  damage: 60
   threshold: 10

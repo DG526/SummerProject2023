@@ -32,6 +32,7 @@ public class Rock : MonoBehaviour
     IEnumerator Stop(float time)
     {
         yield return new WaitForSeconds(time);
-        this.enabled = false;
+        Debug.Log("Goodbye");
+        Destroy(this);
     }
 }

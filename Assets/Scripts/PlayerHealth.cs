@@ -31,11 +31,17 @@ public class PlayerHealth : MonoBehaviour
 
     public void Damage(int damage)
     {
-        health -= damage;
-        Debug.Log("You took " + damage + " damage!");
-
-        grace = true;
-        graceTime = Time.time + graceDuration;
+        if (!dead && !grace)
+        {
+            health -= damage;
+            Debug.Log("You took " + damage + " damage!");
+            grace = true;
+            graceTime = Time.time + graceDuration;
+        }
+        else
+        {
+            Debug.Log("Grace period active");
+        }
     }
 
     public void resetPlayer()

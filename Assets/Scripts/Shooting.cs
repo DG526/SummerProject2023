@@ -156,7 +156,7 @@ public class Shooting : MonoBehaviour
             circleCD = Time.time + circleCDI;
             if(playerSpeed.speed)
             {
-                circleCD -= playerSpeed.fireSpeedUp;
+                circleCD = Time.time + (circleCDI * playerSpeed.fireSpeedUp);
             }
 
             Destroy(bullet, circleTTL);
@@ -170,7 +170,7 @@ public class Shooting : MonoBehaviour
             triangleCD = Time.time + triangleCDI;
             if (playerSpeed.speed)
             {
-                triangleCD -= playerSpeed.fireSpeedUp;
+                triangleCD = Time.time + (triangleCDI * playerSpeed.fireSpeedUp);
             }
         }
         #endregion
@@ -191,7 +191,7 @@ public class Shooting : MonoBehaviour
             poisonCD = Time.time + poisonCDI;
             if (playerSpeed.speed)
             {
-                poisonCD -= playerSpeed.fireSpeedUp;
+                poisonCD = Time.time + (poisonCDI * playerSpeed.fireSpeedUp);
             }
         }
         #endregion
@@ -216,7 +216,7 @@ public class Shooting : MonoBehaviour
             
             if (playerSpeed.speed)
             {
-                rockCD -= playerSpeed.fireSpeedUp;
+                rockCD = Time.time + (rockCDI * playerSpeed.fireSpeedUp);
             }
         }
         #endregion
@@ -235,7 +235,7 @@ public class Shooting : MonoBehaviour
             windCD = Time.time + windCDI;
             if (playerSpeed.speed)
             {
-                windCD -= playerSpeed.fireSpeedUp;
+                windCD = Time.time + (windCDI * playerSpeed.fireSpeedUp);
             }
 
             WindAttack windAttack = bullet.GetComponent<WindAttack>();
@@ -257,7 +257,7 @@ public class Shooting : MonoBehaviour
             lightningCD = Time.time + lightningCDI;
             if (playerSpeed.speed)
             {
-                lightningCD -= playerSpeed.fireSpeedUp;
+                lightningCD = Time.time + (lightningCDI * playerSpeed.fireSpeedUp);
             }
 
             Lightning script = bullet.GetComponent<Lightning>();

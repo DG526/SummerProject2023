@@ -11,7 +11,7 @@ public class PlayerSpeed : MonoBehaviour
     public float speedUp = 2.5f;
 
     //fire rate increase
-    public float fireSpeedUp = 1f;
+    public float fireSpeedUp = 0.5f;
 
     //speed buff duration
     public float speedDuration = 10f;

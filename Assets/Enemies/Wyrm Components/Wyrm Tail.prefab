@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7609426027242169462}
   - component: {fileID: 4171394525576984478}
   - component: {fileID: 3808211861271614291}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wyrm Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,3 +179,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   multiplier: 1
+  health: 0

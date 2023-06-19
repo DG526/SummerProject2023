@@ -1,19 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 5;
+    //was maxHealth
+    public int numOfHearts;
     public int health;
     public bool dead = false;
     public bool grace = false;
     public float graceDuration = 1f;
     private float graceTime = 0f;
 
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
     void Start()
     {
-        health = maxHealth;
+        health = numOfHearts;
     }
     void Update()
     {
@@ -27,6 +32,36 @@ public class PlayerHealth : MonoBehaviour
             dead = true;
             Debug.Log("You Died!");
         }
+
+        #region Health
+        if (health > numOfHearts)
+        {
+            health = numOfHearts;
+        }
+
+        //Health
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if(i <health)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+            if (i < numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
+        #endregion
     }
 
     public void Damage(int damage)
@@ -40,7 +75,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void resetPlayer()
     {
-        health = maxHealth;
+        health = numOfHearts;
         dead = false;
     }
 }

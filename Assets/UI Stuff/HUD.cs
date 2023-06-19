@@ -35,6 +35,9 @@ public class HUD : MonoBehaviour
     public Sprite ultAOE;
     public Sprite ultClone;
 
+    public int health;
+    public int numOfHearts;
+
     // Start is called before the first frame update
     void Start()
     {

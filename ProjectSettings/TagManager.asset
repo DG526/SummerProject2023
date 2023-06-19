@@ -9,6 +9,7 @@ TagManager:
   - Catalyst
   - Shield Item
   - Player Clone
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
             return;
         }
         health -= damage;
-        Debug.Log("An enemy took damage!");
+        //Debug.Log("An enemy took damage!");
         if (health <= 0)
         {
             if(hasParts)

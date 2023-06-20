@@ -62,19 +62,19 @@ public class DrakeBehavior : MonoBehaviour
         float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
         if (distToPlayer < attackDist * transform.localScale.y)
             return;
-        Debug.Log("Finishing gore attack");
+        //Debug.Log("Finishing gore attack");
         GetComponent<Animator>().SetTrigger("DoneAttacking");
         attacking = false;
         canAttack = false;
     }
     public void ActivateHitbox()
     {
-        Debug.Log("Activating hitbox");
+        //Debug.Log("Activating hitbox");
         transform.Find("Hitbox").gameObject.SetActive(true);
     }
     public void DeactivateHitbox()
     {
-        Debug.Log("Deactivating hitbox");
+        //Debug.Log("Deactivating hitbox");
         transform.Find("Hitbox").gameObject.SetActive(false);
     }
 }

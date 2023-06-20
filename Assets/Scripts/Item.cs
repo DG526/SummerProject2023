@@ -86,7 +86,7 @@ public class Item : MonoBehaviour
             {
                 foreach(Transform child in collision.gameObject.transform)
                 {
-                    Debug.Log(child.name);
+                    //Debug.Log(child.name);
 
                     if(child.name != "Shields")
                     {

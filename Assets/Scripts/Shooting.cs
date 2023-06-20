@@ -111,7 +111,6 @@ public class Shooting : MonoBehaviour
 
         //can't shoot if you're dead
         
-        
         if (!playerHealth.dead)
         {
             //left click
@@ -125,21 +124,8 @@ public class Shooting : MonoBehaviour
             {
                 Fire(Fire2);
             }
-
-            /*if (Input.GetButton("Fire3"))
-            {
-                Fire("poison");
-            }
-
-            //wind and rock drop
-            if (Input.GetButtonDown("Jump"))
-            {
-                //Fire("rockDrop");
-                Fire("wind");
-            }*/
         }
     }
-
 
     void Fire(string type)
     {
@@ -147,11 +133,13 @@ public class Shooting : MonoBehaviour
         //Debug.Log("Y:" + Input.GetAxisRaw("Mouse Y"));
         GameObject bullet = null;
 
+        #region fireball
         if (type == "circle" && Time.time > circleCD)
         {
             bullet = Instantiate(circleBullet, firePoint.position, firePoint.rotation);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
-            
+            bullet.GetComponent<Bullet>().shooting = this;
+
             if(playerCatalyst.catalyst)
             {
                 bullet.transform.localScale *= playerCatalyst.catalystFactor;
@@ -168,26 +156,31 @@ public class Shooting : MonoBehaviour
             circleCD = Time.time + circleCDI;
             if(playerSpeed.speed)
             {
-                circleCD -= playerSpeed.fireSpeedUp;
+                circleCD = Time.time + (circleCDI * playerSpeed.fireSpeedUp);
             }
 
             Destroy(bullet, circleTTL);
         }
+        #endregion
 
+        #region water
         if (type == "triangle" && Time.time > triangleCD)
         {
             FireTriangle(bullet);
             triangleCD = Time.time + triangleCDI;
             if (playerSpeed.speed)
             {
-                triangleCD -= playerSpeed.fireSpeedUp;
+                triangleCD = Time.time + (triangleCDI * playerSpeed.fireSpeedUp);
             }
         }
+        #endregion
 
+        #region poison
         if (type == "poison" && Time.time > poisonCD)
         {
             bullet = Instantiate(poisonBullet, firePoint.position, firePoint.rotation);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+            bullet.GetComponent<Poison>().shooting = this;
 
             if (playerCatalyst.catalyst)
             {
@@ -198,10 +191,12 @@ public class Shooting : MonoBehaviour
             poisonCD = Time.time + poisonCDI;
             if (playerSpeed.speed)
             {
-                poisonCD -= playerSpeed.fireSpeedUp;
+                poisonCD = Time.time + (poisonCDI * playerSpeed.fireSpeedUp);
             }
         }
+        #endregion
 
+        #region rockDrop
         if (type == "rockDrop" && Time.time > rockCD)
         {
             //firePoint.rotation changed to 0
@@ -221,16 +216,15 @@ public class Shooting : MonoBehaviour
             
             if (playerSpeed.speed)
             {
-                rockCD -= playerSpeed.fireSpeedUp;
+                rockCD = Time.time + (rockCDI * playerSpeed.fireSpeedUp);
             }
-
-            
         }
+        #endregion
 
         if (type == "wind" && Time.time > windCD)
         {
             bullet = Instantiate(wind, firePoint.position, firePoint.rotation);
-
+            
             if (playerCatalyst.catalyst)
             {
                 bullet.transform.localScale *= playerCatalyst.catalystFactor;
@@ -241,7 +235,7 @@ public class Shooting : MonoBehaviour
             windCD = Time.time + windCDI;
             if (playerSpeed.speed)
             {
-                windCD -= playerSpeed.fireSpeedUp;
+                windCD = Time.time + (windCDI * playerSpeed.fireSpeedUp);
             }
 
             WindAttack windAttack = bullet.GetComponent<WindAttack>();
@@ -263,7 +257,7 @@ public class Shooting : MonoBehaviour
             lightningCD = Time.time + lightningCDI;
             if (playerSpeed.speed)
             {
-                lightningCD -= playerSpeed.fireSpeedUp;
+                lightningCD = Time.time + (lightningCDI * playerSpeed.fireSpeedUp);
             }
 
             Lightning script = bullet.GetComponent<Lightning>();
@@ -280,6 +274,7 @@ public class Shooting : MonoBehaviour
         {
 
             bullet = Instantiate(triangleBullet, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<Bullet>().shooting = this;
 
             if(playerCatalyst.catalyst)
             {
@@ -319,12 +314,12 @@ public class Shooting : MonoBehaviour
     {
         yield return new WaitForSeconds(rockTime);
         GameObject Rock = Instantiate(rock, bullet.transform.position, bullet.transform.rotation);
+        Rock.GetComponent<Rock>().shooting = this;
 
         if(playerCatalyst.catalyst)
         {
             Rock.transform.localScale *= playerCatalyst.catalystFactor;
         }
-
         Destroy(Rock, rockTTL);
     }
 }

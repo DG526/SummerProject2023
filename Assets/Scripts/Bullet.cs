@@ -5,20 +5,18 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
-    //public float lifeTime = 5f;
+    public Shooting shooting;
+    public int damage;
+    int boostedDamage;
     void Start()
     {
-        //if lifetime is zero, the bullet will go on forever.
-        /*if(lifeTime != 0f)
-        { 
-            Destroy(gameObject, lifeTime);
-        }*/
+        boostedDamage = (int)(damage * shooting.playerCatalyst.catalystFactor);
     }
 
     // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 8)
+        if (collision.gameObject.layer == 8 || collision.gameObject.layer == 10)
         {
 
         }
@@ -27,10 +25,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!(collision.gameObject.layer == 3))
+        if (collision.gameObject.layer == 8 || collision.gameObject.layer == 10)
         {
-            Destroy(gameObject);
+            if (shooting.playerCatalyst.catalyst)
+            {
+                collision.gameObject.GetComponent<EnemyHealth>().Damage(boostedDamage);
+            }
+            else
+            {
+            collision.gameObject.GetComponent<EnemyHealth>().Damage(damage);
+            }
         }
-        
+        Destroy(gameObject); 
     }
 }

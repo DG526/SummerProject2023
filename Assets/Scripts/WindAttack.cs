@@ -7,8 +7,11 @@ public class WindAttack : MonoBehaviour
     public Shooting shooting;
     float timeToLive;
     float force;
+    public int damage;
 
     public Vector2 destinationScale = new Vector2(1.5f, 0.75f);
+
+    int boostedDamage;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +20,8 @@ public class WindAttack : MonoBehaviour
 
         timeToLive = shooting.windTTL;
         force = shooting.windForce;
+
+        boostedDamage = (int)(damage * shooting.playerCatalyst.catalystFactor);
 
         if (shooting.playerCatalyst.catalyst)
         {
@@ -27,21 +32,36 @@ public class WindAttack : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 8)
         {
             Rigidbody2D colRB = collision.gameObject.GetComponent<Rigidbody2D>();
-            colRB.AddForce(rb.velocity);
+            colRB.AddForce(rb.velocity * 100000);
+
+            Damage(collision.gameObject);
+        }
+        else if(collision.gameObject.layer == 10)
+        {
+            Rigidbody2D colRB = collision.gameObject.GetComponent<Rigidbody2D>();
+            colRB.AddForce(rb.velocity * 200000);
+
+
+            Damage(collision.gameObject);
         }
     }
 
+    void Damage(GameObject enemy)
+    {
+        if(shooting.playerCatalyst.catalyst)
+        {
+            enemy.GetComponent<EnemyHealth>().Damage(boostedDamage);
+        }
+        else
+        {
+            enemy.GetComponent<EnemyHealth>().Damage(damage);
+        }
+    }
     IEnumerator ScaleOverTime(float time)
     {
         Vector2 originalScale = gameObject.transform.localScale;

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class AoETouch : MonoBehaviour
 {
+    public int damage;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 8)
+        if(collision.gameObject.layer == 8 || collision.gameObject.layer == 10)
         {
-            Debug.Log("Hit an Enemy!");
+            collision.gameObject.GetComponent<EnemyHealth>().Damage(damage);
         }
     }
 }

@@ -164,6 +164,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnetism: 3
   threshold: 5
+  maxItems: 4
+  minItems: 0
+  playerHealth: {fileID: 0}
+  speedPotion: {fileID: 3505877230926169809, guid: 0d35e9679a7fa084596d74f88e78dffe, type: 3}
+  speedDropRate: 0.2
+  shields: {fileID: 255283402541676546, guid: 20eb407f7b8ba1c4ab46e68502a5a980, type: 3}
+  shieldDropRate: 0.4
+  catalyst: {fileID: 2995952248413867604, guid: 4d8fc1c13cef0fc4eb91fb453643da95, type: 3}
+  catalystDropRate: 0.6
+  health: {fileID: 5986962952591058346, guid: e2440429fba810647a0044f9f6c66b8d, type: 3}
+  healthDropRate: 0.7
+  healthIncreasedRate: 1
+  maxItemSpeed: 10
+  minItemSpeed: 5
+  itemStopTime: 1
 --- !u!1 &7162222316339733717
 GameObject:
   m_ObjectHideFlags: 0

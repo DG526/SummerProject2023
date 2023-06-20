@@ -6,6 +6,9 @@ using UnityEngine;
 public class Poison : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public Shooting shooting;
+    public int damage;
+    int boostedDamage;
     public float lifetime = 5f;
     //determines how fast poison does damage
     public float tickSpeed = 0.3f;
@@ -18,6 +21,7 @@ public class Poison : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CircleCollider2D>();
+        boostedDamage = (int)(damage * shooting.playerCatalyst.catalystFactor);
         Destroy(gameObject, lifetime);
     }
 
@@ -40,14 +44,22 @@ public class Poison : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 0)
+        if (collision.gameObject.layer == 0 || collision.gameObject.layer == 14)
         {
             rb.velocity = Vector3.zero;
         }
 
-        if(collision.gameObject.layer == 8)
+        if(collision.gameObject.layer == 8 || collision.gameObject.layer == 10)
         {
-            Debug.Log("Hit an enemy");
+            if(shooting.playerCatalyst.catalyst)
+            {
+                collision.gameObject.GetComponent<EnemyHealth>().Damage(boostedDamage);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<EnemyHealth>().Damage(damage);
+            }
+            //Debug.Log("Hit an enemy");
         }
     }
 

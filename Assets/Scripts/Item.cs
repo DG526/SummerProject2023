@@ -58,7 +58,7 @@ public class Item : MonoBehaviour
             if (gameObject.tag == "Healing Heart")
             {
                 playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-                if (playerHealth.health < playerHealth.maxHealth)
+                if (playerHealth.health < playerHealth.numOfHearts)
                 {
                     playerHealth.health = playerHealth.health + 1;
                     Debug.Log(playerHealth.health);
@@ -86,7 +86,7 @@ public class Item : MonoBehaviour
             {
                 foreach(Transform child in collision.gameObject.transform)
                 {
-                    Debug.Log(child.name);
+                    //Debug.Log(child.name);
 
                     if(child.name != "Shields")
                     {

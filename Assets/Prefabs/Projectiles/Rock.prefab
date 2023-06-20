@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2785778026587685757}
   - component: {fileID: 6950262810025763179}
   - component: {fileID: 8152921857784794264}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,3 +210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f79862eb05b8ae4d94e67e61336a873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptStop: 0.01
+  shooting: {fileID: 0}
+  damage: 40

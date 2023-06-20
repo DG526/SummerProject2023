@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class DummyEnemy : MonoBehaviour
 {
 
     private Transform player;
@@ -70,11 +70,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (playerHealth.health <= playerHealth.maxHealth / 2 && !increased)
+        if (playerHealth.health <= playerHealth.numOfHearts / 2 && !increased)
         {
             increased = true;
         }
-        else if (playerHealth.health > playerHealth.maxHealth / 2 && increased)
+        else if (playerHealth.health > playerHealth.numOfHearts / 2 && increased)
         {
             increased = false;
         }

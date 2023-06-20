@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
         {
             dead = true;
             Debug.Log("You Died!");
+            GameObject.Find("GameOver").GetComponent<GameOver>().Lose();
         }
 
         #region Health

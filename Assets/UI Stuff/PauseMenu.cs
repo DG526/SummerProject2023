@@ -25,6 +25,8 @@ public class PauseMenu : MonoBehaviour
         //Makes sure the menus are deactivated
         pauseCanvas.SetActive(false);
         settingsCanvas.SetActive(false);
+
+        Time.timeScale = 1;
     }
     public void Change()
     {

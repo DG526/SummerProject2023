@@ -26,7 +26,7 @@ public class GameOver : MonoBehaviour
         winCanvas.SetActive(false);
     }
 
-    #region Pausing
+    #region Screen
     public void Win()
     {
         Time.timeScale = 0f;
@@ -38,7 +38,7 @@ public class GameOver : MonoBehaviour
 
     public void Lose()
     {
-        Time.timeScale = 0f; Time.timeScale = 0f;
+        Time.timeScale = 0f;
         loseCanvas.SetActive(true);
         winCanvas.SetActive(true);
 
@@ -63,12 +63,6 @@ public class GameOver : MonoBehaviour
         //sets the first button when menu opens
         EventSystem.current.SetSelectedGameObject(winFirstButton);
     }
-
-    private void CloseAllMenus()
-    {
-        //sets the button to null 
-        EventSystem.current.SetSelectedGameObject(null);
-    }
     #endregion
 
     #region Navigation
@@ -78,9 +72,11 @@ public class GameOver : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
-    public void OpenPause()
+    public void TryAgain()
     {
-       
+        SceneManager.LoadScene("PlayerStuff");
+        Time.timeScale = 1f;
+
     }
     #endregion
 }

@@ -68,7 +68,7 @@ public class MainMenuManager : MonoBehaviour
         credits.SetActive(false);
 
         //sets the first button when menu opens
-        EventSystem.current.SetSelectedGameObject(howToPlayButton);
+        EventSystem.current.SetSelectedGameObject(settingsButton);
     }
 
     private void OpenCredits()

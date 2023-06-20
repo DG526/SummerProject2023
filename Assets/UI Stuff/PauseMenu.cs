@@ -15,6 +15,8 @@ public class PauseMenu : MonoBehaviour
     //sets the first button
     [SerializeField] private GameObject pauseFirstButton;
     [SerializeField] private GameObject settingFirstButton;
+    [SerializeField] private GameObject loseFirstButton;
+    [SerializeField] private GameObject winFirstButton;
 
     private bool isPaused;
 
@@ -23,6 +25,8 @@ public class PauseMenu : MonoBehaviour
         //Makes sure the menus are deactivated
         pauseCanvas.SetActive(false);
         settingsCanvas.SetActive(false);
+
+        Time.timeScale = 1;
     }
     public void Change()
     {
@@ -74,7 +78,6 @@ public class PauseMenu : MonoBehaviour
     private void OpenPauseMenu()
     {
         pauseCanvas.SetActive(true);
-        Debug.Log("Paused");
         settingsCanvas.SetActive(false);
 
         //sets the first button when menu opens

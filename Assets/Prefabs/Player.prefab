@@ -556,11 +556,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39fbf7432493a948ae79387b1ebae97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  numOfHearts: 0
   health: 0
   dead: 0
   grace: 0
   graceDuration: 1
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
 --- !u!114 &6388839294459175891
 MonoBehaviour:
   m_ObjectHideFlags: 0

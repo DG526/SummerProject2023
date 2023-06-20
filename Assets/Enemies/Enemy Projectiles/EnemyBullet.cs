@@ -17,6 +17,8 @@ public class EnemyBullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.layer == 12 || collision.gameObject.layer == 14 || collision.gameObject.layer == 0)
+            Destroy(gameObject);
         if (collision.gameObject.layer == 3)
         {
             collision.gameObject.GetComponent<PlayerHealth>().Damage(1);

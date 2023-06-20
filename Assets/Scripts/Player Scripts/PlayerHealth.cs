@@ -22,6 +22,8 @@ public class PlayerHealth : MonoBehaviour
     }
     void Update()
     {
+        if (gameObject.name.Equals("Player Clone(Clone)"))
+            return;
         if (grace && graceTime < Time.time)
         {
             grace = false;
@@ -67,6 +69,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void Damage(int damage)
     {
+        if (gameObject.name.Equals("Player Clone(Clone)"))
+            return;
         if (!dead && !grace)
         {
             health -= damage;

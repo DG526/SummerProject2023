@@ -5419,11 +5419,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4275434799560544954, guid: 0d35e9679a7fa084596d74f88e78dffe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.12
+      value: -5.11
       objectReference: {fileID: 0}
     - target: {fileID: 4275434799560544954, guid: 0d35e9679a7fa084596d74f88e78dffe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.46
+      value: 13.47
       objectReference: {fileID: 0}
     - target: {fileID: 4275434799560544954, guid: 0d35e9679a7fa084596d74f88e78dffe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7123,7 +7123,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6566468037653931324, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: Fire1
-      value: circle
+      value: rockDrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566468037653931324, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
+      propertyPath: Fire2
+      value: poison
       objectReference: {fileID: 0}
     - target: {fileID: 7729190062512634640, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: m_Color.a
@@ -7131,7 +7135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8078588443737594384, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: ultimate
-      value: beam
+      value: clone
       objectReference: {fileID: 0}
     - target: {fileID: 8078588443737594384, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: beamSize.x

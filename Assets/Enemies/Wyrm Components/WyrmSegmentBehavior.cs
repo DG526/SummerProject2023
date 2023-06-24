@@ -6,7 +6,7 @@ public class WyrmSegmentBehavior : MonoBehaviour
 {
     public GameObject head, following, nextSeg;
     Rigidbody2D rb;
-    WyrmHeadBehavior hBehav;
+    public WyrmHeadBehavior hBehav;
     // Start is called before the first frame update
     void Start()
     {

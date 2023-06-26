@@ -99,6 +99,7 @@ public class WyvernBehavior : MonoBehaviour
         if (distToPlayer > tooClose * transform.localScale.y && distToPlayer < attackDist * transform.localScale.y)
             return;
         //Debug.Log("Finishing spit attack");
+        transform.up = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
         GetComponent<Animator>().SetTrigger("DoneAttacking");
         attacking = false;
         canAttack = false;

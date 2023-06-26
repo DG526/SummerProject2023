@@ -12,6 +12,9 @@ public class DrakeBehavior : MonoBehaviour
     public float attackDist = 1.5f;
     public bool canAttack;
     public bool attacking;
+
+    public bool wind = false;
+    public float windDuration;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +29,10 @@ public class DrakeBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(wind && windDuration < Time.time)
+        {
+            wind = false;
+        }
     }
     private void FixedUpdate()
     {

@@ -14,6 +14,9 @@ public class WyvernBehavior : MonoBehaviour
     public float attackDist = 7f, tooClose = 5f;
     public bool canAttack;
     public bool attacking;
+
+    public bool wind;
+    public float windDuration;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +31,10 @@ public class WyvernBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(wind && windDuration < Time.time)
+        {
+            wind = false;
+        }
     }
     private void FixedUpdate()
     {
@@ -66,6 +72,7 @@ public class WyvernBehavior : MonoBehaviour
     {
         rb.freezeRotation = true;
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+
         GetComponent<Animator>().SetTrigger("Attacking");
     }
     void Spit()

@@ -184,8 +184,9 @@ MonoBehaviour:
   shooting: {fileID: 0}
   damage: 5
   wyrmGracePeriod: 0.5
-  drakeGracePeriod: 0.3
-  wyvernGracePeriod: 0.3
+  drakeGracePeriod: 0.5
+  wyvernGracePeriod: 0.5
+  pushForce: 300000
   destinationScale: {x: 1.5, y: 0.75}
 --- !u!50 &404252190225837949
 Rigidbody2D:

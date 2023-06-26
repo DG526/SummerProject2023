@@ -13,6 +13,8 @@ public class WindAttack : MonoBehaviour
     public float drakeGracePeriod = 0.2f;
     public float wyvernGracePeriod = 0.2f;
 
+    public float pushForce = 500000f;
+    
     enum Enemies
     {
         Wyrm,
@@ -68,7 +70,7 @@ public class WindAttack : MonoBehaviour
                             wyrmHeadBehavior.windSkew = 0.5f;
                         else
                             wyrmHeadBehavior.windSkew = -0.5f;
-                        Debug.Log("Hit Head");
+                        //Debug.Log("Hit Head");
                         //colRB.AddForce(rb.velocity * 50000);
                         //colRB.velocity = rb.velocity * 2;
                         Damage(collision.gameObject);
@@ -83,7 +85,11 @@ public class WindAttack : MonoBehaviour
                         wyrmHeadBehavior.windDuration = Time.time + wyrmGracePeriod;
                         wyrmHeadBehavior.wind = true;
 
-                        Debug.Log("Hit Segment");
+                        if (Random.Range(-1f, 1f) > 0)
+                            wyrmHeadBehavior.windSkew = 0.5f;
+                        else
+                            wyrmHeadBehavior.windSkew = -0.5f;
+                        //Debug.Log("Hit Segment");
                         //colRB.AddForce(rb.velocity * 50000);
                         //colRB.velocity = rb.velocity;
                         Damage(collision.gameObject);
@@ -99,17 +105,36 @@ public class WindAttack : MonoBehaviour
                 {
                     drakeBehavior.windDuration = Time.time + drakeGracePeriod;
                     drakeBehavior.wind = true;
-                    colRB.AddForce(rb.velocity * 50000);
+                    colRB.AddForce(rb.velocity * pushForce);
                 }
             }
         }
         else if(collision.gameObject.layer == 10)
         {
             Rigidbody2D colRB = collision.gameObject.GetComponent<Rigidbody2D>();
-            colRB.AddForce(rb.velocity * 200000);
+            WyvernBehavior wyvernBehavior = collision.gameObject.GetComponent<WyvernBehavior>();
 
+            //Debug.Log("Triggered");
+            //Debug.Log("Hitting Drake");
+            if (!wyvernBehavior.wind)
+            {
+                Debug.Log("Wind");
+                Damage(collision.gameObject);
+                wyvernBehavior.windDuration = Time.time + wyvernGracePeriod;
+                wyvernBehavior.wind = true;
 
-            Damage(collision.gameObject);
+                /*if (wyvernBehavior.attacking)
+                {
+                    colRB.freezeRotation = false;
+                    colRB.constraints = RigidbodyConstraints2D.None;
+                }*/
+                //colRB.AddForce(1.5f * pushForce * rb.velocity);
+                collision.gameObject.transform.position = collision.gameObject.transform.position + new Vector3(rb.velocity.normalized.x,rb.velocity.normalized.y,0f) * 5f;
+            }
+            else
+            {
+                Debug.Log("Wind Active");
+            }
         }
     }
 
@@ -123,6 +148,8 @@ public class WindAttack : MonoBehaviour
         {
             enemy.GetComponent<EnemyHealth>().Damage(damage);
         }
+
+        Debug.Log(enemy.GetComponent<EnemyHealth>().health);
     }
     IEnumerator ScaleOverTime(float time)
     {

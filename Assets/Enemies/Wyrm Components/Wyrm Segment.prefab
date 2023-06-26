@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8699705807753439046}
   m_Layer: 8
   m_Name: Wyrm Segment
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   head: {fileID: 0}
   following: {fileID: 0}
   nextSeg: {fileID: 0}
+  hBehav: {fileID: 0}
 --- !u!50 &9018953379280900064
 Rigidbody2D:
   serializedVersion: 4

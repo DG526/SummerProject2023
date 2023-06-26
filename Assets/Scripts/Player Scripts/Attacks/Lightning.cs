@@ -13,6 +13,13 @@ public class Lightning : MonoBehaviour
     //distance with which lightning will seek enemies
     public float threshold = 10f;
 
+    public int damage = 50;
+
+    //number of times lightning can strike other enemies
+    public int maxStrikes = 1;
+
+    private int boostedDamage;
+    private int strikes = 0;
     //distance from this object to other enemy
     private float distance;
 
@@ -29,21 +36,36 @@ public class Lightning : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         speed = shooting.lightningSpeed * 1.5f;
+        boostedDamage = (int)(damage * shooting.playerCatalyst.catalystFactor);
     }
 
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.layer == 0 || collision.gameObject.layer == 14)
+        {
+            Destroy(gameObject);
+        }
+
         if (struck)
         {
-            //Debug.Log("Hit a second thing");
-            Destroy(gameObject);
+            if (collision.gameObject.tag == "Enemy")
+            {
+                Damage(collision.gameObject);
+            }
+                Destroy(gameObject);
 
         }
 
-        if (collision.gameObject.layer == 8 && !struck)
+        if (collision.gameObject.tag == "Enemy" && !struck)
         {
-            struck = true;
+            strikes++;
+            Damage(collision.gameObject);
+            if(strikes >= maxStrikes)
+            {
+                struck = true;
+            }
+
             //list of all enemies
             enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -63,6 +85,7 @@ public class Lightning : MonoBehaviour
                     {
                         //Debug.Log("Found a possible target");
                         validEnemies.Add(enemies[i]);
+                        Debug.Log(enemies[i].name);
                         foundTarget = true;
                     }
                 }
@@ -92,8 +115,20 @@ public class Lightning : MonoBehaviour
                 //Debug.Log("Didn't find another target");
                 Destroy(gameObject);
             }
-
-
         }
+    }
+
+    void Damage(GameObject enemy)
+    {
+        if (shooting.playerCatalyst.catalyst)
+        {
+            enemy.GetComponent<EnemyHealth>().Damage(boostedDamage);
+        }
+        else
+        {
+            enemy.GetComponent<EnemyHealth>().Damage(damage);
+        }
+
+        Debug.Log(enemy.GetComponent<EnemyHealth>().health);
     }
 }

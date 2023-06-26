@@ -14,6 +14,10 @@ public class WyrmHeadBehavior : MonoBehaviour
     public float speed = 1.4f;
 
     Rigidbody2D rb;
+
+    public bool wind;
+    public float windDuration;
+    public float windSkew;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,20 +63,37 @@ public class WyrmHeadBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //wind must be turned off here because the wind gameobject is destoryed before the grace period is supposed to end
+        if(wind && windDuration < Time.time)
+        {
+            wind = false;
+        }
     }
     private void FixedUpdate()
     {
+        
         if(Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.y), new Vector2(transform.position.x, transform.position.y)) > 0.5f)
             Slither();
     }
 
     void Slither()
     {
+        
         transform.up = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
         transform.up.Normalize();
-        rb.MovePosition(rb.position + (Vector2)transform.up * speed * Time.fixedDeltaTime);
-
+        if (wind)
+        {
+            //reverse direction of movement
+            transform.up *= -1;
+            //slightly skew direction to avoid other segments
+            transform.up = new Vector3(transform.up.x + windSkew, transform.up.y, transform.up.z);
+            //increase speed of movement to avoid other segments as well as make the wind feel more effective
+            rb.MovePosition(rb.position + (Vector2)transform.up * speed * 3f * Time.fixedDeltaTime);
+        }
+        else
+        {
+            rb.MovePosition(rb.position + (Vector2)transform.up * speed * Time.fixedDeltaTime);
+        }
         segments[0].GetComponent<WyrmSegmentBehavior>().Slither();
     }
 

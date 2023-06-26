@@ -11,9 +11,6 @@ public class HUD : MonoBehaviour
     public Ultimate ultimate;
     public PlayerHealth playerHealth;
 
-    List<Image> fullHearts = new List<Image>();
-    List<Image> emptyHearts = new List<Image>();
-
     GameObject player;
 
     string fire1;

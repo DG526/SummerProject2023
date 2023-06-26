@@ -24,6 +24,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.78965485
       objectReference: {fileID: 0}
+    - target: {fileID: 3557685604673690757, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
+      propertyPath: dead
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557685604673690757, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
+      propertyPath: numOfHearts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3776281760952695892, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: m_RootOrder
       value: 0

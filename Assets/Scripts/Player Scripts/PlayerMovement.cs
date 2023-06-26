@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         if(playerSpeed.speed)
         {
             //movement
-            rb.velocity = new Vector2(moveDir.x * (moveSpeed * playerSpeed.speedUp), moveDir.y * (moveSpeed * playerSpeed.speedUp));
+            rb.velocity = new Vector2(moveDir.x * (moveSpeed + playerSpeed.speedUp), moveDir.y * (moveSpeed * playerSpeed.speedUp));
         }
         else
         {

@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
 
         Time.timeScale = 1;
     }
-    public void Change()
+    public void FullScreen()
     {
         Screen.fullScreen = !Screen.fullScreen;
     }

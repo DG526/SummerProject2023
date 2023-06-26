@@ -8,12 +8,13 @@ public class PlayerHealth : MonoBehaviour
     //was maxHealth
     public int numOfHearts;
     public int health;
+
     public bool dead = false;
     public bool grace = false;
     public float graceDuration = 1f;
     private float graceTime = 0f;
 
-    public Image[] hearts;
+    public List<Image> hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
     void Start()
@@ -43,7 +44,7 @@ public class PlayerHealth : MonoBehaviour
         }
 
         //Health
-        for (int i = 0; i < hearts.Length; i++)
+        for (int i = 0; i < hearts.Count; i++)
         {
             if(i <health)
             {
@@ -64,6 +65,8 @@ public class PlayerHealth : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
+
+        
         #endregion
     }
 

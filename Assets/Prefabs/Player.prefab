@@ -610,6 +610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clone: {fileID: 6303285072460628720, guid: 08c7e382dad615546bd8d17948de24cd, type: 3}
+  shooting: {fileID: 0}
   cloneCDI: 30
   cloneCD: 0
   cloneDuration: 15
@@ -936,6 +937,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2145691816178219244}
   - component: {fileID: 2003396052320949582}
+  - component: {fileID: 628905105646733673}
+  - component: {fileID: 5658390598401535738}
   m_Layer: 12
   m_Name: Shields
   m_TagString: Untagged
@@ -978,6 +981,48 @@ MonoBehaviour:
   shieldDuration: 5
   shieldEnd: 0
   rotationSpeed: 180
+--- !u!50 &628905105646733673
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6737808116797331131}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &5658390598401535738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6737808116797331131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a12c5af857f0948b31b033ecd950fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3776281760952695892}
+  offset: {x: 0, y: 0, z: 0}
+  damping: 0
 --- !u!1 &7973806346960912559
 GameObject:
   m_ObjectHideFlags: 0

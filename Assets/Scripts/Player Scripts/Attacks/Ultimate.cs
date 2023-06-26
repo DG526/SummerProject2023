@@ -6,6 +6,8 @@ public class Ultimate : MonoBehaviour
 {
     public GameObject clone;
 
+    public Shooting shooting;
+
     public float cloneCDI = 30f;
     public float cloneCD = 0f;
 
@@ -59,6 +61,8 @@ public class Ultimate : MonoBehaviour
     void Start()
     {
         playerHealth = gameObject.GetComponent<PlayerHealth>();
+
+        shooting = GetComponent<Shooting>();
 
         foreach (Transform child in gameObject.transform)
         {
@@ -134,6 +138,11 @@ public class Ultimate : MonoBehaviour
             cloneCD = Time.time + cloneCDI;
 
             GameObject spawnClone = Instantiate(clone, gameObject.transform.position + cloneSpawnPos, gameObject.transform.rotation);
+
+            //change clone loadout to player loadout
+            spawnClone.GetComponent<Shooting>().Fire1 = shooting.Fire1;
+            spawnClone.GetComponent <Shooting>().Fire2 = shooting.Fire2;
+
             Destroy(spawnClone, cloneDuration);
         }
 

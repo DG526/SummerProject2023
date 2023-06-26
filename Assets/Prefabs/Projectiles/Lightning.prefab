@@ -202,5 +202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shooting: {fileID: 0}
-  damage: 60
   threshold: 10
+  damage: 60
+  maxStrikes: 1

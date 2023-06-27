@@ -44,6 +44,10 @@ public class Ultimate : MonoBehaviour
     public float beamChargeTime = 1f;
     public float beamDuration = 8f;
 
+
+    public int maxCharges = 1;
+    public int charges = 1;
+
     //script specific
     GameObject AoE;
 
@@ -57,6 +61,10 @@ public class Ultimate : MonoBehaviour
     Vector2 beamStartPos;
     float beamTick = 0f;
 
+
+
+    float nextCharge = 0f;
+    bool firstUlt = true;
     //BoxCollider2D beamCollider;
     void Start()
     {
@@ -64,6 +72,7 @@ public class Ultimate : MonoBehaviour
 
         shooting = GetComponent<Shooting>();
 
+        charges = maxCharges;
         foreach (Transform child in gameObject.transform)
         {
             if (child.gameObject.name == "AoE Ult")
@@ -87,6 +96,12 @@ public class Ultimate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(charges < maxCharges && nextCharge < Time.time && !firstUlt)
+        {
+            charges++;
+            FindNextCharge();
+        }
+
         if (!playerHealth.dead)
         {
             if (Input.GetButtonDown("Jump"))
@@ -122,9 +137,16 @@ public class Ultimate : MonoBehaviour
 
     void FireUltimate(string ult)
     {
-        if (ult == "aoe" && Time.time > aoeCD)
+        if (ult == "aoe" && charges > 0)
         {
-            aoeCD = Time.time + aoeCDI;
+            charges--;
+            if(firstUlt)
+            {
+                FindNextCharge();
+                firstUlt = false;
+            }
+
+            //aoeCD = Time.time + aoeCDI;
 
             if (!AoE.activeInHierarchy)
             {
@@ -133,9 +155,15 @@ public class Ultimate : MonoBehaviour
             StartCoroutine(ScaleOverTime(aoeTime));
         }
 
-        if (ult == "clone" && Time.time > cloneCD)
+        if (ult == "clone" && charges > 0)
         {
-            cloneCD = Time.time + cloneCDI;
+            charges--;
+            if (firstUlt)
+            {
+                FindNextCharge();
+                firstUlt = false;
+            }
+            //cloneCD = Time.time + cloneCDI;
 
             GameObject spawnClone = Instantiate(clone, gameObject.transform.position + cloneSpawnPos, gameObject.transform.rotation);
 
@@ -146,9 +174,15 @@ public class Ultimate : MonoBehaviour
             Destroy(spawnClone, cloneDuration);
         }
 
-        if (ult == "beam" && Time.time > beamCD)
+        if (ult == "beam" && charges > 0)
         {
-            beamCD = Time.time + beamCDI;
+            charges--;
+            if (firstUlt)
+            {
+                FindNextCharge();
+                firstUlt = false;
+            }
+            //beamCD = Time.time + beamCDI;
 
             if (!Beam.activeInHierarchy)
             {
@@ -217,5 +251,21 @@ public class Ultimate : MonoBehaviour
 
         //Beam.GetComponent<BoxCollider2D>().isTrigger = false;
         Beam.GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    void FindNextCharge()
+    {
+        if(ultimate == "aoe")
+        {
+            nextCharge = Time.time + aoeCDI;
+        }
+        else if (ultimate == "clone")
+        {
+            nextCharge = Time.time + cloneCDI;
+        }
+        else if (ultimate == "beam")
+        {
+            nextCharge = Time.time + beamCDI;
+        }
     }
 }

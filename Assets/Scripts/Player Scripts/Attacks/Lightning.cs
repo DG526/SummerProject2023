@@ -40,6 +40,14 @@ public class Lightning : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        if (boostedDamage != (int)(damage * shooting.playerCatalyst.catalystFactor))
+        {
+            boostedDamage = (int)(damage * shooting.playerCatalyst.catalystFactor);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == 0 || collision.gameObject.layer == 14)
@@ -54,7 +62,6 @@ public class Lightning : MonoBehaviour
                 Damage(collision.gameObject);
             }
                 Destroy(gameObject);
-
         }
 
         if (collision.gameObject.tag == "Enemy" && !struck)

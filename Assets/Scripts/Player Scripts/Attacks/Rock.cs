@@ -14,6 +14,13 @@ public class Rock : MonoBehaviour
         StartCoroutine(Stop(scriptStop));
     }
 
+    private void Update()
+    {
+        if (boostedDamage != (int)(damage * shooting.playerCatalyst.catalystFactor)) 
+        {
+            boostedDamage = (int)(damage * shooting.playerCatalyst.catalystFactor);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 8)

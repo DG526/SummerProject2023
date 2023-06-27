@@ -46,6 +46,9 @@ public class Shooting : MonoBehaviour
     //Circle Time to Live
     public float circleTTL = 1f;
 
+    //shop upgrade for fireball
+    public bool circleUpgraded = false;
+
     //Triangle Cooldown Interval
     public float triangleCDI = 0.5f;
 
@@ -76,6 +79,9 @@ public class Shooting : MonoBehaviour
     //Rock distance from player
     public float rockDist = 5f;
 
+    //shop upgrade for rock
+    public bool rockUpgraded = false;
+
     //Wind Cooldown to Interval
     public float windCDI = 1f;
 
@@ -93,6 +99,8 @@ public class Shooting : MonoBehaviour
 
     //Lightning Time to Live
     public float lightningTTL = 1.5f;
+
+    public bool lightningUpgraded = false; 
 
     public string Fire1 = "circle";
     public string Fire2 = "triangle";
@@ -140,6 +148,10 @@ public class Shooting : MonoBehaviour
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<Bullet>().shooting = this;
 
+            if(circleUpgraded)
+            {
+                bullet.GetComponent<Bullet>().damage = (int)(bullet.GetComponent<Bullet>().damage * 1.5);
+            }
             if(playerCatalyst.catalyst)
             {
                 bullet.transform.localScale *= playerCatalyst.catalystFactor;
@@ -262,6 +274,12 @@ public class Shooting : MonoBehaviour
 
             Lightning script = bullet.GetComponent<Lightning>();
             script.shooting = gameObject.GetComponent<Shooting>();
+
+            if(lightningUpgraded)
+            {
+                script.maxStrikes = script.maxStrikes + 2;
+                script.damage = script.damage + 20;
+            }
             Destroy(bullet, lightningTTL);
         }
     }
@@ -315,6 +333,11 @@ public class Shooting : MonoBehaviour
         yield return new WaitForSeconds(rockTime);
         GameObject Rock = Instantiate(rock, bullet.transform.position, bullet.transform.rotation);
         Rock.GetComponent<Rock>().shooting = this;
+
+        if(rockUpgraded)
+        {
+            Rock.GetComponent<Rock>().damage = Rock.GetComponent<Rock>().damage + 20;
+        }
 
         if(playerCatalyst.catalyst)
         {

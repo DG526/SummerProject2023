@@ -93,14 +93,14 @@ public class DummyEnemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if (Time.time > gracePeriod)
         {
             Death();
             gracePeriod= Time.time + 5f;
         }
-    }
+    }*/
 
 
     void Death()

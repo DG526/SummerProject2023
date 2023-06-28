@@ -64,6 +64,9 @@ public class Shooting : MonoBehaviour
     //Poison Cooldown
     private float poisonCD = 0f;
 
+    //shop upgrade for poison
+    public bool poisonUpgraded = false;
+
     //Rock Cooldown Interval
     public float rockCDI = 2f;
 
@@ -194,6 +197,12 @@ public class Shooting : MonoBehaviour
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<Poison>().shooting = this;
 
+            if(poisonUpgraded)
+            {
+                bullet.transform.localScale *= 1.5f;
+                bullet.GetComponent<Poison>().tickSpeed = bullet.GetComponent<Poison>().tickSpeed - 0.1f;
+            }
+
             if (playerCatalyst.catalyst)
             {
                 bullet.transform.localScale *= playerCatalyst.catalystFactor;
@@ -233,6 +242,7 @@ public class Shooting : MonoBehaviour
         }
         #endregion
 
+        #region wind
         if (type == "wind" && Time.time > windCD)
         {
             bullet = Instantiate(wind, firePoint.position, firePoint.rotation);
@@ -254,7 +264,9 @@ public class Shooting : MonoBehaviour
             windAttack.shooting = gameObject.GetComponent<Shooting>();
             Destroy(bullet, windTTL);
         }
+        #endregion
 
+        #region lightning
         if (type == "lightning" && Time.time > lightningCD)
         {
             bullet = Instantiate(lightning, firePoint.position, firePoint.rotation);
@@ -282,6 +294,7 @@ public class Shooting : MonoBehaviour
             }
             Destroy(bullet, lightningTTL);
         }
+        #endregion
     }
 
     void FireTriangle(GameObject bullet)

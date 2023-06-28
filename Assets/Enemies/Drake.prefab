@@ -209,6 +209,8 @@ MonoBehaviour:
   attackDist: 1.8
   canAttack: 0
   attacking: 0
+  wind: 0
+  windDuration: 0
 --- !u!50 &3984775072711669919
 Rigidbody2D:
   serializedVersion: 4

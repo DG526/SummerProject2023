@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 140781973357330580}
   - component: {fileID: 6942337256372071353}
   - component: {fileID: 633219421350532031}
-  - component: {fileID: 2874171775439290363}
+  - component: {fileID: -3542345287748418692}
   m_Layer: 6
   m_Name: Catalyst
   m_TagString: Catalyst
@@ -132,8 +132,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!68 &2874171775439290363
-EdgeCollider2D:
+--- !u!60 &-3542345287748418692
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -165,11 +165,27 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6, y: 1.6}
+    newSize: {x: 1, y: 0.8828125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   m_Points:
-  - {x: -0.5, y: 0}
-  - {x: 0.5, y: 0}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+    m_Paths:
+    - - {x: 0.41, y: 0.65999997}
+      - {x: 0.19, y: 0.63}
+      - {x: 0.02, y: 0.56}
+      - {x: -0.29999998, y: 0.68}
+      - {x: -0.5, y: 0.68}
+      - {x: -0.7, y: 0.45999998}
+      - {x: -0.7, y: -0.26}
+      - {x: -0.69, y: -0.28}
+      - {x: 0.7, y: -0.28}
+      - {x: 0.71999997, y: -0.26999998}
+      - {x: 0.71999997, y: 0.48}
+      - {x: 0.57, y: 0.59}
+  m_UseDelaunayMesh: 0

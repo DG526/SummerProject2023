@@ -193,6 +193,8 @@ MonoBehaviour:
   maxSegAngle: 40
   speed: 2.5
   wind: 0
+  windDuration: 0
+  windSkew: 0
 --- !u!70 &9116891559561628132
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

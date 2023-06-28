@@ -118,7 +118,7 @@ public class WindAttack : MonoBehaviour
             //Debug.Log("Hitting Drake");
             if (!wyvernBehavior.wind)
             {
-                Debug.Log("Wind");
+                //Debug.Log("Wind");
                 Damage(collision.gameObject);
                 wyvernBehavior.windDuration = Time.time + wyvernGracePeriod;
                 wyvernBehavior.wind = true;
@@ -133,7 +133,7 @@ public class WindAttack : MonoBehaviour
             }
             else
             {
-                Debug.Log("Wind Active");
+                //Debug.Log("Wind Active");
             }
         }
     }

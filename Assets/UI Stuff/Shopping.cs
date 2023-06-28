@@ -145,7 +145,7 @@ public class Shopping : MonoBehaviour
     public void PoisonUpgrade()
     {
         //Bigger cloud, tick rate faster, (maybe)slows enemy
-
+        shoot.poisonUpgraded = true;
         poisonText.text = "Sold Out!";
         poisonButton.interactable = false;
     }

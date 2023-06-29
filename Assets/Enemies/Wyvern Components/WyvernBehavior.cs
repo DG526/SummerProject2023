@@ -21,6 +21,11 @@ public class WyvernBehavior : MonoBehaviour
 
     public bool lightningStunned = false;
     public float stunDuration = 0f;
+
+    public bool poison = false;
+    public float poisonDuration = 0f;
+    public float poisonSlow = 0.5f;
+    float fSpeedSlowed, bSpeedSlowed;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +35,9 @@ public class WyvernBehavior : MonoBehaviour
 
         //Find rb
         rb = GetComponent<Rigidbody2D>();
+
+        fSpeedSlowed = fSpeed * poisonSlow;
+        bSpeedSlowed = bSpeed * poisonSlow;
     }
 
     // Update is called once per frame
@@ -43,6 +51,11 @@ public class WyvernBehavior : MonoBehaviour
         if(lightningStunned && stunDuration < Time.time)
         {
             lightningStunned = false;
+        }
+
+        if(poison && poisonDuration < Time.time)
+        {
+            poison = false;
         }
     }
     private void FixedUpdate()
@@ -71,13 +84,19 @@ public class WyvernBehavior : MonoBehaviour
     {
         transform.up = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
         transform.up.Normalize();
-        rb.MovePosition(rb.position + (Vector2)transform.up * fSpeed * Time.fixedDeltaTime);
+        if(!poison)
+            rb.MovePosition(rb.position + (Vector2)transform.up * fSpeed * Time.fixedDeltaTime);
+        else
+            rb.MovePosition(rb.position + (Vector2)transform.up * fSpeedSlowed * Time.fixedDeltaTime);
     }
     void Backwards()
     {
         transform.up = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
         transform.up.Normalize();
-        rb.MovePosition(rb.position + (Vector2)transform.up * -bSpeed * Time.fixedDeltaTime);
+        if(!poison)
+            rb.MovePosition(rb.position + (Vector2)transform.up * -bSpeed * Time.fixedDeltaTime);
+        else
+            rb.MovePosition(rb.position + (Vector2)transform.up * -bSpeedSlowed * Time.fixedDeltaTime);
     }
     void Attack()
     {

@@ -113,6 +113,7 @@ public class Shopping : MonoBehaviour
     public void FireUpgrade()
     {
         // tighter spread, more damage
+        //done
         shoot.circleSpread = shoot.circleSpread * 0.5f;
         shoot.circleUpgraded = true;
         fireText.text = "Sold Out!";
@@ -122,6 +123,7 @@ public class Shopping : MonoBehaviour
     public void WaterUpgrade()
     {
         //Wider spread, more shots
+        //done
         shoot.numBullets = shoot.numBullets + 4;
         shoot.triangleSpreadInterval = shoot.triangleSpreadInterval + 0.05f;
         waterText.text = "Sold Out!";
@@ -130,6 +132,7 @@ public class Shopping : MonoBehaviour
     public void EarthUpgrade()
     {
         //Lower cooldown, more damage
+        //done
         shoot.rockCDI = shoot.rockCDI * 0.75f;
         shoot.rockUpgraded= true;
 
@@ -154,7 +157,7 @@ public class Shopping : MonoBehaviour
     public void LightingUpgrade()
     {
         //more chains, more damage, *small stun
-        //still need to stun
+        //done
         shoot.lightningUpgraded = true;
         lightingText.text = "Sold Out!";
         lightingButton.interactable = false;

@@ -21,6 +21,11 @@ public class WyrmHeadBehavior : MonoBehaviour
 
     public bool lightningStunned = false;
     public float stunDuration = 0f;
+
+    public bool poison = false;
+    public float poisonDuration = 0f;
+    public float poisonSlow = 0.5f;
+    float speedSlowed;
     // Start is called before the first frame update
     void Start()
     {
@@ -76,6 +81,11 @@ public class WyrmHeadBehavior : MonoBehaviour
         {
             lightningStunned = false;
         }
+
+        if (poison && poisonDuration < Time.time)
+        {
+            poison = false;
+        }
     }
     private void FixedUpdate()
     {
@@ -96,11 +106,17 @@ public class WyrmHeadBehavior : MonoBehaviour
                 //slightly skew direction to avoid other segments
                 transform.up = new Vector3(transform.up.x + windSkew, transform.up.y, transform.up.z);
                 //increase speed of movement to avoid other segments as well as make the wind feel more effective
-                rb.MovePosition(rb.position + (Vector2)transform.up * speed * 3f * Time.fixedDeltaTime);
+                if(!poison)
+                    rb.MovePosition(rb.position + (Vector2)transform.up * speed * 3f * Time.fixedDeltaTime);
+                else
+                    rb.MovePosition(rb.position + (Vector2)transform.up * speedSlowed * 3f * Time.fixedDeltaTime);
             }
             else
             {
-                rb.MovePosition(rb.position + (Vector2)transform.up * speed * Time.fixedDeltaTime);
+                if(!poison)
+                    rb.MovePosition(rb.position + (Vector2)transform.up * speed * Time.fixedDeltaTime);
+                else
+                    rb.MovePosition(rb.position + (Vector2)transform.up * speedSlowed * Time.fixedDeltaTime);
             }
         }
         segments[0].GetComponent<WyrmSegmentBehavior>().Slither();

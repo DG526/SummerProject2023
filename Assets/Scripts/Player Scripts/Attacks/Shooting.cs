@@ -290,7 +290,7 @@ public class Shooting : MonoBehaviour
             if(lightningUpgraded)
             {
                 script.maxStrikes = script.maxStrikes + 2;
-                script.damage = script.damage + 20;
+                script.damage = (int)(script.damage + 20);
             }
             Destroy(bullet, lightningTTL);
         }

@@ -131,10 +131,6 @@ public class WindAttack : MonoBehaviour
                 //colRB.AddForce(1.5f * pushForce * rb.velocity);
                 collision.gameObject.transform.position = collision.gameObject.transform.position + new Vector3(rb.velocity.normalized.x,rb.velocity.normalized.y,0f) * 5f;
             }
-            else
-            {
-                //Debug.Log("Wind Active");
-            }
         }
     }
 

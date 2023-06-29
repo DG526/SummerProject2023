@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 public class WyvernBehavior : MonoBehaviour
@@ -15,8 +16,11 @@ public class WyvernBehavior : MonoBehaviour
     public bool canAttack;
     public bool attacking;
 
-    public bool wind;
-    public float windDuration;
+    public bool wind = false;
+    public float windDuration = 0f;
+
+    public bool lightningStunned = false;
+    public float stunDuration = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,9 +39,16 @@ public class WyvernBehavior : MonoBehaviour
         {
             wind = false;
         }
+
+        if(lightningStunned && stunDuration < Time.time)
+        {
+            lightningStunned = false;
+        }
     }
     private void FixedUpdate()
     {
+        if(lightningStunned)
+            return;
         float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
         if (distToPlayer > tooClose * transform.localScale.y && distToPlayer < attackDist * transform.localScale.y)
         {

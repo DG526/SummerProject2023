@@ -18,6 +18,9 @@ public class WyrmHeadBehavior : MonoBehaviour
     public bool wind;
     public float windDuration;
     public float windSkew;
+
+    public bool lightningStunned = false;
+    public float stunDuration = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,31 +71,37 @@ public class WyrmHeadBehavior : MonoBehaviour
         {
             wind = false;
         }
+
+        if (lightningStunned && stunDuration < Time.time)
+        {
+            lightningStunned = false;
+        }
     }
     private void FixedUpdate()
     {
-        
-        if(Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.y), new Vector2(transform.position.x, transform.position.y)) > 0.5f)
+        if (Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.y), new Vector2(transform.position.x, transform.position.y)) > 0.5f)
             Slither();
     }
 
     void Slither()
     {
-        
-        transform.up = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
-        transform.up.Normalize();
-        if (wind)
+        if (!lightningStunned)
         {
-            //reverse direction of movement
-            transform.up *= -1;
-            //slightly skew direction to avoid other segments
-            transform.up = new Vector3(transform.up.x + windSkew, transform.up.y, transform.up.z);
-            //increase speed of movement to avoid other segments as well as make the wind feel more effective
-            rb.MovePosition(rb.position + (Vector2)transform.up * speed * 3f * Time.fixedDeltaTime);
-        }
-        else
-        {
-            rb.MovePosition(rb.position + (Vector2)transform.up * speed * Time.fixedDeltaTime);
+            transform.up = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
+            transform.up.Normalize();
+            if (wind)
+            {
+                //reverse direction of movement
+                transform.up *= -1;
+                //slightly skew direction to avoid other segments
+                transform.up = new Vector3(transform.up.x + windSkew, transform.up.y, transform.up.z);
+                //increase speed of movement to avoid other segments as well as make the wind feel more effective
+                rb.MovePosition(rb.position + (Vector2)transform.up * speed * 3f * Time.fixedDeltaTime);
+            }
+            else
+            {
+                rb.MovePosition(rb.position + (Vector2)transform.up * speed * Time.fixedDeltaTime);
+            }
         }
         segments[0].GetComponent<WyrmSegmentBehavior>().Slither();
     }

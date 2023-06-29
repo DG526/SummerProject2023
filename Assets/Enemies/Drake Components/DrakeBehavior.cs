@@ -15,6 +15,9 @@ public class DrakeBehavior : MonoBehaviour
 
     public bool wind = false;
     public float windDuration;
+
+    public bool lightningStunned = false;
+    public float stunDuration = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +36,16 @@ public class DrakeBehavior : MonoBehaviour
         {
             wind = false;
         }
+
+        if (lightningStunned && stunDuration < Time.time)
+        {
+            lightningStunned = false;
+        }
     }
     private void FixedUpdate()
     {
+        if (lightningStunned)
+            return;
         float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
         if(distToPlayer < attackDist * transform.localScale.y)
         {

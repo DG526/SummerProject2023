@@ -66,5 +66,4 @@ public class Boundaries : MonoBehaviour
             Debug.Log(playerHit.distance);*/
         }
     }
-
 }

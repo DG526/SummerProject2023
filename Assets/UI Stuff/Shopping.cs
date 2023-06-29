@@ -139,12 +139,14 @@ public class Shopping : MonoBehaviour
     public void WindUpgrade()
     {
         //More force, larger spread
+        //not implemented
         windText.text = "Sold Out!";
         windButton.interactable = false;
     }
     public void PoisonUpgrade()
     {
         //Bigger cloud, tick rate faster, (maybe)slows enemy
+        //still need to slow enemy
         shoot.poisonUpgraded = true;
         poisonText.text = "Sold Out!";
         poisonButton.interactable = false;
@@ -152,6 +154,7 @@ public class Shopping : MonoBehaviour
     public void LightingUpgrade()
     {
         //more chains, more damage, *small stun
+        //still need to stun
         shoot.lightningUpgraded = true;
         lightingText.text = "Sold Out!";
         lightingButton.interactable = false;

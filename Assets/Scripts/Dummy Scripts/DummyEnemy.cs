@@ -53,7 +53,7 @@ public class DummyEnemy : MonoBehaviour
     public float itemStopTime = 1f;
     private bool increased;
 
-    private float gracePeriod = 0f;
+    //private float gracePeriod = 0f;
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;

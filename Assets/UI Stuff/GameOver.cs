@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     //Menus
-    [SerializeField] private GameObject loseCanvas;
-    [SerializeField] private GameObject winCanvas;
-    [SerializeField] private GameObject warningCanvas;
+    public GameObject loseCanvas;
+    public GameObject winCanvas;
+    public GameObject warningCanvas;
 
     //sets the first button
-    [SerializeField] private GameObject loseFirstButton;
-    [SerializeField] private GameObject winFirstButton;
-    [SerializeField] private GameObject warningButton;
+    public GameObject loseFirstButton;
+    public GameObject winFirstButton;
+    public GameObject warningButton;
 
     public Loadout openLoadout;
 

@@ -47,7 +47,6 @@ public class Shopping : MonoBehaviour
         shoot = player.GetComponent<Shooting>();
 
         shopCanvas.SetActive(false);
-        Time.timeScale = 1f;
     }
 
     private void Update()

@@ -14,11 +14,6 @@ public class Boundaries : MonoBehaviour
     {
         map = GameObject.Find("Map").GetComponent<PolygonCollider2D>();
         player = GameObject.Find("Player");
-        //Debug.Log("I exist");
-        if (!map)
-            Debug.Log("You messed up.");
-
-        //Debug.Log(map.bounds.center);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -28,7 +23,6 @@ public class Boundaries : MonoBehaviour
         //player       monster       flying monster
         if (layer == 3 || layer == 8 || layer == 10)
         {
-            //collision.gameObject.transform.position = collision.gameObject.GetComponent<SpawnPoint>().spawn;
 
             if(layer == 8 || layer == 10)
             {
@@ -36,16 +30,6 @@ public class Boundaries : MonoBehaviour
             }
 
             Vector2 up = new Vector2(player.transform.position.x - collision.gameObject.transform.position.x, player.transform.position.y - collision.gameObject.transform.position.y);
-            
-
-            /*Debug.Log("Transform: " + hit.transform.name);
-            Debug.Log(hit.distance);
-
-            distance -= offset;
-
-            collision.gameObject.transform.position = collision.gameObject.transform.position + new Vector3(up.x, up.y, 0f).normalized * distance;*/
-
-            //Debug.Log("Teleported");
 
             RaycastHit2D[] playerHit = Physics2D.RaycastAll(player.transform.position, up * -1, 100f, 3);
 
@@ -60,10 +44,6 @@ public class Boundaries : MonoBehaviour
                 collision.gameObject.transform.position = player.transform.position + new Vector3(-1f * up.x, -1f* up.y, 0f).normalized * distance;
                 break;
             }
-
-            Debug.Log("Concluded");
-            /*Debug.Log(playerHit.transform.name);
-            Debug.Log(playerHit.distance);*/
         }
     }
 }

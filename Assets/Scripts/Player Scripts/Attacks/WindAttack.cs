@@ -41,6 +41,10 @@ public class WindAttack : MonoBehaviour
             destinationScale = destinationScale * shooting.playerCatalyst.catalystFactor;
         }
 
+        if (shooting.windUpgraded)
+        {
+            destinationScale = destinationScale * 1.5f;
+        }
         StartCoroutine(ScaleOverTime(timeToLive));
 
     }
@@ -51,12 +55,10 @@ public class WindAttack : MonoBehaviour
         {
             Rigidbody2D colRB = collision.gameObject.GetComponent<Rigidbody2D>();
             #region wyrm collision
-            //check if wyrm
             if (collision.gameObject.name.IndexOf("Wyrm") != -1)
             {
                 WyrmHeadBehavior wyrmHeadBehavior;
 
-                //find what part of wyrm we're dealing with
                 if (collision.gameObject.name.IndexOf("Tail") == -1 && collision.gameObject.name.IndexOf("Segment") == -1)
                 {
                     wyrmHeadBehavior = collision.gameObject.GetComponent<WyrmHeadBehavior>();
@@ -70,9 +72,6 @@ public class WindAttack : MonoBehaviour
                             wyrmHeadBehavior.windSkew = 0.5f;
                         else
                             wyrmHeadBehavior.windSkew = -0.5f;
-                        //Debug.Log("Hit Head");
-                        //colRB.AddForce(rb.velocity * 50000);
-                        //colRB.velocity = rb.velocity * 2;
                         Damage(collision.gameObject);
                     }
                 }
@@ -89,9 +88,6 @@ public class WindAttack : MonoBehaviour
                             wyrmHeadBehavior.windSkew = 0.5f;
                         else
                             wyrmHeadBehavior.windSkew = -0.5f;
-                        //Debug.Log("Hit Segment");
-                        //colRB.AddForce(rb.velocity * 50000);
-                        //colRB.velocity = rb.velocity;
                         Damage(collision.gameObject);
                     }
                 }
@@ -105,8 +101,12 @@ public class WindAttack : MonoBehaviour
                 {
                     drakeBehavior.windDuration = Time.time + drakeGracePeriod;
                     drakeBehavior.wind = true;
-                    colRB.AddForce(rb.velocity * pushForce);
+                    if (shooting.windUpgraded)
+                        colRB.AddForce(rb.velocity * pushForce * shooting.windPush);
+                    else
+                        colRB.AddForce(rb.velocity * pushForce);
                 }
+                Damage(collision.gameObject);
             }
         }
         else if(collision.gameObject.layer == 10)
@@ -114,22 +114,17 @@ public class WindAttack : MonoBehaviour
             Rigidbody2D colRB = collision.gameObject.GetComponent<Rigidbody2D>();
             WyvernBehavior wyvernBehavior = collision.gameObject.GetComponent<WyvernBehavior>();
 
-            //Debug.Log("Triggered");
-            //Debug.Log("Hitting Drake");
             if (!wyvernBehavior.wind)
             {
-                //Debug.Log("Wind");
                 Damage(collision.gameObject);
                 wyvernBehavior.windDuration = Time.time + wyvernGracePeriod;
                 wyvernBehavior.wind = true;
 
-                /*if (wyvernBehavior.attacking)
-                {
-                    colRB.freezeRotation = false;
-                    colRB.constraints = RigidbodyConstraints2D.None;
-                }*/
-                //colRB.AddForce(1.5f * pushForce * rb.velocity);
-                collision.gameObject.transform.position = collision.gameObject.transform.position + new Vector3(rb.velocity.normalized.x,rb.velocity.normalized.y,0f) * 5f;
+                float push = 5f;
+                if (shooting.windUpgraded)
+                    push *= shooting.windPush;
+
+                collision.gameObject.transform.position = collision.gameObject.transform.position + new Vector3(rb.velocity.normalized.x,rb.velocity.normalized.y,0f) * push;
             }
         }
     }

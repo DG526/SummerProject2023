@@ -105,11 +105,19 @@ public class WyrmHeadBehavior : MonoBehaviour
                 transform.up *= -1;
                 //slightly skew direction to avoid other segments
                 transform.up = new Vector3(transform.up.x + windSkew, transform.up.y, transform.up.z);
-                //increase speed of movement to avoid other segments as well as make the wind feel more effective
-                if(!poison)
-                    rb.MovePosition(rb.position + (Vector2)transform.up * speed * 3f * Time.fixedDeltaTime);
+
+                float pushSpeed = 3f;
+
+                //movement modifiers
+                if (!poison)
+                    pushSpeed *= speed;
                 else
-                    rb.MovePosition(rb.position + (Vector2)transform.up * speedSlowed * 3f * Time.fixedDeltaTime);
+                    pushSpeed *= speedSlowed;
+
+                if (player.GetComponent<Shooting>().windUpgraded)
+                    pushSpeed *= player.GetComponent<Shooting>().windPush;
+
+                rb.MovePosition(rb.position + (Vector2)transform.up * pushSpeed * Time.fixedDeltaTime);
             }
             else
             {

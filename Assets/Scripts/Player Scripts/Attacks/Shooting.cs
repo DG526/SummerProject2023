@@ -94,6 +94,10 @@ public class Shooting : MonoBehaviour
     //Wind Time to Live
     public float windTTL = 1.5f;
 
+    public float windPush = 1.5f;
+
+    public bool windUpgraded = false;
+
     //Lightning Cooldown Interval
     public float lightningCDI = 0.75f;
 
@@ -250,6 +254,11 @@ public class Shooting : MonoBehaviour
             if (playerCatalyst.catalyst)
             {
                 bullet.transform.localScale *= playerCatalyst.catalystFactor;
+            }
+
+            if(windUpgraded)
+            {
+                bullet.transform.localScale *= 1.5f;
             }
 
             Rigidbody2D windRB = bullet.GetComponent<Rigidbody2D>();

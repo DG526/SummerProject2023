@@ -51,7 +51,6 @@ public class Shopping : MonoBehaviour
         ult = player.GetComponent<Ultimate>();
 
         shopCanvas.SetActive(false);
-        Time.timeScale = 1f;
     }
 
     private void Update()

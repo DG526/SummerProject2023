@@ -46,6 +46,9 @@ public class Shooting : MonoBehaviour
     //Circle Time to Live
     public float circleTTL = 1f;
 
+    //shop upgrade for fireball
+    public bool circleUpgraded = false;
+
     //Triangle Cooldown Interval
     public float triangleCDI = 0.5f;
 
@@ -60,6 +63,9 @@ public class Shooting : MonoBehaviour
 
     //Poison Cooldown
     private float poisonCD = 0f;
+
+    //shop upgrade for poison
+    public bool poisonUpgraded = false;
 
     //Rock Cooldown Interval
     public float rockCDI = 2f;
@@ -76,6 +82,9 @@ public class Shooting : MonoBehaviour
     //Rock distance from player
     public float rockDist = 5f;
 
+    //shop upgrade for rock
+    public bool rockUpgraded = false;
+
     //Wind Cooldown to Interval
     public float windCDI = 1f;
 
@@ -85,6 +94,10 @@ public class Shooting : MonoBehaviour
     //Wind Time to Live
     public float windTTL = 1.5f;
 
+    public float windPush = 1.5f;
+
+    public bool windUpgraded = false;
+
     //Lightning Cooldown Interval
     public float lightningCDI = 0.75f;
 
@@ -93,6 +106,8 @@ public class Shooting : MonoBehaviour
 
     //Lightning Time to Live
     public float lightningTTL = 1.5f;
+
+    public bool lightningUpgraded = false; 
 
     public string Fire1 = "circle";
     public string Fire2 = "triangle";
@@ -140,6 +155,10 @@ public class Shooting : MonoBehaviour
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<Bullet>().shooting = this;
 
+            if(circleUpgraded)
+            {
+                bullet.GetComponent<Bullet>().damage = (int)(bullet.GetComponent<Bullet>().damage * 1.5);
+            }
             if(playerCatalyst.catalyst)
             {
                 bullet.transform.localScale *= playerCatalyst.catalystFactor;
@@ -182,6 +201,12 @@ public class Shooting : MonoBehaviour
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<Poison>().shooting = this;
 
+            if(poisonUpgraded)
+            {
+                bullet.transform.localScale *= 1.5f;
+                bullet.GetComponent<Poison>().tickSpeed = bullet.GetComponent<Poison>().tickSpeed - 0.1f;
+            }
+
             if (playerCatalyst.catalyst)
             {
                 bullet.transform.localScale *= playerCatalyst.catalystFactor;
@@ -221,6 +246,7 @@ public class Shooting : MonoBehaviour
         }
         #endregion
 
+        #region wind
         if (type == "wind" && Time.time > windCD)
         {
             bullet = Instantiate(wind, firePoint.position, firePoint.rotation);
@@ -228,6 +254,11 @@ public class Shooting : MonoBehaviour
             if (playerCatalyst.catalyst)
             {
                 bullet.transform.localScale *= playerCatalyst.catalystFactor;
+            }
+
+            if(windUpgraded)
+            {
+                bullet.transform.localScale *= 1.5f;
             }
 
             Rigidbody2D windRB = bullet.GetComponent<Rigidbody2D>();
@@ -242,7 +273,9 @@ public class Shooting : MonoBehaviour
             windAttack.shooting = gameObject.GetComponent<Shooting>();
             Destroy(bullet, windTTL);
         }
+        #endregion
 
+        #region lightning
         if (type == "lightning" && Time.time > lightningCD)
         {
             bullet = Instantiate(lightning, firePoint.position, firePoint.rotation);
@@ -262,8 +295,15 @@ public class Shooting : MonoBehaviour
 
             Lightning script = bullet.GetComponent<Lightning>();
             script.shooting = gameObject.GetComponent<Shooting>();
+
+            if(lightningUpgraded)
+            {
+                script.maxStrikes = script.maxStrikes + 2;
+                script.damage = (int)(script.damage + 20);
+            }
             Destroy(bullet, lightningTTL);
         }
+        #endregion
     }
 
     void FireTriangle(GameObject bullet)
@@ -315,6 +355,11 @@ public class Shooting : MonoBehaviour
         yield return new WaitForSeconds(rockTime);
         GameObject Rock = Instantiate(rock, bullet.transform.position, bullet.transform.rotation);
         Rock.GetComponent<Rock>().shooting = this;
+
+        if(rockUpgraded)
+        {
+            Rock.GetComponent<Rock>().damage = Rock.GetComponent<Rock>().damage + 20;
+        }
 
         if(playerCatalyst.catalyst)
         {

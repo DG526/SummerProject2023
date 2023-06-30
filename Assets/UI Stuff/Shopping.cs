@@ -10,9 +10,12 @@ public class Shopping : MonoBehaviour
     public PlayerHealth pHealth;
     public Shooting shoot;
     public PlayerMovement move;
+    public Ultimate ult;
     public GameObject player;
 
     [SerializeField] private GameObject shopCanvas;
+
+    public int maxUltCharges = 2;
 
     public Button healthButton;
     public Button speedButton;
@@ -45,6 +48,7 @@ public class Shopping : MonoBehaviour
         pHealth = player.GetComponent<PlayerHealth>();
         move = player.GetComponent<PlayerMovement>();
         shoot = player.GetComponent<Shooting>();
+        ult = player.GetComponent<Ultimate>();
 
         shopCanvas.SetActive(false);
         Time.timeScale = 1f;
@@ -78,6 +82,7 @@ public class Shopping : MonoBehaviour
     public void AddHealth()
     {
         pHealth.numOfHearts = pHealth.numOfHearts + 1;
+        pHealth.health = pHealth.health + 1;
         if(pHealth.numOfHearts == 8)
         {
             healthText.text = "Sold Out!";
@@ -89,7 +94,7 @@ public class Shopping : MonoBehaviour
     {
         move.moveSpeed = move.moveSpeed + 1.5f;
         
-        if(move.moveSpeed <= 9)
+        if(move.moveSpeed >= 9)
         {
             speedText.text = "Sold Out!";
             speedButton.interactable = false;
@@ -98,7 +103,8 @@ public class Shopping : MonoBehaviour
     public void AddUltCharge()
     {
         //One more ult charge but it's very expensive
-        if (move.moveSpeed <= 9)
+        ult.maxCharges = ult.maxCharges + 1;
+        if (ult.maxCharges == maxUltCharges)
         {
             ultText.text = "Sold Out!";
             ultButton.interactable = false;
@@ -107,6 +113,8 @@ public class Shopping : MonoBehaviour
     public void FireUpgrade()
     {
         // tighter spread, more damage
+        shoot.circleSpread = shoot.circleSpread * 0.5f;
+        shoot.circleUpgraded = true;
         fireText.text = "Sold Out!";
         fireButton.interactable = false;
     }
@@ -114,31 +122,39 @@ public class Shopping : MonoBehaviour
     public void WaterUpgrade()
     {
         //Wider spread, more shots
+        shoot.numBullets = shoot.numBullets + 4;
+        shoot.triangleSpreadInterval = shoot.triangleSpreadInterval + 0.05f;
         waterText.text = "Sold Out!";
         waterButton.interactable = false;
     }
     public void EarthUpgrade()
     {
         //Lower cooldown, more damage
+        shoot.rockCDI = shoot.rockCDI * 0.75f;
+        shoot.rockUpgraded= true;
+
         earthText.text = "Sold Out!";
         earthButton.interactable = false;
     }
     public void WindUpgrade()
     {
         //More force, larger spread
+        shoot.windUpgraded = true;
+
         windText.text = "Sold Out!";
         windButton.interactable = false;
     }
     public void PoisonUpgrade()
     {
         //Bigger cloud, tick rate faster, (maybe)slows enemy
-
+        shoot.poisonUpgraded = true;
         poisonText.text = "Sold Out!";
         poisonButton.interactable = false;
     }
     public void LightingUpgrade()
     {
         //more chains, more damage, *small stun
+        shoot.lightningUpgraded = true;
         lightingText.text = "Sold Out!";
         lightingButton.interactable = false;
     }

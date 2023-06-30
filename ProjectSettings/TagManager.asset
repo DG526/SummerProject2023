@@ -10,6 +10,7 @@ TagManager:
   - Shield Item
   - Player Clone
   - Enemy
+  - BGM Player
   layers:
   - Default
   - TransparentFX

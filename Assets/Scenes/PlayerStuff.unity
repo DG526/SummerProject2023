@@ -1502,7 +1502,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 176045938}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1698355224}
+        m_TargetAssemblyTypeName: Shopping, Assembly-CSharp
+        m_MethodName: AddUltCharge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &176045938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3542,7 +3554,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 350702701}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1698355224}
+        m_TargetAssemblyTypeName: Shopping, Assembly-CSharp
+        m_MethodName: LightingUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &350702701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5093,7 +5117,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 646690571}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1698355224}
+        m_TargetAssemblyTypeName: Shopping, Assembly-CSharp
+        m_MethodName: WindUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &646690571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11468,7 +11504,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1628564556}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1698355224}
+        m_TargetAssemblyTypeName: Shopping, Assembly-CSharp
+        m_MethodName: WaterUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1628564556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12322,7 +12370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1698355223
 Transform:
   m_ObjectHideFlags: 0
@@ -12354,8 +12402,10 @@ MonoBehaviour:
   pHealth: {fileID: 0}
   shoot: {fileID: 0}
   move: {fileID: 0}
+  ult: {fileID: 0}
   player: {fileID: 2008602358}
   shopCanvas: {fileID: 2033264444}
+  maxUltCharges: 2
   healthButton: {fileID: 2073161668}
   speedButton: {fileID: 1877590608}
   ultButton: {fileID: 176045937}
@@ -12367,7 +12417,7 @@ MonoBehaviour:
   lightingButton: {fileID: 350702700}
   speedText: {fileID: 32769439}
   healthText: {fileID: 933618896}
-  ultText: {fileID: 32769439}
+  ultText: {fileID: 1907815848}
   fireText: {fileID: 157958100}
   waterText: {fileID: 667506828}
   earthText: {fileID: 1201514732}
@@ -13043,7 +13093,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1774960786}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1698355224}
+        m_TargetAssemblyTypeName: Shopping, Assembly-CSharp
+        m_MethodName: PoisonUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1774960786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13646,7 +13708,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1821646224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1698355224}
+        m_TargetAssemblyTypeName: Shopping, Assembly-CSharp
+        m_MethodName: FireUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1821646224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14236,7 +14310,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1877590609}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1698355224}
+        m_TargetAssemblyTypeName: Shopping, Assembly-CSharp
+        m_MethodName: AddSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1877590609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14495,7 +14581,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1894111025}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1698355224}
+        m_TargetAssemblyTypeName: Shopping, Assembly-CSharp
+        m_MethodName: EarthUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1894111025
 MonoBehaviour:
   m_ObjectHideFlags: 0

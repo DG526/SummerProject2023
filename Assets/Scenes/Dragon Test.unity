@@ -1414,7 +1414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8078588443737594384, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: ultimate
-      value: clone
+      value: beam
       objectReference: {fileID: 0}
     - target: {fileID: 8078588443737594384, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: beamSize.x
@@ -2161,7 +2161,7 @@ GameObject:
   - component: {fileID: 703745908}
   - component: {fileID: 703745910}
   - component: {fileID: 703745909}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2178,7 +2178,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1786839006}
   m_RootOrder: -1
@@ -5478,11 +5478,14 @@ GameObject:
   - component: {fileID: 1786839006}
   - component: {fileID: 1786839005}
   - component: {fileID: 1786839004}
-  - component: {fileID: 1786839008}
+  - component: {fileID: 1786839010}
   - component: {fileID: 1786839007}
-  m_Layer: 0
+  - component: {fileID: 1786839011}
+  - component: {fileID: 1786839009}
+  - component: {fileID: 1786839012}
+  m_Layer: 8
   m_Name: Red Dragon
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5568,11 +5571,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786839003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.85, y: -3.27, z: -3}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 4.85, y: -3.27, z: -1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 703745908}
+  - {fileID: 1872126458}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5726,7 +5730,55 @@ PolygonCollider2D:
       - {x: 0.50999993, y: 0.5660998}
       - {x: 0.50999993, y: 0.5810998}
   m_UseDelaunayMesh: 0
---- !u!70 &1786839008
+--- !u!114 &1786839009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786839003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1baebcb18853dd44492efc4f5b147e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  color: 0
+  maxMoveSpeed: 10
+  rotationSpeed: 125
+  action: 0
+  plan: 0
+  secondaryAction: 0
+  projectile: {fileID: 499554454324018847, guid: 05d2123d256654944889174e3b487c5a, type: 3}
+  rage: 0
+--- !u!50 &1786839010
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786839003}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10000
+  m_LinearDrag: 0
+  m_AngularDrag: 1000000
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!70 &1786839011
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5758,9 +5810,24 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5121002}
-  m_Size: {x: 1.26, y: 1.72}
+  m_Offset: {x: 0, y: 0.45825028}
+  m_Size: {x: 1.26, y: 1.6123002}
   m_Direction: 0
+--- !u!114 &1786839012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786839003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e39025802bc3054898b189f6a3618f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 4000
+  multiplier: 1
+  health: 0
 --- !u!1 &1787741421
 GameObject:
   m_ObjectHideFlags: 0
@@ -6107,6 +6174,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830011539}
   m_CullTransparentMesh: 1
+--- !u!1 &1872126457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1872126458}
+  m_Layer: 8
+  m_Name: Maw Mark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1872126458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872126457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.96, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1786839006}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1928482837
 GameObject:
   m_ObjectHideFlags: 0

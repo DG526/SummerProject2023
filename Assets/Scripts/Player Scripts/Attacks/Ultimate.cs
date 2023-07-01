@@ -4,49 +4,41 @@ using UnityEngine;
 
 public class Ultimate : MonoBehaviour
 {
-    public GameObject clone;
 
+    [Header ("Scripts and Prefabs")]
     public Shooting shooting;
-
-    public float cloneCDI = 30f;
-    public float cloneCD = 0f;
-
-    public float cloneDuration = 15f;
-
-    public Vector3 cloneSpawnPos = Vector3.zero;
-
+    public GameObject clone;
     public PlayerHealth playerHealth;
 
-    //AoE cooldown
+    [Header ("Clone")]
+    public float cloneCDI = 30f;
+    public float cloneCD = 0f;
+    public float cloneDuration = 15f;
+    public Vector3 cloneSpawnPos = Vector3.zero;
+
+    [Header ("AoE Blast")]
     public float aoeCDI = 20f;
     public float aoeCD = 0f;
-
-    //End radius of AoE
     public float aoeSize = 10f;
-
-    //Beginning radius of AoE
     public float aoeStart = 0.5f;
-
-    //AoE explosion speed (lower the faster)
     public float aoeTime = 1f;
 
-
+    [Header ("Beam")]
     public float beamCDI = 30f;
     public float beamCD = 0f;
-
-    //used to determine damage frequency
     public float beamTickSpeed = 0.15f;
     public float beamTickDuration = 0.1f;
-
-
     public Vector2 beamSize = Vector2.zero;
     public Vector2 beamStart = new Vector2(0.1f, 1f);
     public float beamChargeTime = 1f;
     public float beamDuration = 8f;
 
-
+    [Header ("Ultimate Charges")]
     public int maxCharges = 1;
     public int charges = 1;
+
+    [Header("Selected Ultimate")]
+    public string ultimate = "aoe";
 
     //script specific
     GameObject AoE;
@@ -54,17 +46,17 @@ public class Ultimate : MonoBehaviour
     GameObject Beam;
     bool beamActive;
     float beamEnd = 0f;
-    public string ultimate = "aoe";
+    
 
     Color beamColor;
     float beamAlpha;
     Vector2 beamStartPos;
     float beamTick = 0f;
 
-
-
     float nextCharge = 0f;
     bool firstUlt = true;
+
+    GameObject loadout;
     //BoxCollider2D beamCollider;
     void Start()
     {
@@ -73,6 +65,9 @@ public class Ultimate : MonoBehaviour
         shooting = GetComponent<Shooting>();
 
         charges = maxCharges;
+
+        loadout = GameObject.Find("LoadOut");
+
         foreach (Transform child in gameObject.transform)
         {
             if (child.gameObject.name == "AoE Ult")
@@ -102,7 +97,7 @@ public class Ultimate : MonoBehaviour
             FindNextCharge();
         }
 
-        if (!playerHealth.dead)
+        if (!playerHealth.dead && !loadout.activeInHierarchy)
         {
             if (Input.GetButtonDown("Jump"))
             {

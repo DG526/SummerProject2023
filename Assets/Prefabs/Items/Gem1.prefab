@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1326228088601266652}
   - component: {fileID: 2663777461079578161}
+  - component: {fileID: 3512496222051748638}
   - component: {fileID: 1459902323561757132}
   - component: {fileID: 6664864312461549151}
-  - component: {fileID: 3512496222051748638}
   m_Layer: 6
   m_Name: Gem1
   m_TagString: Untagged
@@ -87,6 +87,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3512496222051748638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3929919800341922367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb2dd9d33d677c44804dad514f8326f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnetism: 20
+  threshold: 5
+  playerHealth: {fileID: 0}
+  healing: 1
+  playerSpeed: {fileID: 0}
+  playerCatalyst: {fileID: 0}
 --- !u!50 &1459902323561757132
 Rigidbody2D:
   serializedVersion: 4
@@ -180,21 +198,3 @@ PolygonCollider2D:
       - {x: 0.31, y: -0.17999999}
       - {x: 0.35999998, y: -0.13}
   m_UseDelaunayMesh: 0
---- !u!114 &3512496222051748638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3929919800341922367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cb2dd9d33d677c44804dad514f8326f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magnetism: 3
-  threshold: 5
-  playerHealth: {fileID: 0}
-  healing: 1
-  playerSpeed: {fileID: 0}
-  playerCatalyst: {fileID: 0}

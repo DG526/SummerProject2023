@@ -7,10 +7,9 @@ public class Item : MonoBehaviour
     private Transform player;
 
     private Rigidbody2D rb;
-    //Force with which item is pulled to the player
-    public float magnetism = 3f;
 
-    //Min distance within which items are attracted to the player
+    [Header ("General")]
+    public float magnetism = 3f;
     public float threshold = 5f;
 
     //distance from player
@@ -19,12 +18,15 @@ public class Item : MonoBehaviour
     //direction to player
     private Vector2 dir = Vector2.zero;
 
+    [Header ("Health Item")]
     public PlayerHealth playerHealth;
     public int healing = 1;
 
+    [Header ("Player Scripts")]
     public PlayerSpeed playerSpeed;
-
     public PlayerCatalyst playerCatalyst;
+
+    bool moving = false;
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
@@ -49,7 +51,11 @@ public class Item : MonoBehaviour
 
             rb.AddForce(dir * magnetism);
         }
-    }
+        else if(distance > threshold && !moving) 
+        { 
+            rb.velocity = Vector2.zero;
+        }
+}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -109,7 +115,9 @@ public class Item : MonoBehaviour
 
     public IEnumerator StopMovement(GameObject item, float time)
     {
+        moving = true;
         yield return new WaitForSeconds(time);
         item.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        moving = false;
     }
 }

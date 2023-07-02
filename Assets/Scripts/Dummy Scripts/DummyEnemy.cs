@@ -53,7 +53,7 @@ public class DummyEnemy : MonoBehaviour
     public float itemStopTime = 1f;
     private bool increased;
 
-    private float gracePeriod = 0f;
+    //private float gracePeriod = 0f;
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
@@ -93,14 +93,14 @@ public class DummyEnemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if (Time.time > gracePeriod)
         {
             Death();
             gracePeriod= Time.time + 5f;
         }
-    }
+    }*/
 
 
     void Death()

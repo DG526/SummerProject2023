@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class Lightning : MonoBehaviour
@@ -14,6 +15,8 @@ public class Lightning : MonoBehaviour
     public float threshold = 10f;
 
     public int damage = 50;
+
+    public float stunTime = 1f;
 
     //number of times lightning can strike other enemies
     public int maxStrikes = 1;
@@ -40,12 +43,73 @@ public class Lightning : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        if (boostedDamage != (int)(damage * shooting.playerCatalyst.catalystFactor))
+        {
+            boostedDamage = (int)(damage * shooting.playerCatalyst.catalystFactor);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == 0 || collision.gameObject.layer == 14)
         {
             Destroy(gameObject);
         }
+
+        #region stun
+        if (shooting.lightningUpgraded)
+        {
+            if (collision.gameObject.name.IndexOf("Wyrm") != -1)
+            {
+                WyrmHeadBehavior wyrmHeadBehavior;
+
+                //find what part of wyrm we're dealing with
+                if (collision.gameObject.name.IndexOf("Tail") == -1 && collision.gameObject.name.IndexOf("Segment") == -1)
+                {
+                    wyrmHeadBehavior = collision.gameObject.GetComponent<WyrmHeadBehavior>();
+
+                    if (!wyrmHeadBehavior.lightningStunned)
+                    {
+                        wyrmHeadBehavior.stunDuration = Time.time + stunTime;
+                        wyrmHeadBehavior.lightningStunned = true;
+                    }
+                }
+                else
+                {
+                    wyrmHeadBehavior = collision.gameObject.GetComponent<WyrmSegmentBehavior>().hBehav;
+
+                    if (!wyrmHeadBehavior.lightningStunned)
+                    {
+                        wyrmHeadBehavior.stunDuration = Time.time + stunTime;
+                        wyrmHeadBehavior.lightningStunned = true;
+                    }
+                }
+            }
+
+            if (collision.gameObject.name.IndexOf("Drake") != -1)
+            {
+                DrakeBehavior drakeBehavior = collision.gameObject.GetComponent<DrakeBehavior>();
+                if (!drakeBehavior.lightningStunned)
+                {
+                    drakeBehavior.stunDuration = Time.time + stunTime;
+                    drakeBehavior.lightningStunned = true;
+                }
+            }
+
+            if (collision.gameObject.layer == 10)
+            {
+                WyvernBehavior wyvernBehavior = collision.gameObject.GetComponent<WyvernBehavior>();
+
+                if (!wyvernBehavior.wind)
+                {
+                    wyvernBehavior.stunDuration = Time.time + stunTime;
+                    wyvernBehavior.lightningStunned = true;
+                }
+            }
+        }
+        #endregion
 
         if (struck)
         {
@@ -54,7 +118,6 @@ public class Lightning : MonoBehaviour
                 Damage(collision.gameObject);
             }
                 Destroy(gameObject);
-
         }
 
         if (collision.gameObject.tag == "Enemy" && !struck)
@@ -85,7 +148,7 @@ public class Lightning : MonoBehaviour
                     {
                         //Debug.Log("Found a possible target");
                         validEnemies.Add(enemies[i]);
-                        Debug.Log(enemies[i].name);
+                        //Debug.Log(enemies[i].name);
                         foundTarget = true;
                     }
                 }
@@ -129,6 +192,6 @@ public class Lightning : MonoBehaviour
             enemy.GetComponent<EnemyHealth>().Damage(damage);
         }
 
-        Debug.Log(enemy.GetComponent<EnemyHealth>().health);
+        //Debug.Log(enemy.GetComponent<EnemyHealth>().health);
     }
 }

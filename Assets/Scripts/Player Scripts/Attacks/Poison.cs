@@ -15,6 +15,9 @@ public class Poison : MonoBehaviour
     public float tickDuration = 0.1f;
 
     float tick = 0f;
+
+    //how long enemies are slowed after coming into contact with poison
+    public float slowDuration = 0.3f;
     CircleCollider2D col;
 
     private void Start()
@@ -49,8 +52,34 @@ public class Poison : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
 
-        if(collision.gameObject.layer == 8 || collision.gameObject.layer == 10)
+        if(collision.gameObject.tag == "Enemy")
         {
+            if(shooting.poisonUpgraded)
+            {
+                string name = collision.gameObject.name;
+                if(name.IndexOf("Wyrm") != -1)
+                {
+                    WyrmHeadBehavior wyrmHeadBehavior = collision.gameObject.GetComponent<WyrmHeadBehavior>();
+
+                    wyrmHeadBehavior.poisonDuration = Time.time + slowDuration;
+                    wyrmHeadBehavior.poison = true;
+                }
+                else if(name.IndexOf("Drake") != -1)
+                {
+                    DrakeBehavior drakeBehavior = collision.gameObject.GetComponent<DrakeBehavior>();
+
+                    drakeBehavior.poisonDuration = Time.time + slowDuration;
+                    drakeBehavior.poison = true;
+                }
+                else if(name.IndexOf("Wyvern") != -1)
+                {
+                    WyvernBehavior wyvernBehavior = collision.gameObject.GetComponent<WyvernBehavior>();
+
+                    wyvernBehavior.poisonDuration = Time.time + slowDuration;
+                    wyvernBehavior.poison = true;
+                }
+            }
+
             if(shooting.playerCatalyst.catalyst)
             {
                 collision.gameObject.GetComponent<EnemyHealth>().Damage(boostedDamage);

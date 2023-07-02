@@ -24,9 +24,7 @@ public class PauseMenu : MonoBehaviour
     {
         //Makes sure the menus are deactivated
         pauseCanvas.SetActive(false);
-        settingsCanvas.SetActive(false);
-
-        Time.timeScale = 1;
+        settingsCanvas.SetActive(false); 
     }
     public void FullScreen()
     {
@@ -43,7 +41,7 @@ public class PauseMenu : MonoBehaviour
                 Pause();
 
                 //freezes everything
-                Time.timeScale = 0;
+                Time.timeScale = 0f;
             }
 
             else
@@ -51,7 +49,7 @@ public class PauseMenu : MonoBehaviour
                 Unpause();
 
                 //unfreezes
-                Time.timeScale = 1;
+                Time.timeScale = 1f;
             }
         }
     }

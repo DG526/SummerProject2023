@@ -5,9 +5,10 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     // Start is called before the first frame update
+    public PolygonCollider2D map;
     void Start()
     {
-        
+        map = GameObject.Find("Map").GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame

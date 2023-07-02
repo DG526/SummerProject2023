@@ -14,6 +14,13 @@ public class Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        if (boostedDamage != (int)(damage * shooting.playerCatalyst.catalystFactor))
+        {
+            boostedDamage = (int)(damage * shooting.playerCatalyst.catalystFactor);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 8 || collision.gameObject.layer == 10)

@@ -6,24 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    //Lose Menu   
-    [SerializeField] private GameObject loseCanvas;
-
-    //Win Menu
-    [SerializeField] private GameObject winCanvas;
+    //Menus
+    public GameObject loseCanvas;
+    public GameObject winCanvas;
+    public GameObject warningCanvas;
 
     //sets the first button
-    [SerializeField] private GameObject loseFirstButton;
-    [SerializeField] private GameObject winFirstButton;
+    public GameObject loseFirstButton;
+    public GameObject winFirstButton;
+    public GameObject warningButton;
 
+    public Loadout openLoadout;
 
     private bool isGameOver;
 
     private void Start()
     {
+        openLoadout = GameObject.Find("LoadOut").GetComponent<Loadout>();
         //Makes sure the menus are deactivated
         loseCanvas.SetActive(false);
         winCanvas.SetActive(false);
+        warningCanvas.SetActive(false);
     }
 
     #region Screen
@@ -73,6 +76,16 @@ public class GameOver : MonoBehaviour
     {
         loseCanvas.SetActive(false);
         winCanvas.SetActive(true);
+        warningCanvas.SetActive(false);
+
+        //sets the first button when menu opens
+        EventSystem.current.SetSelectedGameObject(winFirstButton);
+    }
+    public void OpenWarningMenu()
+    {
+        loseCanvas.SetActive(false);
+        winCanvas.SetActive(false);
+        warningCanvas.SetActive(true);
 
         //sets the first button when menu opens
         EventSystem.current.SetSelectedGameObject(winFirstButton);
@@ -80,11 +93,11 @@ public class GameOver : MonoBehaviour
     #endregion
 
     #region Navigation
-    //Pause Menu Navigation
     public void OpenMainMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
+
 
     public void TryAgain()
     {
@@ -92,5 +105,11 @@ public class GameOver : MonoBehaviour
         Time.timeScale = 1f;
 
     }
+
+    //goes to the next level
+    public void NextMap()
+    {
+        openLoadout.OpenLoadout();
+    }    
     #endregion
 }

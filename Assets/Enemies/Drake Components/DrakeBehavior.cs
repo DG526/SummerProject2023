@@ -15,6 +15,14 @@ public class DrakeBehavior : MonoBehaviour
 
     public bool wind = false;
     public float windDuration;
+
+    public bool lightningStunned = false;
+    public float stunDuration = 0f;
+
+    public bool poison = false;
+    public float poisonDuration = 0f;
+    public float poisonSlow = 0.5f;
+    float speedSlowed;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +32,8 @@ public class DrakeBehavior : MonoBehaviour
 
         //Find rb
         rb = GetComponent<Rigidbody2D>();
+
+        speedSlowed = speed * poisonSlow;
     }
 
     // Update is called once per frame
@@ -33,9 +43,21 @@ public class DrakeBehavior : MonoBehaviour
         {
             wind = false;
         }
+
+        if (lightningStunned && stunDuration < Time.time)
+        {
+            lightningStunned = false;
+        }
+
+        if (poison && poisonDuration < Time.time)
+        {
+            poison = false;
+        }
     }
     private void FixedUpdate()
     {
+        if (lightningStunned)
+            return;
         float distToPlayer = Vector2.Distance(transform.position, player.transform.position);
         if(distToPlayer < attackDist * transform.localScale.y)
         {
@@ -54,7 +76,10 @@ public class DrakeBehavior : MonoBehaviour
     {
         transform.up = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
         transform.up.Normalize();
-        rb.MovePosition(rb.position + (Vector2)transform.up * speed * Time.fixedDeltaTime);
+        if(!poison)
+            rb.MovePosition(rb.position + (Vector2)transform.up * speed * Time.fixedDeltaTime);
+        else
+            rb.MovePosition(rb.position + (Vector2)transform.up * speedSlowed * Time.fixedDeltaTime);
     }
     void Attack()
     {

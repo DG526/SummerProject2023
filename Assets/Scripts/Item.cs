@@ -106,4 +106,10 @@ public class Item : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public IEnumerator StopMovement(GameObject item, float time)
+    {
+        yield return new WaitForSeconds(time);
+        item.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    }
 }

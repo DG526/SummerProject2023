@@ -3,7 +3,13 @@ guid: 7e39025802bc3054898b189f6a3618f1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gem1: {fileID: 3929919800341922367, guid: c5fb0621e0f7a9742b1e3b5822ee4560, type: 3}
+  - gem2: {fileID: 119683321562045588, guid: 5ab1dcef5681f3e4394949cdf1bb195c, type: 3}
+  - speed: {fileID: 3505877230926169809, guid: 0d35e9679a7fa084596d74f88e78dffe, type: 3}
+  - shield: {fileID: 255283402541676546, guid: 20eb407f7b8ba1c4ab46e68502a5a980, type: 3}
+  - catalyst: {fileID: 2995952248413867604, guid: 4d8fc1c13cef0fc4eb91fb453643da95, type: 3}
+  - heart: {fileID: 5986962952591058346, guid: e2440429fba810647a0044f9f6c66b8d, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

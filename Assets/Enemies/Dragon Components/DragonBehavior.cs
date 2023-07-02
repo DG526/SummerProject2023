@@ -53,6 +53,10 @@ public class DragonBehavior : MonoBehaviour
         if (!player)
             player = GameObject.FindGameObjectWithTag("Player");
     }
+    private void OnDestroy()
+    {
+        GameObject.Find("GameOver").GetComponent<GameOver>().WinWaitStart(5);
+    }
 
     // Update is called once per frame
     void Update()

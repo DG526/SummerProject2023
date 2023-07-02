@@ -69,7 +69,7 @@ Transform:
   - {fileID: 3642037655569867710}
   - {fileID: 2536172504733133045}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5120203640426357629
 SpriteRenderer:
@@ -392,6 +392,27 @@ MonoBehaviour:
   maxHealth: 4000
   multiplier: 1
   health: 0
+  gem1: {fileID: 3929919800341922367, guid: c5fb0621e0f7a9742b1e3b5822ee4560, type: 3}
+  gem2: {fileID: 119683321562045588, guid: 5ab1dcef5681f3e4394949cdf1bb195c, type: 3}
+  maxCoins: 4
+  minCoins: 1
+  gem1Drop: 0.75
+  gem2Drop: 1
+  itemRate: 0.9
+  speed: {fileID: 3505877230926169809, guid: 0d35e9679a7fa084596d74f88e78dffe, type: 3}
+  shield: {fileID: 255283402541676546, guid: 20eb407f7b8ba1c4ab46e68502a5a980, type: 3}
+  catalyst: {fileID: 2995952248413867604, guid: 4d8fc1c13cef0fc4eb91fb453643da95, type: 3}
+  heart: {fileID: 5986962952591058346, guid: e2440429fba810647a0044f9f6c66b8d, type: 3}
+  maxItems: 2
+  minItems: 1
+  speedDropRate: 0.2
+  shieldDropRate: 0.4
+  catalystDropRate: 0.6
+  heartDropRate: 0.7
+  heartIncreasedRate: 1
+  maxItemSpeed: 10
+  minItemSpeed: 5
+  itemStopTime: 1
 --- !u!1 &8940127116368403166
 GameObject:
   m_ObjectHideFlags: 0

@@ -396,10 +396,11 @@ GameObject:
   - component: {fileID: 3244008386322180221}
   - component: {fileID: 6505850202712153687}
   - component: {fileID: 6566468037653931324}
+  - component: {fileID: 8078588443737594384}
   - component: {fileID: 3557685604673690757}
+  - component: {fileID: 8100423212584033640}
   - component: {fileID: 6388839294459175891}
   - component: {fileID: 6873586111694333420}
-  - component: {fileID: 8078588443737594384}
   - component: {fileID: 952979684238027788}
   - component: {fileID: 4585589904229608452}
   m_Layer: 3
@@ -520,8 +521,6 @@ MonoBehaviour:
   rock: {fileID: 6433465653111375530, guid: 48262dc843ab2eb4f995c73025d923b6, type: 3}
   wind: {fileID: 8371420399167695548, guid: 7b4fcc15485b22347ba013b91bba0e34, type: 3}
   lightning: {fileID: 4438351389737746520, guid: 7d20d134f735b6f42b4ae1ec625ec16d, type: 3}
-  numBullets: 5
-  triangleSpreadInterval: 0.2
   circleBulletForce: 20
   triangleBulletForce: 20
   poisonForce: 10
@@ -531,19 +530,62 @@ MonoBehaviour:
   circleCDI: 0.1
   circleSpread: 0.3
   circleTTL: 1
+  circleUpgraded: 0
   triangleCDI: 0.5
   triangleTTL: 0.5
+  numBullets: 5
+  triangleSpreadInterval: 0.2
   poisonCDI: 2
+  poisonUpgraded: 0
   rockCDI: 1.5
   rockTime: 0.3
   rockTTL: 5
   rockDist: 5
+  rockUpgraded: 0
   windCDI: 1
   windTTL: 1.5
+  windPush: 1.5
+  windUpgraded: 0
   lightningCDI: 0.75
   lightningTTL: 1.5
+  lightningUpgraded: 0
   Fire1: triangle
   Fire2: rockDrop
+--- !u!114 &8078588443737594384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4767738261484142100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418dd2b88a0042d4d9c8abc6f4deb849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shooting: {fileID: 0}
+  clone: {fileID: 6303285072460628720, guid: 08c7e382dad615546bd8d17948de24cd, type: 3}
+  playerHealth: {fileID: 0}
+  cloneCDI: 30
+  cloneCD: 0
+  cloneDuration: 15
+  cloneSpawnPos: {x: 2.5, y: -1.5, z: 0}
+  aoeCDI: 20
+  aoeCD: 0
+  aoeSize: 10
+  aoeStart: 0.5
+  aoeTime: 1
+  beamCDI: 30
+  beamCD: 0
+  beamTickSpeed: 0.15
+  beamTickDuration: 0.1
+  beamSize: {x: 0.5, y: 3}
+  beamStart: {x: 0.1, y: 1}
+  beamChargeTime: 1
+  beamDuration: 5
+  maxCharges: 1
+  charges: 1
+  ultimate: beam
 --- !u!114 &3557685604673690757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,6 +606,18 @@ MonoBehaviour:
   hearts: []
   fullHeart: {fileID: 0}
   emptyHeart: {fileID: 0}
+--- !u!114 &8100423212584033640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4767738261484142100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b9ea50d1a2ba24aad0e3b4075f8187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6388839294459175891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,39 +651,6 @@ MonoBehaviour:
   catalystFactor: 1.5
   catalystDuration: 10
   catalystEnd: 0
---- !u!114 &8078588443737594384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4767738261484142100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 418dd2b88a0042d4d9c8abc6f4deb849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clone: {fileID: 6303285072460628720, guid: 08c7e382dad615546bd8d17948de24cd, type: 3}
-  shooting: {fileID: 0}
-  cloneCDI: 30
-  cloneCD: 0
-  cloneDuration: 15
-  cloneSpawnPos: {x: 2.5, y: -1.5, z: 0}
-  playerHealth: {fileID: 0}
-  aoeCDI: 20
-  aoeCD: 0
-  aoeSize: 10
-  aoeStart: 0.5
-  aoeTime: 1
-  beamCDI: 30
-  beamCD: 0
-  beamTickSpeed: 0.15
-  beamTickDuration: 0.1
-  beamSize: {x: 0.5, y: 3}
-  beamStart: {x: 0.1, y: 1}
-  beamChargeTime: 1
-  beamDuration: 5
-  ultimate: beam
 --- !u!50 &952979684238027788
 Rigidbody2D:
   serializedVersion: 4

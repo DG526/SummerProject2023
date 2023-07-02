@@ -25,7 +25,11 @@ public class Item : MonoBehaviour
     [Header ("Player Scripts")]
     public PlayerSpeed playerSpeed;
     public PlayerCatalyst playerCatalyst;
+    public PlayerPoints playerPoints;
 
+    [Header("Gems")]
+    public int gem1val = 10;
+    public int gem2val = 50;
     bool moving = false;
     void Start()
     {
@@ -70,16 +74,14 @@ public class Item : MonoBehaviour
                     Debug.Log(playerHealth.health);
                 }
             }
-
-            if (gameObject.tag == "Speed Potion")
+            else if (gameObject.tag == "Speed Potion")
             {
                 playerSpeed = collision.gameObject.GetComponent<PlayerSpeed>();
                 playerSpeed.speed = true;
                 playerSpeed.speedEnd = Time.time + playerSpeed.speedDuration;
                 Debug.Log("You got a speed potion!");
             }
-
-            if(gameObject.tag == "Catalyst")
+            else if(gameObject.tag == "Catalyst")
             {
                 playerCatalyst = collision.gameObject.GetComponent<PlayerCatalyst>();
                 playerCatalyst.catalyst = true;
@@ -87,8 +89,7 @@ public class Item : MonoBehaviour
                 playerCatalyst.catalystEnd = Time.time + playerCatalyst.catalystDuration;
                 Debug.Log("You picked up a magic catalyst!");
             }
-
-            if(gameObject.tag == "Shield Item")
+            else if(gameObject.tag == "Shield Item")
             {
                 foreach(Transform child in collision.gameObject.transform)
                 {
@@ -108,6 +109,18 @@ public class Item : MonoBehaviour
                     shields.active = true;
                     shields.shieldEnd = Time.time + shields.shieldDuration;
                 }
+            }
+            else if (gameObject.name.IndexOf("Gem1") != -1)
+            {
+                playerPoints = collision.gameObject.GetComponent<PlayerPoints>();
+                playerPoints.AddPoints(gem1val);
+                Debug.Log("Current Points: " + playerPoints.GetPoints());
+            }
+            else if (gameObject.name.IndexOf("Gem2") != -1)
+            {
+                playerPoints = collision.gameObject.GetComponent<PlayerPoints>();
+                playerPoints.AddPoints(gem2val);
+                Debug.Log("Current Points: " + playerPoints.GetPoints());
             }
             Destroy(gameObject);
         }

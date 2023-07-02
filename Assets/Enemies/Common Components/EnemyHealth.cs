@@ -50,6 +50,7 @@ public class EnemyHealth : MonoBehaviour
     public float minItemSpeed = 5f;
     public float itemStopTime = 1f;
     private bool increased = false;
+    private bool dead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +83,8 @@ public class EnemyHealth : MonoBehaviour
         //Debug.Log("An enemy took damage!");
         if (health <= 0)
         {
-            Death();
+            if(!dead)
+                Death();
             if(hasParts)
             {
                 foreach(var part in partsToDestroy)
@@ -105,7 +107,9 @@ public class EnemyHealth : MonoBehaviour
 
     public void Death()
     {
+        dead = true;
         int coins = (int)(Random.Range(minCoins, maxCoins));
+        Debug.Log(gameObject.name);
         Debug.Log("Coins: " + coins);
         for (int i = 0; i < coins; i++)
         {
@@ -115,7 +119,7 @@ public class EnemyHealth : MonoBehaviour
             Vector2 dir = gameObject.transform.up;
             Vector2 pdir = Vector2.Perpendicular(dir) * Random.Range(-1f, 1f);
 
-            if (coinRange >= gem1Drop)
+            if (coinRange <= gem1Drop)
             {
                 coin = Instantiate(gem1, gameObject.transform.position, Quaternion.identity);
                 coin.GetComponent<Rigidbody2D>().velocity = (dir + pdir).normalized * coinSpeed;

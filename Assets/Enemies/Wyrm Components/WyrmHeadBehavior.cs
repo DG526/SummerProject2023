@@ -25,6 +25,9 @@ public class WyrmHeadBehavior : MonoBehaviour
     public bool poison = false;
     public float poisonDuration = 0f;
     public float poisonSlow = 0.5f;
+    public float poisonTickInterval;
+    float poisonTick;
+    public int poisonDamage;
     float speedSlowed;
 
     // Start is called before the first frame update
@@ -74,18 +77,18 @@ public class WyrmHeadBehavior : MonoBehaviour
     {
         //wind must be turned off here because the wind gameobject is destoryed before the grace period is supposed to end
         if(wind && windDuration < Time.time)
-        {
             wind = false;
-        }
 
         if (lightningStunned && stunDuration < Time.time)
-        {
             lightningStunned = false;
-        }
 
         if (poison && poisonDuration < Time.time)
-        {
             poison = false;
+
+        if (poison && Time.time < poisonTick)
+        {
+            poisonTick = Time.time + poisonTickInterval;
+            GetComponent<EnemyHealth>().Damage(poisonDamage);
         }
     }
     private void FixedUpdate()

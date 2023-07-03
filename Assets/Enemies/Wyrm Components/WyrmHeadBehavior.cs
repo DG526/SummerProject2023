@@ -26,6 +26,7 @@ public class WyrmHeadBehavior : MonoBehaviour
     public float poisonDuration = 0f;
     public float poisonSlow = 0.5f;
     float speedSlowed;
+
     // Start is called before the first frame update
     void Start()
     {

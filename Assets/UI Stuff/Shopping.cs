@@ -4,23 +4,41 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using System.Net.NetworkInformation;
 
 public class Shopping : MonoBehaviour
 {
+    [Header ("Player")]
     public PlayerHealth pHealth;
     public Shooting shoot;
     public PlayerMovement move;
     public Ultimate ult;
+    public PlayerPoints points;
     public GameObject player;
 
     [SerializeField] private GameObject shopCanvas;
 
+    [Header("Upgrade Costs")]
+    public int healthCost;
+    public int healthCostIncrement;
+    public int speedCost;
+    public int speedCostIncrement;
+    public int ultimateCost;
+    public int fireCost;
+    public int waterCost;
+    public int earthCost;
+    public int windCost;
+    public int poisonCost;
+    public int lightningCost;
+
     public int maxUltCharges = 2;
 
+    [Header ("Player Buttons")]
     public Button healthButton;
     public Button speedButton;
     public Button ultButton;
 
+    [Header ("Spell Buttons")]
     public Button fireButton;
     public Button waterButton;
     public Button earthButton;
@@ -31,6 +49,7 @@ public class Shopping : MonoBehaviour
     //to be removed
     private bool isPaused;
 
+    [Header ("Button Text")]
     public TMP_Text speedText;
     public TMP_Text healthText;
     public TMP_Text ultText;
@@ -80,82 +99,119 @@ public class Shopping : MonoBehaviour
 
     public void AddHealth()
     {
-        pHealth.numOfHearts = pHealth.numOfHearts + 1;
-        pHealth.health = pHealth.health + 1;
-        if(pHealth.numOfHearts == 8)
+        if (points.GetPoints() >= healthCost)
         {
-            healthText.text = "Sold Out!";
-            healthButton.interactable = false;
+            points.RemovePoints(healthCost);
+            healthCost += healthCostIncrement;
+            pHealth.numOfHearts = pHealth.numOfHearts + 1;
+            pHealth.health = pHealth.health + 1;
+            if (pHealth.numOfHearts == 8)
+            {
+                healthText.text = "Sold Out!";
+                healthButton.interactable = false;
+            }
         }
     }
 
     public void AddSpeed()
     {
-        move.moveSpeed = move.moveSpeed + 1.5f;
-        
-        if(move.moveSpeed >= 9)
+        if (points.GetPoints() >= speedCost)
         {
-            speedText.text = "Sold Out!";
-            speedButton.interactable = false;
+            points.RemovePoints(speedCost);
+            speedCost += speedCostIncrement;
+            move.moveSpeed = move.moveSpeed + 1.5f;
+            if (move.moveSpeed >= 9)
+            {
+                speedText.text = "Sold Out!";
+                speedButton.interactable = false;
+            }
         }
     }
     public void AddUltCharge()
     {
         //One more ult charge but it's very expensive
-        ult.maxCharges = ult.maxCharges + 1;
-        if (ult.maxCharges == maxUltCharges)
+        if (points.GetPoints() >= ultimateCost)
         {
-            ultText.text = "Sold Out!";
-            ultButton.interactable = false;
+            points.RemovePoints(ultimateCost);
+            ult.maxCharges = ult.maxCharges + 1;
+            if (ult.maxCharges == maxUltCharges)
+            {
+                ultText.text = "Sold Out!";
+                ultButton.interactable = false;
+            }
         }
     }
     public void FireUpgrade()
     {
         // tighter spread, more damage
-        shoot.circleSpread = shoot.circleSpread * 0.5f;
-        shoot.circleUpgraded = true;
-        fireText.text = "Sold Out!";
-        fireButton.interactable = false;
+        if (points.GetPoints() >= fireCost)
+        {
+            points.RemovePoints(fireCost);
+            shoot.circleSpread = shoot.circleSpread * 0.5f;
+            shoot.circleUpgraded = true;
+            fireText.text = "Sold Out!";
+            fireButton.interactable = false;
+        }
     }
 
     public void WaterUpgrade()
     {
         //Wider spread, more shots
-        shoot.numBullets = shoot.numBullets + 4;
-        shoot.triangleSpreadInterval = shoot.triangleSpreadInterval + 0.05f;
-        waterText.text = "Sold Out!";
-        waterButton.interactable = false;
+        if (points.GetPoints() >= waterCost)
+        {
+            points.RemovePoints(waterCost);
+            shoot.numBullets = shoot.numBullets + 4;
+            shoot.triangleSpreadInterval = shoot.triangleSpreadInterval + 0.05f;
+            waterText.text = "Sold Out!";
+            waterButton.interactable = false;
+        }
     }
     public void EarthUpgrade()
     {
         //Lower cooldown, more damage
-        shoot.rockCDI = shoot.rockCDI * 0.75f;
-        shoot.rockUpgraded= true;
+        if (points.GetPoints() >= earthCost)
+        {
+            points.RemovePoints(earthCost);
+            shoot.rockCDI = shoot.rockCDI * 0.75f;
+            shoot.rockUpgraded = true;
 
-        earthText.text = "Sold Out!";
-        earthButton.interactable = false;
+            earthText.text = "Sold Out!";
+            earthButton.interactable = false;
+        }
     }
     public void WindUpgrade()
     {
         //More force, larger spread
-        shoot.windUpgraded = true;
+        if (points.GetPoints() >= windCost)
+        {
+            points.RemovePoints(windCost);
+            shoot.windUpgraded = true;
 
-        windText.text = "Sold Out!";
-        windButton.interactable = false;
+            windText.text = "Sold Out!";
+            windButton.interactable = false;
+        }
     }
     public void PoisonUpgrade()
     {
         //Bigger cloud, tick rate faster, (maybe)slows enemy
-        shoot.poisonUpgraded = true;
-        poisonText.text = "Sold Out!";
-        poisonButton.interactable = false;
+        if (points.GetPoints() >= poisonCost)
+        {
+            points.RemovePoints(poisonCost);
+            shoot.poisonUpgraded = true;
+            poisonText.text = "Sold Out!";
+            poisonButton.interactable = false;
+        }
     }
     public void LightingUpgrade()
     {
         //more chains, more damage, *small stun
-        shoot.lightningUpgraded = true;
-        lightingText.text = "Sold Out!";
-        lightingButton.interactable = false;
+        if (points.GetPoints() >= lightningCost)
+        {
+            points.RemovePoints(lightningCost);
+            shoot.lightningUpgraded = true;
+            lightingText.text = "Sold Out!";
+            lightingButton.interactable = false;
+        }
     }
 
 }

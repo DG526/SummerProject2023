@@ -18,4 +18,9 @@ public class SpawnController : MonoBehaviour
     {
         enemyCount += numEnemies;
     }
+
+    public void enemyRemove()
+    {
+        enemyCount--;
+    }
 }

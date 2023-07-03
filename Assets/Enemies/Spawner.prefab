@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e39025802bc3054898b189f6a3618f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 100
   multiplier: 1
   health: 0
   gem1: {fileID: 3929919800341922367, guid: c5fb0621e0f7a9742b1e3b5822ee4560, type: 3}
@@ -213,6 +213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnPoint: {fileID: 8941838386971475574}
+  spawnAngleOffset: 0.3
+  spawnDistOffset: 3
   controller: {fileID: 0}
   wyrm: {fileID: 8894681540275012340, guid: 957033696b4fdcd42b0917089b96b8bf, type: 3}
   drake: {fileID: 6013294249361281213, guid: 6551d62c9f391544689908f432975a59, type: 3}
@@ -222,3 +224,4 @@ MonoBehaviour:
   wyrmRate: 0.3
   drakeRate: 0.7
   wyvernRate: 1
+  localLimit: 10

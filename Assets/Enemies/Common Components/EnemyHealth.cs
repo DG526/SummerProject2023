@@ -12,18 +12,24 @@ public class EnemyHealth : MonoBehaviour
     public float multiplier = 1;
     public int health;
 
+    SpawnController spawnControl;
+    public GameObject spawner;
+
     //for drops
     PlayerHealth playerHealth;
 
     //money drops
+    [Header ("Gem Prefabs")]
     public GameObject gem1;
     public GameObject gem2;
 
     //how many gems(coins) drop on death
+    [Header ("Number of Gems to Drop")]
     public int maxCoins = 4;
     public int minCoins = 1;
 
     //money drop rate
+    [Header ("Gem Drop Rates")]
     public float gem1Drop = 0.75f;
     public float gem2Drop = 1f;
 
@@ -31,24 +37,29 @@ public class EnemyHealth : MonoBehaviour
     public float itemRate = 0.9f;
 
     //item drops
+    [Header ("Item Prefabs")]
     public GameObject speed;
     public GameObject shield;
     public GameObject catalyst;
     public GameObject heart;
 
+    [Header ("Number of Items to Drop")]
     public int maxItems = 2;
     public int minItems = 1;
 
     //item drop rates
+    [Header ("Item Drop Rates")]
     public float speedDropRate = 0.2f;
     public float shieldDropRate = 0.4f;
     public float catalystDropRate = 0.6f;
     public float heartDropRate = 0.7f;
     public float heartIncreasedRate = 1f;
 
+    [Header ("Item Move Speeds")]
     public float maxItemSpeed = 10f;
     public float minItemSpeed = 5f;
     public float itemStopTime = 1f;
+
     private bool increased = false;
     private bool dead = false;
     // Start is called before the first frame update
@@ -58,6 +69,8 @@ public class EnemyHealth : MonoBehaviour
         health = maxHealth;
 
         playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+
+        spawnControl = GameObject.Find("SpawnController").GetComponent<SpawnController>();
     }
 
     // Update is called once per frame
@@ -108,6 +121,12 @@ public class EnemyHealth : MonoBehaviour
     public void Death()
     {
         dead = true;
+        if(spawner != null)
+        {
+            spawner.GetComponent<Spawner>().Remove();
+        }
+        spawnControl.enemyRemove();
+
         int coins = (int)(Random.Range(minCoins, maxCoins));
         Debug.Log(gameObject.name);
         Debug.Log("Coins: " + coins);

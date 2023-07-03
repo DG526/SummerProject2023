@@ -6,7 +6,8 @@ using UnityEngine;
 
 public enum DragonColor
 {
-    RED
+    RED,
+    BLUE
 }
 
 public enum DragonAction
@@ -45,7 +46,8 @@ public class DragonBehavior : MonoBehaviour
     float moveTimer;
     Rigidbody2D rb;
     bool usingBreathAttack;
-    float breathCooldown;
+    float breathTime;
+    bool aggro = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -276,6 +278,7 @@ public class DragonBehavior : MonoBehaviour
     public void BreathStart()
     {
         usingBreathAttack = true;
+        breathTime = 0;
     }
     public void BreathEnd()
     {
@@ -310,6 +313,41 @@ public class DragonBehavior : MonoBehaviour
                     Destroy(bullet, 20);
                 }
                 break;
+            case DragonColor.BLUE:
+                for (int i = 0; i < 2; i++)
+                {
+                    GameObject bullet;
+                    bullet = Instantiate(projectile, transform.Find("Maw Mark").position, transform.Find("Maw Mark").rotation);
+                    bullet.transform.localScale *= 3;
+                    Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+
+                    //add spread
+                    Vector2 dir = transform.Find("Maw Mark").up;
+                    Vector2 pdir = Vector2.Perpendicular(dir);
+
+                    pdir = Vector2.Perpendicular(dir) * Mathf.Max(breathTime - 0.5f, 0) * (i == 0 ? -0.5f : 0.5f);
+
+                    bulletRB.velocity = (dir + pdir).normalized * 15;
+                    //bulletRB.velocity = firePoint.up * circleBulletForce;
+                    //circleCD = Time.time + circleCDI;
+                    //if (playerSpeed.speed)
+                    //{
+                    //    circleCD = Time.time + (circleCDI * playerSpeed.fireSpeedUp);
+                    //}
+
+                    Destroy(bullet, 20);
+                }
+                breathTime += Time.fixedDeltaTime;
+                break;
+        }
+    }
+    private void OnBecameVisible()
+    {
+        if (!aggro)
+        {
+            aggro = true;
+            GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>().StopTrack();
+            GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>().PlayTrack(Track.Boss);
         }
     }
 }

@@ -82,7 +82,7 @@ public class Ultimate : MonoBehaviour
                 beamAlpha = beamColor.a;
 
                 beamStartPos = Beam.transform.localPosition;
-
+                beamStart = Beam.transform.localScale;
                 //beamCollider = Beam.GetComponent<BoxCollider2D>();
             }
         }
@@ -120,7 +120,7 @@ public class Ultimate : MonoBehaviour
             }
             else if (beamActive && Time.time > beamTick)
             {
-                Beam.GetComponent<BoxCollider2D>().enabled = true;
+                Beam.GetComponent<Collider2D>().enabled = true;
                 //Beam.GetComponent<BoxCollider2D>().isTrigger = true;
 
                 beamTick = Time.time + beamTickSpeed;
@@ -219,7 +219,7 @@ public class Ultimate : MonoBehaviour
         do
         {
             Beam.transform.localScale = Vector2.Lerp(beamStart, beamSize, currentTime / time);
-            Beam.transform.localPosition = Vector2.Lerp(beamStartPos, (new Vector2(0f, beamSize.y) + beamStartPos) / 2, currentTime / time);
+            Beam.transform.localPosition = Vector2.Lerp(beamStartPos, (new Vector2(0f, beamSize.y) * 0.8f + beamStartPos), currentTime / time);
 
             if (beamColor.a > 0.5f && !beamActive)
             {
@@ -245,7 +245,7 @@ public class Ultimate : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         //Beam.GetComponent<BoxCollider2D>().isTrigger = false;
-        Beam.GetComponent<BoxCollider2D>().enabled = false;
+        Beam.GetComponent<Collider2D>().enabled = false;
     }
 
     void FindNextCharge()

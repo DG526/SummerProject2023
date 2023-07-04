@@ -51,6 +51,7 @@ public class DragonBehavior : MonoBehaviour
     bool usingBreathAttack;
     float breathTime; // For breath patterns based on position in time (Water)
     float breathTimer; // For breath patterns in bursts (Wind)
+    int breathSwitch; // For breath patterns with variable amounts of bullets/frame (Lightning)
     bool aggro = false;
     // Start is called before the first frame update
     void Start()
@@ -284,6 +285,7 @@ public class DragonBehavior : MonoBehaviour
         usingBreathAttack = true;
         breathTime = 0;
         breathTimer = 0;
+        breathSwitch = 0;
     }
     public void BreathEnd()
     {
@@ -357,6 +359,44 @@ public class DragonBehavior : MonoBehaviour
 
                     bulletRB.velocity = dir.normalized * 12;
                     breathTimer = 0.2f;
+                }
+                breathTimer -= Time.fixedDeltaTime;
+                break;
+            case DragonColor.YELLOW:
+                if (breathTimer <= 0)
+                {
+                    int bolts = 0;
+                    switch (breathSwitch)
+                    {
+                        case 0:
+                            bolts = 3;
+                            break;
+                        case 1:
+                        case 3:
+                            bolts = 4;
+                            break;
+                        case 2:
+                            bolts = 5;
+                            break;
+                    }
+                    breathSwitch++;
+                    breathSwitch %= 4;
+                    for(int i = 0; i < bolts; i++)
+                    {
+                        GameObject bullet;
+                        bullet = Instantiate(projectile, transform.Find("Maw Mark").position, transform.Find("Maw Mark").rotation);
+                        bullet.transform.localScale *= 2;
+                        Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+
+                        //variable spread for lightning direction
+                        Vector2 dir = transform.Find("Maw Mark").up;
+                        Vector2 pdir = Vector2.Perpendicular(dir);
+
+                        pdir = Vector2.Perpendicular(dir) * ((float)bolts / -2.0f + i) * 0.1f;
+
+                        bulletRB.velocity = (dir + pdir).normalized * 18;
+                    }
+                    breathTimer = 0.1f;
                 }
                 breathTimer -= Time.fixedDeltaTime;
                 break;

@@ -1837,6 +1837,95 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245668705}
   m_CullTransparentMesh: 1
+--- !u!1001 &274264636
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1233917953155346759, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233917953155346759, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233917953155346759, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233917953155346759, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233917953155346759, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233917953155346759, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233917953155346759, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233917953155346759, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233917953155346759, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233917953155346759, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1233917953155346759, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788184328360024534, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_Name
+      value: Yellow Dragon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788184328360024534, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260166050354706100, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ee1e0d2d29ee5fb46bbee6695fb60ba3, type: 2}
+    - target: {fileID: 4065998440638925540, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: color
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065998440638925540, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 499554454324018847, guid: c90773685f55cdb41b238f36dc7e739e, type: 3}
+    - target: {fileID: 4065998440638925540, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: maxMoveSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065998440638925540, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: rotationSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892344337552703440, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -73220798, guid: 3e707d2dd43e1c34fb30f60164f5eebb, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f65803947df904f48a6c9c296add26f6, type: 3}
 --- !u!1 &301096282
 GameObject:
   m_ObjectHideFlags: 0
@@ -6873,6 +6962,10 @@ PrefabInstance:
     - target: {fileID: 1788184328360024534, guid: f65803947df904f48a6c9c296add26f6, type: 3}
       propertyPath: m_Name
       value: Green Dragon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788184328360024534, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2260166050354706100, guid: f65803947df904f48a6c9c296add26f6, type: 3}
       propertyPath: m_Controller

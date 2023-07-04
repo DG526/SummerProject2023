@@ -7,7 +7,10 @@ using UnityEngine;
 public enum DragonColor
 {
     RED,
-    BLUE
+    BLUE,
+    GREEN,
+    YELLOW,
+    PURPLE
 }
 
 public enum DragonAction
@@ -46,7 +49,8 @@ public class DragonBehavior : MonoBehaviour
     float moveTimer;
     Rigidbody2D rb;
     bool usingBreathAttack;
-    float breathTime;
+    float breathTime; // For breath patterns based on position in time (Water)
+    float breathTimer; // For breath patterns in bursts (Wind)
     bool aggro = false;
     // Start is called before the first frame update
     void Start()
@@ -279,6 +283,7 @@ public class DragonBehavior : MonoBehaviour
     {
         usingBreathAttack = true;
         breathTime = 0;
+        breathTimer = 0;
     }
     public void BreathEnd()
     {
@@ -338,6 +343,22 @@ public class DragonBehavior : MonoBehaviour
                     Destroy(bullet, 20);
                 }
                 breathTime += Time.fixedDeltaTime;
+                break;
+            case DragonColor.GREEN:
+                if(breathTimer <= 0)
+                {
+                    GameObject bullet;
+                    bullet = Instantiate(projectile, transform.Find("Maw Mark").position, transform.Find("Maw Mark").rotation);
+                    bullet.transform.localScale *= 2;
+                    Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+
+                    //no spread for wind direction
+                    Vector2 dir = transform.Find("Maw Mark").up;
+
+                    bulletRB.velocity = dir.normalized * 12;
+                    breathTimer = 0.2f;
+                }
+                breathTimer -= Time.fixedDeltaTime;
                 break;
         }
     }

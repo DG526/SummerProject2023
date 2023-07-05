@@ -82,14 +82,17 @@ public class WyrmHeadBehavior : MonoBehaviour
         if (lightningStunned && stunDuration < Time.time)
             lightningStunned = false;
 
-        if (poison && poisonDuration < Time.time)
-            poison = false;
-
-        if (poison && Time.time < poisonTick)
+        if (poison && Time.time > poisonTick)
         {
             poisonTick = Time.time + poisonTickInterval;
             GetComponent<EnemyHealth>().Damage(poisonDamage);
+            Debug.Log("This is happening");
         }
+
+        if (poison && poisonDuration < Time.time)
+            poison = false;
+
+        
     }
     private void FixedUpdate()
     {

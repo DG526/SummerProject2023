@@ -95,26 +95,27 @@ public class HUD : MonoBehaviour
         {
             primaryImage.sprite = fire;
         }
-        if(fire1 == "triangle")
+        else if(fire1 == "triangle")
         {
             primaryImage.sprite = water;
         }
-        if (fire1 == "lightning")
+        else if (fire1 == "rockDrop")
         {
-            primaryImage.sprite = lightning;
+            primaryImage.sprite = rock;
         }
         #endregion
 
         #region SecondaryFire
-        if (fire2 == "rockDrop")
+        if (fire2 == "lightning")
         {
-            secondaryImage.sprite = rock;
+            secondaryImage.sprite = lightning;
         }
-        if (fire2 == "poison")
+        else if (fire2 == "poison")
         {
             secondaryImage.sprite = poison;
+            secondaryImage.color = new Color32(237, 72, 241, 150);
         }
-        if (fire2 == "wind")
+        else if (fire2 == "wind")
         {
             secondaryImage.sprite = wind;
         }

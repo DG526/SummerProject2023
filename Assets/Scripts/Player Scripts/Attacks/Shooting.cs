@@ -12,6 +12,7 @@ public class Shooting : MonoBehaviour
 
     [Header("Prefabs and Transforms")]
     public Transform firePoint;
+    public GameObject gem;
     public GameObject triangleBullet;
     public GameObject circleBullet;
     public GameObject poisonBullet;
@@ -115,6 +116,7 @@ public class Shooting : MonoBehaviour
         #region fireball
         if (type == "circle" && Time.time > circleCD)
         {
+            //gem.GetComponent<SpriteRenderer>().color= Color.red;
             bullet = Instantiate(circleBullet, firePoint.position, firePoint.rotation);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<Bullet>().shooting = this;

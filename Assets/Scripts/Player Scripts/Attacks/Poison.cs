@@ -97,12 +97,13 @@ public class Poison : MonoBehaviour
                 }
             }
 
-            if(name.IndexOf("wyrm") == -1)
-            if (shooting.playerCatalyst.catalyst)
-                collision.gameObject.GetComponent<EnemyHealth>().Damage(boostedDamage);
-            else
-                collision.gameObject.GetComponent<EnemyHealth>().Damage(damage);
-            //Debug.Log("Hit an enemy");
+            if (name.IndexOf("wyrm") == -1)
+            {
+                if (shooting.playerCatalyst.catalyst)
+                    collision.gameObject.GetComponent<EnemyHealth>().Damage(boostedDamage);
+                else
+                    collision.gameObject.GetComponent<EnemyHealth>().Damage(damage);
+            }
         }
     }
 

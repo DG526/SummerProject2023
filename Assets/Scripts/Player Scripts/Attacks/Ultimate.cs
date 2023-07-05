@@ -32,6 +32,7 @@ public class Ultimate : MonoBehaviour
     public Vector2 beamStart = new Vector2(0.1f, 1f);
     public float beamChargeTime = 1f;
     public float beamDuration = 8f;
+    public float beamOffet = 0.9f;
 
     [Header ("Ultimate Charges")]
     public int maxCharges = 1;
@@ -219,7 +220,7 @@ public class Ultimate : MonoBehaviour
         do
         {
             Beam.transform.localScale = Vector2.Lerp(beamStart, beamSize, currentTime / time);
-            Beam.transform.localPosition = Vector2.Lerp(beamStartPos, (new Vector2(0f, beamSize.y) * 0.8f + beamStartPos), currentTime / time);
+            Beam.transform.localPosition = Vector2.Lerp(beamStartPos, (new Vector2(0f, beamSize.y) * beamOffet + beamStartPos), currentTime / time);
 
             if (beamColor.a > 0.5f && !beamActive)
             {

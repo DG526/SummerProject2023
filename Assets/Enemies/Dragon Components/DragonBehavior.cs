@@ -24,6 +24,7 @@ public enum DragonAction
     ATK_BITE_L,
     ATK_BITE_R,
     ATK_BREATH_F,
+    ATK_BREATH_L, ATK_BREATH_R,
     THINKING
 }
 public enum DragonSecondaryAction
@@ -125,7 +126,7 @@ public class DragonBehavior : MonoBehaviour
     void Plan()
     {
         Debug.Log("Planning");
-        int choice = UnityEngine.Random.Range(0, 9);
+        int choice = UnityEngine.Random.Range(0, 6);
         while((choice > 3 && lastPlan == DragonAction.ATK_BREATH_F))
         {
             choice = UnityEngine.Random.Range(0, 6);

@@ -31,6 +31,10 @@ public class EnemyAwareness : MonoBehaviour
         {
             behaviour = GetComponent<DragonBehavior>();
         }
+        else if(GetComponent<DarkLightDragonBehavior>() != null)
+        {
+            behaviour = GetComponent<DarkLightDragonBehavior>();
+        }
         if(awarenessType != AwarenessType.HuntAtStart)
         {
             behaviour.enabled = false;

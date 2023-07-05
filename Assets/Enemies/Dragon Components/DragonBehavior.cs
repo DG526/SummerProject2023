@@ -400,6 +400,31 @@ public class DragonBehavior : MonoBehaviour
                 }
                 breathTimer -= Time.fixedDeltaTime;
                 break;
+            case DragonColor.PURPLE:
+                for (int i = 0; i < 2; i++)
+                {
+                    GameObject bullet;
+                    bullet = Instantiate(projectile, transform.Find("Maw Mark").position, transform.Find("Maw Mark").rotation);
+                    bullet.transform.localScale *= 3;
+                    Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+
+                    //add spread
+                    Vector2 dir = transform.Find("Maw Mark").up;
+                    Vector2 pdir = Vector2.Perpendicular(dir);
+
+                    pdir = Vector2.Perpendicular(dir) * UnityEngine.Random.Range(-0.3f, 0.3f);
+
+                    bulletRB.velocity = (dir + pdir).normalized * 15;
+                    //bulletRB.velocity = firePoint.up * circleBulletForce;
+                    //circleCD = Time.time + circleCDI;
+                    //if (playerSpeed.speed)
+                    //{
+                    //    circleCD = Time.time + (circleCDI * playerSpeed.fireSpeedUp);
+                    //}
+
+                    ///Destroy(bullet, 20);
+                }
+                break;
         }
     }
     private void OnBecameVisible()

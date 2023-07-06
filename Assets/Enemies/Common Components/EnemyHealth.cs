@@ -125,6 +125,7 @@ public class EnemyHealth : MonoBehaviour
         {
             spawner.GetComponent<Spawner>().Remove();
         }
+        if(gameObject.name.IndexOf("chest") == -1 && gameObject.name.IndexOf("spawn") == -1)
         spawnControl.enemyRemove();
 
         int coins = (int)(Random.Range(minCoins, maxCoins));

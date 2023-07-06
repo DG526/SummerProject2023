@@ -503,7 +503,7 @@ Transform:
   - {fileID: 1289595972511790238}
   - {fileID: 178932712924082736}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3244008386322180221
 SpriteRenderer:
@@ -596,11 +596,11 @@ MonoBehaviour:
   rockDrop: {fileID: 5050060338024106810, guid: 110ffb115d6aa804faca25d741033235, type: 3}
   rock: {fileID: 6433465653111375530, guid: 48262dc843ab2eb4f995c73025d923b6, type: 3}
   wind: {fileID: 8371420399167695548, guid: 7b4fcc15485b22347ba013b91bba0e34, type: 3}
-  lightning: {fileID: 4438351389737746520, guid: 7d20d134f735b6f42b4ae1ec625ec16d, type: 3}
+  lightning: {fileID: 327411777240689954, guid: 2145d2bb5e841454f8d19796c62a26ff, type: 3}
   circleBulletForce: 20
   triangleBulletForce: 20
   poisonForce: 10
-  lightningSpeed: 80
+  lightningSpeed: 40
   windSpeed: 15
   windForce: 30
   circleCDI: 0.1
@@ -625,8 +625,8 @@ MonoBehaviour:
   lightningCDI: 0.75
   lightningTTL: 1.5
   lightningUpgraded: 0
-  Fire1: triangle
-  Fire2: rockDrop
+  Fire1: rockDrop
+  Fire2: poison
 --- !u!114 &8078588443737594384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,7 +655,7 @@ MonoBehaviour:
   beamCD: 0
   beamTickSpeed: 0.15
   beamTickDuration: 0.1
-  beamSize: {x: 0.5, y: 5}
+  beamSize: {x: 0.5, y: 3}
   beamStart: {x: 0.1, y: 0.5}
   beamChargeTime: 1
   beamDuration: 5

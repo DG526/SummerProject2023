@@ -116,7 +116,7 @@ public class Shooting : MonoBehaviour
         #region fireball
         if (type == "circle" && Time.time > circleCD)
         {
-            //gem.GetComponent<SpriteRenderer>().color= Color.red;
+            gem.GetComponent<SpriteRenderer>().color = new Color32(243,78,4,255);
             bullet = Instantiate(circleBullet, firePoint.position, firePoint.rotation);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<Bullet>().shooting = this;
@@ -151,6 +151,7 @@ public class Shooting : MonoBehaviour
         #region water
         if (type == "triangle" && Time.time > triangleCD)
         {
+            gem.GetComponent<SpriteRenderer>().color = Color.cyan;
             FireTriangle(bullet);
             triangleCD = Time.time + triangleCDI;
             if (playerSpeed.speed)
@@ -166,6 +167,7 @@ public class Shooting : MonoBehaviour
             bullet = Instantiate(poisonBullet, firePoint.position, firePoint.rotation);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<Poison>().shooting = this;
+            gem.GetComponent<SpriteRenderer>().color = new Color32(237, 72, 241, 150);
 
             if(poisonUpgraded)
             {
@@ -191,6 +193,7 @@ public class Shooting : MonoBehaviour
         if (type.IndexOf("rock") != -1  && Time.time > rockCD)
         {
             //firePoint.rotation changed to 0
+            gem.GetComponent<SpriteRenderer>().color = new Color32(188, 127, 100, 255);
             bullet = Instantiate(rockDrop, firePoint.position + firePoint.up * rockDist, new Quaternion(0,0,0,0));
 
             if (playerCatalyst.catalyst)
@@ -216,7 +219,7 @@ public class Shooting : MonoBehaviour
         if (type == "wind" && Time.time > windCD)
         {
             bullet = Instantiate(wind, firePoint.position, firePoint.rotation);
-            
+            gem.GetComponent<SpriteRenderer>().color = new Color32(42, 255, 216, 255);
             if (playerCatalyst.catalyst)
             {
                 bullet.transform.localScale *= playerCatalyst.catalystFactor;
@@ -246,6 +249,7 @@ public class Shooting : MonoBehaviour
         {
             bullet = Instantiate(lightning, firePoint.position, firePoint.rotation);
             Rigidbody2D lightningRB = bullet.GetComponent<Rigidbody2D>();
+            gem.GetComponent<SpriteRenderer>().color = new Color32(255, 251, 0, 255);
 
             if (playerCatalyst.catalyst)
             {

@@ -10,6 +10,7 @@ public class HUD : MonoBehaviour
     public Shooting shooting;
     public Ultimate ultimate;
     public PlayerHealth playerHealth;
+    public GameObject gem;
 
     GameObject player;
 
@@ -47,6 +48,8 @@ public class HUD : MonoBehaviour
         fire1 = shooting.Fire1;
         fire2 = shooting.Fire2;
         ult = ultimate.ultimate;
+
+        gem = player.transform.GetChild(2).gameObject;
 
         foreach (Transform child in gameObject.transform)
         {
@@ -94,14 +97,17 @@ public class HUD : MonoBehaviour
         if (fire1 == "circle")
         {
             primaryImage.sprite = fire;
+            gem.GetComponent<SpriteRenderer>().color = new Color32(243, 78, 4, 255);
         }
         else if(fire1 == "triangle")
         {
             primaryImage.sprite = water;
+            gem.GetComponent<SpriteRenderer>().color = Color.cyan;
         }
         else if (fire1 == "rockDrop")
         {
             primaryImage.sprite = rock;
+            gem.GetComponent<SpriteRenderer>().color = new Color32(237, 72, 241, 150);
         }
         #endregion
 
@@ -109,6 +115,7 @@ public class HUD : MonoBehaviour
         if (fire2 == "lightning")
         {
             secondaryImage.sprite = lightning;
+            secondaryImage.color = new Color32(255,255, 255, 255);
         }
         else if (fire2 == "poison")
         {
@@ -118,6 +125,7 @@ public class HUD : MonoBehaviour
         else if (fire2 == "wind")
         {
             secondaryImage.sprite = wind;
+            secondaryImage.color = new Color32(255, 255, 255, 255);
         }
         #endregion
     }

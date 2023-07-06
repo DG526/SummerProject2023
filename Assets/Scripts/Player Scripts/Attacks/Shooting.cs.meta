@@ -3,7 +3,19 @@ guid: eeb010ad30fe2db4790250eb341f7390
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerHealth: {instanceID: 0}
+  - playerSpeed: {instanceID: 0}
+  - playerCatalyst: {instanceID: 0}
+  - firePoint: {instanceID: 0}
+  - gem: {instanceID: 0}
+  - triangleBullet: {fileID: 4017811954749250439, guid: d94373c0c9d5c4c4fa961d1e60b8719f, type: 3}
+  - circleBullet: {fileID: 499554454324018847, guid: f805fed38fa81de4c9fc7feb378d98aa, type: 3}
+  - poisonBullet: {fileID: 6816185243217363772, guid: 76870f332a9afe24292b69604aef4429, type: 3}
+  - rockDrop: {fileID: 5050060338024106810, guid: 110ffb115d6aa804faca25d741033235, type: 3}
+  - rock: {fileID: 6433465653111375530, guid: 48262dc843ab2eb4f995c73025d923b6, type: 3}
+  - wind: {fileID: 8371420399167695548, guid: 7b4fcc15485b22347ba013b91bba0e34, type: 3}
+  - lightning: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

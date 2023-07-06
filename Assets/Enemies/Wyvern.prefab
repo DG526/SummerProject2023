@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 1187810842885672319}
   - component: {fileID: 174209781270150953}
   - component: {fileID: -8720779750577410991}
+  - component: {fileID: 415857583757422290}
   m_Layer: 10
   m_Name: Wyvern
   m_TagString: Enemy
@@ -431,3 +432,16 @@ PolygonCollider2D:
       - {x: 0.011446887, y: -0.36916208}
       - {x: 0.01717033, y: -0.24324635}
   m_UseDelaunayMesh: 0
+--- !u!114 &415857583757422290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8824022792102667430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ef23fabc2ea8d3438c353c9db16b60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  awarenessType: 0

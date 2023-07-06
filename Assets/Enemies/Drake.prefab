@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 3984775072711669919}
   - component: {fileID: 2616117191633387199}
   - component: {fileID: 4507148628021299969}
+  - component: {fileID: 5584293981434268629}
   m_Layer: 8
   m_Name: Drake
   m_TagString: Enemy
@@ -314,3 +315,16 @@ MonoBehaviour:
   maxItemSpeed: 10
   minItemSpeed: 5
   itemStopTime: 1
+--- !u!114 &5584293981434268629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013294249361281213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ef23fabc2ea8d3438c353c9db16b60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  awarenessType: 0

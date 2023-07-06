@@ -38,6 +38,20 @@ public class GameOver : MonoBehaviour
 
         OpenWinMenu();
     }
+    public void WinWaitStart(float seconds)
+    {
+        StartCoroutine(WinWait(seconds));
+    }
+    IEnumerator WinWait(float seconds)
+    {
+        bool isWaiting = true;
+        if (isWaiting)
+        {
+            isWaiting = false;
+            yield return new WaitForSecondsRealtime(seconds);
+        }
+        Win();
+    }
 
     public void Lose()
     {

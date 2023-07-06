@@ -21,7 +21,7 @@ public class Boundaries : MonoBehaviour
         //Debug.Log(collision.gameObject.name);
         int layer = collision.gameObject.layer;
         //player       monster       flying monster
-        if (layer == 3 || layer == 8 || layer == 10)
+        if ((layer == 3 || layer == 8 || layer == 10) && (collision.gameObject.GetComponent<DragonBehavior>() == null || collision.GetType() != typeof(PolygonCollider2D)))
         {
 
             if(layer == 8 || layer == 10)

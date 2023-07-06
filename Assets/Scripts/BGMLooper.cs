@@ -9,12 +9,13 @@ public enum Track
     Title,
     Level,
     Boss,
-    GameOver
+    GameOver,
+    Victory
 }
 public class BGMLooper : MonoBehaviour
 {
     public Track firstTrack, currentTrack;
-    public AudioClip titleTheme, levelTheme, bossTheme, gameOverTheme;
+    public AudioClip titleTheme, levelTheme, bossTheme, gameOverTheme, victoryTheme;
     public float titleLoopPoint = 57.6f, levelLoopPoint = 72.0f, bossLoopPoint = 64.0f;
     AudioSource sourceA, sourceB;
     bool onB;

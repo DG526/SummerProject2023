@@ -99,12 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb2dd9d33d677c44804dad514f8326f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnetism: 3
+  magnetism: 20
   threshold: 5
   playerHealth: {fileID: 0}
   healing: 1
   playerSpeed: {fileID: 0}
   playerCatalyst: {fileID: 0}
+  playerPoints: {fileID: 0}
+  gem1val: 10
+  gem2val: 50
 --- !u!50 &7328889211556108980
 Rigidbody2D:
   serializedVersion: 4

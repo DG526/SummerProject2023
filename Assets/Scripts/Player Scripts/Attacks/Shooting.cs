@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    [Header ("Other Scripts")]
     public PlayerHealth playerHealth;
     public PlayerSpeed playerSpeed;
     public PlayerCatalyst playerCatalyst;
 
+    [Header("Prefabs and Transforms")]
     public Transform firePoint;
+    public GameObject gem;
     public GameObject triangleBullet;
     public GameObject circleBullet;
     public GameObject poisonBullet;
@@ -18,106 +21,68 @@ public class Shooting : MonoBehaviour
     public GameObject wind;
     public GameObject lightning;
 
-
-    public int numBullets = 5;
-    public float triangleSpreadInterval = 0.4f;
-    private float triangleSpread;
-
+    [Header ("Projectile Forces/Speeds")]
     //bullet speed
     public float circleBulletForce = 20f;
     public float triangleBulletForce = 20f;
     public float poisonForce = 10f;
     public float lightningSpeed = 80f;
-
-    //speed of wind
     public float windSpeed = 15f;
-    //force with which wind pushes objects
     public float windForce = 30f;
 
-    //Circle Cooldown Interval
+    [Header ("Fireball")]
     public float circleCDI = 0.1f;
-
-    //Circle Cooldown
     private float circleCD = 0f;
-
-    //Circle Spread Range
     public float circleSpread = 3f;
-
-    //Circle Time to Live
     public float circleTTL = 1f;
-
-    //shop upgrade for fireball
     public bool circleUpgraded = false;
 
-    //Triangle Cooldown Interval
+    [Header("Water Shotgun")]
     public float triangleCDI = 0.5f;
-
-    //Triangle Cooldown
     private float triangleCD = 0f;
-
-    //Triangle Time to Live
     public float triangleTTL = 0.5f;
+    public int numBullets = 5;
+    public float triangleSpreadInterval = 0.4f;
+    private float triangleSpread;
 
-    //Poison Cooldown Interval
+    [Header ("Poison")]
     public float poisonCDI = 2f;
-
-    //Poison Cooldown
     private float poisonCD = 0f;
-
-    //shop upgrade for poison
     public bool poisonUpgraded = false;
 
-    //Rock Cooldown Interval
+    [Header("Rock")]
     public float rockCDI = 2f;
-
-    //Rock Cooldown
     private float rockCD = 0f;
-
-    //Rock Spawn Time
     public float rockTime = 0.5f;
-
-    //Rock Time to Live
     public float rockTTL = 5f;
-
-    //Rock distance from player
     public float rockDist = 5f;
-
-    //shop upgrade for rock
     public bool rockUpgraded = false;
 
-    //Wind Cooldown to Interval
+    [Header ("Wind")]
     public float windCDI = 1f;
-
-    //Wind Cooldown
     private float windCD = 0f;
-
-    //Wind Time to Live
     public float windTTL = 1.5f;
-
     public float windPush = 1.5f;
-
     public bool windUpgraded = false;
 
-    //Lightning Cooldown Interval
+    [Header ("Lightning")]
     public float lightningCDI = 0.75f;
-
-    //Lightning Cooldown
     private float lightningCD = 0f;
-
-    //Lightning Time to Live
     public float lightningTTL = 1.5f;
+    public bool lightningUpgraded = false;
 
-    public bool lightningUpgraded = false; 
-
+    [Header ("Selected Loadout")]
     public string Fire1 = "circle";
     public string Fire2 = "triangle";
 
+
+    GameObject loadout;
     void Start()
     {
         playerHealth = gameObject.GetComponent<PlayerHealth>();
         playerSpeed = gameObject.GetComponent<PlayerSpeed>();
         playerCatalyst = GetComponent<PlayerCatalyst>();
-
+        loadout = GameObject.Find("LoadOut");
     }
     // Update is called once per frame
     void Update()
@@ -126,7 +91,7 @@ public class Shooting : MonoBehaviour
 
         //can't shoot if you're dead
         
-        if (!playerHealth.dead)
+        if (!playerHealth.dead && !loadout.activeInHierarchy)
         {
             //left click
             if (Input.GetButton("Fire1") && !Input.GetButton("Fire2"))
@@ -151,6 +116,7 @@ public class Shooting : MonoBehaviour
         #region fireball
         if (type == "circle" && Time.time > circleCD)
         {
+            gem.GetComponent<SpriteRenderer>().color = new Color32(243,78,4,255);
             bullet = Instantiate(circleBullet, firePoint.position, firePoint.rotation);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<Bullet>().shooting = this;
@@ -185,6 +151,7 @@ public class Shooting : MonoBehaviour
         #region water
         if (type == "triangle" && Time.time > triangleCD)
         {
+            gem.GetComponent<SpriteRenderer>().color = Color.cyan;
             FireTriangle(bullet);
             triangleCD = Time.time + triangleCDI;
             if (playerSpeed.speed)
@@ -200,6 +167,7 @@ public class Shooting : MonoBehaviour
             bullet = Instantiate(poisonBullet, firePoint.position, firePoint.rotation);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<Poison>().shooting = this;
+            gem.GetComponent<SpriteRenderer>().color = new Color32(237, 72, 241, 150);
 
             if(poisonUpgraded)
             {
@@ -222,9 +190,10 @@ public class Shooting : MonoBehaviour
         #endregion
 
         #region rockDrop
-        if (type == "rockDrop" && Time.time > rockCD)
+        if (type.IndexOf("rock") != -1  && Time.time > rockCD)
         {
             //firePoint.rotation changed to 0
+            gem.GetComponent<SpriteRenderer>().color = new Color32(188, 127, 100, 255);
             bullet = Instantiate(rockDrop, firePoint.position + firePoint.up * rockDist, new Quaternion(0,0,0,0));
 
             if (playerCatalyst.catalyst)
@@ -250,7 +219,7 @@ public class Shooting : MonoBehaviour
         if (type == "wind" && Time.time > windCD)
         {
             bullet = Instantiate(wind, firePoint.position, firePoint.rotation);
-            
+            gem.GetComponent<SpriteRenderer>().color = new Color32(42, 255, 216, 255);
             if (playerCatalyst.catalyst)
             {
                 bullet.transform.localScale *= playerCatalyst.catalystFactor;
@@ -280,6 +249,7 @@ public class Shooting : MonoBehaviour
         {
             bullet = Instantiate(lightning, firePoint.position, firePoint.rotation);
             Rigidbody2D lightningRB = bullet.GetComponent<Rigidbody2D>();
+            gem.GetComponent<SpriteRenderer>().color = new Color32(255, 251, 0, 255);
 
             if (playerCatalyst.catalyst)
             {

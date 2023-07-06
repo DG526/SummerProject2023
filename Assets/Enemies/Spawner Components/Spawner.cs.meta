@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 69ba0e9456aa38f4aafb2956566e5792
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - SpawnPoint: {instanceID: 0}
+  - controller: {instanceID: 0}
+  - wyrm: {fileID: 8894681540275012340, guid: 957033696b4fdcd42b0917089b96b8bf, type: 3}
+  - drake: {fileID: 6013294249361281213, guid: 6551d62c9f391544689908f432975a59, type: 3}
+  - wyvern: {fileID: 8824022792102667430, guid: b98fb9853752b74498e5f405826d6cd0, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

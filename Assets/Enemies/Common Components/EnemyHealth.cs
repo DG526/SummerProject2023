@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     public float multiplier = 1;
     public int health;
 
+    public GameOver gameOver;
     SpawnController spawnControl;
     public GameObject spawner;
 
@@ -72,6 +73,8 @@ public class EnemyHealth : MonoBehaviour
         playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
 
         spawnControl = GameObject.Find("SpawnController").GetComponent<SpawnController>();
+
+        gameOver = GameObject.Find("GameOver").GetComponent<GameOver>();
     }
 
     // Update is called once per frame
@@ -121,6 +124,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void Death()
     {
+        gameOver.defeated += 1;
+
         dead = true;
         if(spawner != null)
         {

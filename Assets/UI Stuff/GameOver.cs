@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour
     public PlayerPoints playerPoints;
 
     //Menus
-    [Header ("Canvas")]
+    [Header("Canvas")]
     public GameObject textCanvas;
     public GameObject loseCanvas;
     public GameObject winCanvas;
@@ -26,7 +26,7 @@ public class GameOver : MonoBehaviour
     public GameObject warningButton;
     public GameObject congratsButton;
 
-    [Header ("Misc")]
+    [Header("Misc")]
     public GameObject map;
     public TMP_Text scoreText;
     public TMP_Text enemiesDef;
@@ -91,7 +91,7 @@ public class GameOver : MonoBehaviour
 
         ShowText();
         Time.timeScale = 0f;
-        
+
         EventSystem.current.SetSelectedGameObject(congratsButton);
     }
     #endregion
@@ -104,8 +104,8 @@ public class GameOver : MonoBehaviour
         textCanvas.SetActive(false);
         ShowText();
 
-            //sets the first button when menu opens
-            EventSystem.current.SetSelectedGameObject(loseFirstButton);
+        //sets the first button when menu opens
+        EventSystem.current.SetSelectedGameObject(loseFirstButton);
     }
     private void OpenWinMenu()
     {
@@ -155,6 +155,6 @@ public class GameOver : MonoBehaviour
         warningCanvas.SetActive(false);
         congratsCanvas.SetActive(false);
         openLoadout.OpenLoadout();
-    }    
+    }
     #endregion
 }

@@ -71,30 +71,19 @@ public class Shopping : MonoBehaviour
 
         shopCanvas.SetActive(false);
     }
-
-    private void Update()
-    {
-        //For Testing, make it so the shop shows at round 2 and before the final round
-        //Checks if it is paused or not
-        if (InputManagerPause.instance.MenuInput)
-        {
-            if (!isPaused)
-            {
-                OpenShop();
-
-                //freezes everything
-                Time.timeScale = 0f;
-            }
-        }
-    }
-
     public void OpenShop()
     {
         shopCanvas.SetActive(true);
 
         //sets the first button when menu opens
         EventSystem.current.SetSelectedGameObject(healthButton.gameObject);
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
+    }
+
+    public void CloseShop()
+    {
+        shopCanvas.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void AddHealth()

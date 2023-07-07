@@ -94,7 +94,13 @@ public class Shopping : MonoBehaviour
 
         //sets the first button when menu opens
         EventSystem.current.SetSelectedGameObject(healthButton.gameObject);
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
+    }
+
+    public void CloseShop()
+    {
+        shopCanvas.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void AddHealth()

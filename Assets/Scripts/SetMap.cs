@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class SetMap : MonoBehaviour
 {
-    public bool first = false;
+    public bool first = true;
 
-    [Header ("Bosses")]
+    [Header("Bosses")]
     public GameObject redDragon;
     public GameObject greenDragon;
     public GameObject blueDragon;
@@ -15,12 +15,12 @@ public class SetMap : MonoBehaviour
     public GameObject yellowDragon;
     public GameObject darkLightDragon;
 
-    [Header ("Minibosses")]
+    [Header("Minibosses")]
     public GameObject wyrmBoss;
     public GameObject drakeBoss;
     public GameObject wyvernBoss;
 
-    [Header ("Spawner")]
+    [Header("Spawner")]
     public GameObject spawner;
 
     [Header("Player and Camera")]
@@ -53,6 +53,11 @@ public class SetMap : MonoBehaviour
 
     public void Set()
     {
+        if (first)
+        {
+            StartCoroutine(MapCheck());
+        }
+
         levelCount++;
         #region clear
         object[] obj = GameObject.FindObjectsOfType(typeof(GameObject));
@@ -60,7 +65,7 @@ public class SetMap : MonoBehaviour
         {
             GameObject g = (GameObject)o;
             int layer = g.layer;
-            if(layer == 6 || layer == 7 || layer == 8 || layer == 10 || layer == 11)
+            if (layer == 6 || layer == 7 || layer == 8 || layer == 10 || layer == 11)
                 Destroy(g);
         }
         #endregion
@@ -82,6 +87,7 @@ public class SetMap : MonoBehaviour
                 {
                     player.transform.position = child.position;
                     camera.transform.position = new Vector3(child.position.x, child.position.y, camera.transform.position.z);
+                    player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 }
                 else if (name.IndexOf("Dragon") != -1)
                 {
@@ -108,8 +114,9 @@ public class SetMap : MonoBehaviour
                 {
                     player.transform.position = child.position;
                     camera.transform.position = new Vector3(child.position.x, child.position.y, camera.transform.position.z);
+                    player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 }
-                else if(name.IndexOf("boss") != -1)
+                else if (name.IndexOf("boss") != -1)
                 {
                     int target = (int)(UnityEngine.Random.Range(1, 3));
                     switch (target)
@@ -167,11 +174,11 @@ public class SetMap : MonoBehaviour
             }
         }
         string color = levelTypes[level];
-        if(color == "red")
+        if (color == "red")
             return Color.red;
-        if(color == "green")
+        if (color == "green")
             return Color.green;
-        if(color == "blue")
+        if (color == "blue")
             return Color.blue;
         if (color == "yellow")
             return Color.yellow;
@@ -184,6 +191,6 @@ public class SetMap : MonoBehaviour
     public IEnumerator MapCheck()
     {
         yield return new WaitForSeconds(5);
-        first = true;
+        first = false;
     }
 }

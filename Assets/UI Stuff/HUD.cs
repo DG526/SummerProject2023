@@ -187,25 +187,20 @@ public class HUD : MonoBehaviour
 
         if (ult == "aoe")
         {
-            Debug.Log(ultimate.aoeCDI);
             cooldown = ultimate.aoeCD - Time.time;
             cooldown = (float)(cooldown/ultimate.aoeCDI);
         }
         if (ult == "clone")
         {
-            Debug.Log(ultimate.cloneCDI);
             cooldown = ultimate.cloneCD - Time.time;
             cooldown = (float)(cooldown / ultimate.cloneCDI);
         }
         if (ult == "beam")
         { 
-            Debug.Log(ultimate.beamCDI);
             cooldown = ultimate.beamCD - Time.time;
             cooldown = (float)(cooldown / ultimate.beamCDI);
         }
 
         cooldownImage.fillAmount = cooldown;
-
-        Debug.Log(cooldownImage.fillAmount);
     }
 }

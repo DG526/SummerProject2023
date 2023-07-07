@@ -87,6 +87,7 @@ public class SetMap : MonoBehaviour
                 {
                     player.transform.position = child.position;
                     camera.transform.position = new Vector3(child.position.x, child.position.y, camera.transform.position.z);
+                    player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 }
                 else if (name.IndexOf("Dragon") != -1)
                 {
@@ -113,6 +114,7 @@ public class SetMap : MonoBehaviour
                 {
                     player.transform.position = child.position;
                     camera.transform.position = new Vector3(child.position.x, child.position.y, camera.transform.position.z);
+                    player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 }
                 else if (name.IndexOf("boss") != -1)
                 {

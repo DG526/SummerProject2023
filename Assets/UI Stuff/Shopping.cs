@@ -31,6 +31,18 @@ public class Shopping : MonoBehaviour
     public int poisonCost;
     public int lightningCost;
 
+    [Header("Price Listings")]
+    public TMP_Text healthCostText;
+    public TMP_Text speedCostText;
+    public TMP_Text ultCostText;
+    public TMP_Text fireCostText;
+    public TMP_Text waterCostText;
+    public TMP_Text earthCostText;
+    public TMP_Text windCostText;
+    public TMP_Text poisonCostText;
+    public TMP_Text lightingCostText;
+
+
     public int maxUltCharges = 2;
 
     [Header ("Player Buttons")]
@@ -48,6 +60,7 @@ public class Shopping : MonoBehaviour
 
     //to be removed
     private bool isPaused;
+    public TMP_Text scoreText;
 
     [Header ("Button Text")]
     public TMP_Text speedText;
@@ -59,18 +72,36 @@ public class Shopping : MonoBehaviour
     public TMP_Text windText;
     public TMP_Text poisonText;
     public TMP_Text lightingText;
-
     // Start is called before the first frame update
     void Start()
     {
+
         player = GameObject.FindWithTag("Player");
         pHealth = player.GetComponent<PlayerHealth>();
         move = player.GetComponent<PlayerMovement>();
         shoot = player.GetComponent<Shooting>();
         ult = player.GetComponent<Ultimate>();
+        points = player.GetComponent<PlayerPoints>();
 
         shopCanvas.SetActive(false);
+
+        //Costs
+        healthCostText.text = "" + healthCost;
+        speedCostText.text = "" + speedCost;
+        ultCostText.text = "" + ultimateCost;
+        fireCostText.text = "" + fireCost;
+        waterCostText.text = "" + waterCost;
+        earthCostText.text = "" + earthCost;
+        windCostText.text = "" + windCost;
+        poisonCostText.text = "" + poisonCost;
+        lightingCostText.text = "" + lightningCost;
     }
+
+    public void Update()
+    {
+        scoreText.text = "" + points.GetPoints();
+    }
+
     public void OpenShop()
     {
         shopCanvas.SetActive(true);
@@ -83,7 +114,6 @@ public class Shopping : MonoBehaviour
     public void CloseShop()
     {
         shopCanvas.SetActive(false);
-        Time.timeScale = 1f;
     }
 
     public void AddHealth()
@@ -92,6 +122,8 @@ public class Shopping : MonoBehaviour
         {
             points.RemovePoints(healthCost);
             healthCost += healthCostIncrement;
+            healthCostText.text = "" + healthCost;
+
             pHealth.numOfHearts = pHealth.numOfHearts + 1;
             pHealth.health = pHealth.health + 1;
             if (pHealth.numOfHearts == 8)
@@ -108,6 +140,8 @@ public class Shopping : MonoBehaviour
         {
             points.RemovePoints(speedCost);
             speedCost += speedCostIncrement;
+            speedCostText.text = "" + speedCost;
+
             move.moveSpeed = move.moveSpeed + 1.5f;
             if (move.moveSpeed >= 9)
             {

@@ -202,7 +202,5 @@ public class HUD : MonoBehaviour
         }
 
         cooldownImage.fillAmount = cooldown;
-
-        Debug.Log(cooldownImage.fillAmount);
     }
 }

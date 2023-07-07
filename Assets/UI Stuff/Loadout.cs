@@ -78,6 +78,8 @@ public class Loadout : MonoBehaviour
     public void OpenLoadout()
     {
         EventSystem.current.SetSelectedGameObject(fireButton.gameObject);
+        Time.timeScale = 0f;
+
         if (!map.first)
         {
             GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>().StopTrack();

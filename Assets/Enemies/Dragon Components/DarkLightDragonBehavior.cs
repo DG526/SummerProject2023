@@ -31,6 +31,8 @@ public class DarkLightDragonBehavior : MonoBehaviour
     private void OnDestroy()
     {
         GameObject.Find("GameOver").GetComponent<GameOver>().WinWaitStart(5);
+        player.GetComponent<PlayerHealth>().graceTime = Time.time + 5.2f;
+        player.GetComponent<PlayerHealth>().grace = true;
     }
     private void FixedUpdate()
     {
@@ -286,7 +288,7 @@ public class DarkLightDragonBehavior : MonoBehaviour
         {
             aggro = true;
             GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>().StopTrack();
-            GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>().PlayTrack(Track.Boss);
+            GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>().PlayTrack(Track.FinalBoss);
         }
     }
 }

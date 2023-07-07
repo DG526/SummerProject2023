@@ -221,6 +221,7 @@ public class Ultimate : MonoBehaviour
         {
             Beam.transform.localScale = Vector2.Lerp(beamStart, beamSize, currentTime / time);
             Beam.transform.localPosition = Vector2.Lerp(beamStartPos, (new Vector2(0f, beamSize.y) * beamOffet + beamStartPos), currentTime / time);
+            Beam.transform.localPosition = Beam.transform.localPosition + new Vector3(0, 0, -2);
 
             if (beamColor.a > 0.5f && !beamActive)
             {

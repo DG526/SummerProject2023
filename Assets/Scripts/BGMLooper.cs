@@ -9,14 +9,15 @@ public enum Track
     Title,
     Level,
     Boss,
+    FinalBoss,
     GameOver,
     Victory
 }
 public class BGMLooper : MonoBehaviour
 {
     public Track firstTrack, currentTrack;
-    public AudioClip titleTheme, levelTheme, bossTheme, gameOverTheme, victoryTheme;
-    public float titleLoopPoint = 57.6f, levelLoopPoint = 72.0f, bossLoopPoint = 64.0f;
+    public AudioClip titleTheme, levelTheme, bossTheme, finalBossTheme, gameOverTheme, victoryTheme;
+    public float titleLoopPoint = 57.6f, levelLoopPoint = 72.0f, bossLoopPoint = 64.0f, finalBossLoopPoint = 76.8f;
     AudioSource sourceA, sourceB;
     bool onB;
     bool firstFrame = true;
@@ -27,7 +28,9 @@ public class BGMLooper : MonoBehaviour
     void Start()
     {
         sourceA = gameObject.AddComponent<AudioSource>();
+        sourceA.volume = 0.3f;
         sourceB = gameObject.AddComponent<AudioSource>();
+        sourceB.volume = 0.3f;
         PlayTrack(firstTrack);
     }
 
@@ -102,6 +105,9 @@ public class BGMLooper : MonoBehaviour
                 case Track.Boss:
                     sourceB.clip = bossTheme;
                     break;
+                case Track.FinalBoss:
+                    sourceB.clip = finalBossTheme;
+                    break;
                 case Track.GameOver:
                     sourceB.clip = gameOverTheme;
                     break;
@@ -121,6 +127,9 @@ public class BGMLooper : MonoBehaviour
                 case Track.Boss:
                     sourceA.clip = bossTheme;
                     break;
+                case Track.FinalBoss:
+                    sourceA.clip = finalBossTheme;
+                    break;
                 case Track.GameOver:
                     sourceA.clip = gameOverTheme;
                     break;
@@ -137,6 +146,9 @@ public class BGMLooper : MonoBehaviour
                 break;
                 case Track.Boss:
                 loopTimer = bossLoopPoint;
+                break;
+                case Track.FinalBoss:
+                loopTimer = finalBossLoopPoint;
                 break;
             case Track.GameOver:
             case Track.None:

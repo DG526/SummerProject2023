@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -101,7 +102,7 @@ public class SetMap : MonoBehaviour
         {
             foreach (Transform child in gameObject.transform)
             {
-                level = (int)(Random.Range(0, levelTypes.Count - 1));
+                level = (int)(UnityEngine.Random.Range(0, levelTypes.Count - 1));
                 string name = child.gameObject.name;
 
                 GameObject spawn;
@@ -116,7 +117,7 @@ public class SetMap : MonoBehaviour
                 }
                 else if(name.IndexOf("boss") != -1)
                 {
-                    int target = (int)(Random.Range(1, 3));
+                    int target = (int)(UnityEngine.Random.Range(1, 3));
                     switch (target)
                     {
                         case 1:
@@ -155,7 +156,22 @@ public class SetMap : MonoBehaviour
     public Color32 GetColor()
     {
         if (final)
-            return Color.black;
+        {
+            int colPick = UnityEngine.Random.Range(0, 5);
+            switch (colPick)
+            {
+                case 0:
+                    return Color.red;
+                case 1:
+                    return Color.green;
+                case 2:
+                    return Color.blue;
+                case 3:
+                    return Color.yellow;
+                case 4:
+                    return new Color32(164, 0, 255, 255);
+            }
+        }
         string color = levelTypes[level];
         if(color == "red")
             return Color.red;

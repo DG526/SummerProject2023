@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public bool dead = false;
     public bool grace = false;
     public float graceDuration = 1f;
-    private float graceTime = 0f;
+    public float graceTime = 0f;
 
     public List<Image> hearts;
     public Sprite fullHeart;

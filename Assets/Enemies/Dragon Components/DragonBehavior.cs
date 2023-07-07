@@ -68,6 +68,9 @@ public class DragonBehavior : MonoBehaviour
     {
         map.levelTypes.RemoveAt(map.level);
         GameObject.Find("GameOver").GetComponent<GameOver>().WinWaitStart(5);
+        player.GetComponent<PlayerHealth>().health = Mathf.Min(player.GetComponent<PlayerHealth>().health + 2, player.GetComponent<PlayerHealth>().numOfHearts);
+        player.GetComponent<PlayerHealth>().graceTime = Time.time + 5f;
+        player.GetComponent<PlayerHealth>().grace = true;
     }
 
     // Update is called once per frame

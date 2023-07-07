@@ -18,6 +18,7 @@ public class GameOver : MonoBehaviour
 
     public Loadout openLoadout;
 
+    public GameObject map;
     private bool isGameOver;
 
     private void Start()
@@ -27,6 +28,8 @@ public class GameOver : MonoBehaviour
         loseCanvas.SetActive(false);
         winCanvas.SetActive(false);
         warningCanvas.SetActive(false);
+
+        map = GameObject.Find("Map");
     }
 
     #region Screen
@@ -109,6 +112,7 @@ public class GameOver : MonoBehaviour
     //goes to the next level
     public void NextMap()
     {
+
         openLoadout.OpenLoadout();
     }    
     #endregion

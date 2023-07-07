@@ -47,7 +47,7 @@ public class Poison : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 0 || collision.gameObject.layer == 14)
+        if (collision.gameObject.layer == 0 || collision.gameObject.layer == 14 || collision.gameObject.name.IndexOf("Spawner") != -1)
         {
             rb.velocity = Vector3.zero;
         }

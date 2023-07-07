@@ -90,9 +90,12 @@ public class Shooting : MonoBehaviour
         //you should not be able to hold down both mouse buttons and fire both weapons at the same time
 
         //can't shoot if you're dead
-        
-        if (!playerHealth.dead && !loadout.activeInHierarchy)
-        {
+        if (playerHealth.dead)
+            return;
+
+        if (loadout != null && loadout.activeInHierarchy)
+            return;
+
             //left click
             if (Input.GetButton("Fire1") && !Input.GetButton("Fire2"))
             {
@@ -104,7 +107,6 @@ public class Shooting : MonoBehaviour
             {
                 Fire(Fire2);
             }
-        }
     }
 
     void Fire(string type)

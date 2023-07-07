@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 06aa29e6436fff84187c3e6fa73afbd1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - redDragon: {fileID: 3628013872347301243, guid: a75f6f296b351f94590555737bca528b, type: 3}
+  - greenDragon: {fileID: 1118573141670411861, guid: e2ec0b3d150fd8c42857ca7589181cf1, type: 3}
+  - blueDragon: {fileID: 1788184328360024534, guid: f65803947df904f48a6c9c296add26f6, type: 3}
+  - purpleDragon: {fileID: 2603832404907414713, guid: c8171f1b64b69904b9339f6db2813499, type: 3}
+  - yellowDragon: {fileID: 2737311625446097767, guid: e52da3d716e25b64c924d7735b77540b, type: 3}
+  - darkLightDragon: {fileID: 6239853353439661202, guid: 5463507de741e9a449a085c6013c9cb5, type: 3}
+  - wyrmBoss: {instanceID: 0}
+  - drakeBoss: {instanceID: 0}
+  - wyvernBoss: {instanceID: 0}
+  - spawner: {fileID: 7757739855642946369, guid: bcd841ffde92a144f8fb92c416aef179, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

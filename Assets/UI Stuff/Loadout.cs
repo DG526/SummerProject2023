@@ -77,7 +77,7 @@ public class Loadout : MonoBehaviour
     public void OpenLoadout()
     {
         EventSystem.current.SetSelectedGameObject(fireButton.gameObject);
-        if (!map.first)
+        if (map.first == false)
         {
             map.Set();
         }

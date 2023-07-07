@@ -3,24 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameOver : MonoBehaviour
 {
+    [Header("Scripts")]
+    public Loadout openLoadout;
+    public PlayerPoints playerPoints;
 
     //Menus
+    [Header ("Canvas")]
+    public GameObject textCanvas;
     public GameObject loseCanvas;
     public GameObject winCanvas;
     public GameObject warningCanvas;
+    public GameObject congratsCanvas;
 
     //sets the first button
+    [Header("Buttons")]
     public GameObject loseFirstButton;
     public GameObject winFirstButton;
     public GameObject warningButton;
+    public GameObject congratsButton;
 
-    public Loadout openLoadout;
-
+    [Header ("Misc")]
     public GameObject map;
-    private bool isGameOver;
+    public TMP_Text scoreText;
+    public TMP_Text enemiesDef;
+
+    public int defeated = 0;
 
     private void Start()
     {
@@ -29,6 +40,8 @@ public class GameOver : MonoBehaviour
         loseCanvas.SetActive(false);
         winCanvas.SetActive(false);
         warningCanvas.SetActive(false);
+        textCanvas.SetActive(false);
+        congratsCanvas.SetActive(false);
 
         map = GameObject.Find("Map");
     }
@@ -36,15 +49,20 @@ public class GameOver : MonoBehaviour
     #region Screen
     public void Win()
     {
-        Time.timeScale = 0f;
-        loseCanvas.SetActive(false);
-        winCanvas.SetActive(true);
-
         OpenWinMenu();
+        Time.timeScale = 0f;
     }
     public void WinWaitStart(float seconds)
     {
         StartCoroutine(WinWait(seconds));
+    }
+
+    public void ShowText()
+    {
+        string score = "Final Score: " + playerPoints.GetPoints();
+        string def = "Enemies Defeated: " + defeated;
+        scoreText.text = score;
+        enemiesDef.text = def;
     }
     IEnumerator WinWait(float seconds)
     {
@@ -59,13 +77,22 @@ public class GameOver : MonoBehaviour
 
     public void Lose()
     {
-        Time.timeScale = 0f;
-        loseCanvas.SetActive(true);
-        winCanvas.SetActive(false);
-
-        //scoreText.text = "Final Score: " + playerPoints.GetPoints();
-
         OpenLoseMenu();
+        Time.timeScale = 0f;
+    }
+
+    public void OpenCongrats()
+    {
+        loseCanvas.SetActive(false);
+        winCanvas.SetActive(false);
+        warningCanvas.SetActive(false);
+        congratsCanvas.SetActive(true);
+        textCanvas.SetActive(true);
+
+        ShowText();
+        Time.timeScale = 0f;
+        
+        EventSystem.current.SetSelectedGameObject(congratsButton);
     }
     #endregion
 
@@ -74,15 +101,20 @@ public class GameOver : MonoBehaviour
     {
         loseCanvas.SetActive(true);
         winCanvas.SetActive(false);
+        textCanvas.SetActive(false);
+        ShowText();
 
-        //sets the first button when menu opens
-        EventSystem.current.SetSelectedGameObject(loseFirstButton);
+            //sets the first button when menu opens
+            EventSystem.current.SetSelectedGameObject(loseFirstButton);
     }
     private void OpenWinMenu()
     {
         loseCanvas.SetActive(false);
         winCanvas.SetActive(true);
         warningCanvas.SetActive(false);
+        textCanvas.SetActive(true);
+
+        ShowText();
 
         //sets the first button when menu opens
         EventSystem.current.SetSelectedGameObject(winFirstButton);
@@ -92,6 +124,8 @@ public class GameOver : MonoBehaviour
         loseCanvas.SetActive(false);
         winCanvas.SetActive(false);
         warningCanvas.SetActive(true);
+        textCanvas.SetActive(true);
+
 
         //sets the first button when menu opens
         EventSystem.current.SetSelectedGameObject(winFirstButton);
@@ -116,7 +150,10 @@ public class GameOver : MonoBehaviour
     public void NextMap()
     {
         winCanvas.SetActive(false);
+        textCanvas.SetActive(false);
         loseCanvas.SetActive(false);
+        warningCanvas.SetActive(false);
+        congratsCanvas.SetActive(false);
         openLoadout.OpenLoadout();
     }    
     #endregion

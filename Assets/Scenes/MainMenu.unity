@@ -3702,6 +3702,8 @@ GameObject:
   - component: {fileID: 1514878857}
   - component: {fileID: 1514878856}
   - component: {fileID: 1514878860}
+  - component: {fileID: 1514878862}
+  - component: {fileID: 1514878861}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -3816,6 +3818,44 @@ MonoBehaviour:
   howToPlayButton: {fileID: 1550706276}
   settingsButton: {fileID: 510398884}
   creditsButton: {fileID: 784886790}
+--- !u!114 &1514878861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514878855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.3301887, g: 0.3301887, b: 0.3301887, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1514878862
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514878855}
+  m_CullTransparentMesh: 1
 --- !u!1 &1540349194
 GameObject:
   m_ObjectHideFlags: 0

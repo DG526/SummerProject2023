@@ -135,6 +135,7 @@ public class Ultimate : MonoBehaviour
     {
         if (ult == "aoe" && charges > 0)
         {
+            aoeCD = Time.time + aoeCDI;
             charges--;
             if(firstUlt)
             {
@@ -153,6 +154,7 @@ public class Ultimate : MonoBehaviour
 
         if (ult == "clone" && charges > 0)
         {
+            cloneCD = Time.time + cloneCDI;
             charges--;
             if (firstUlt)
             {
@@ -172,6 +174,7 @@ public class Ultimate : MonoBehaviour
 
         if (ult == "beam" && charges > 0)
         {
+            beamCD = Time.time + beamCDI;
             charges--;
             if (firstUlt)
             {

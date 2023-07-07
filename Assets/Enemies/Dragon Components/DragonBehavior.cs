@@ -7,7 +7,10 @@ using UnityEngine;
 public enum DragonColor
 {
     RED,
-    BLUE
+    BLUE,
+    GREEN,
+    YELLOW,
+    PURPLE
 }
 
 public enum DragonAction
@@ -21,6 +24,7 @@ public enum DragonAction
     ATK_BITE_L,
     ATK_BITE_R,
     ATK_BREATH_F,
+    ATK_BREATH_L, ATK_BREATH_R,
     THINKING
 }
 public enum DragonSecondaryAction
@@ -46,7 +50,9 @@ public class DragonBehavior : MonoBehaviour
     float moveTimer;
     Rigidbody2D rb;
     bool usingBreathAttack;
-    float breathTime;
+    float breathTime; // For breath patterns based on position in time (Water)
+    float breathTimer; // For breath patterns in bursts (Wind)
+    int breathSwitch; // For breath patterns with variable amounts of bullets/frame (Lightning)
     bool aggro = false;
     // Start is called before the first frame update
     void Start()
@@ -120,7 +126,7 @@ public class DragonBehavior : MonoBehaviour
     void Plan()
     {
         Debug.Log("Planning");
-        int choice = UnityEngine.Random.Range(0, 9);
+        int choice = UnityEngine.Random.Range(0, 6);
         while((choice > 3 && lastPlan == DragonAction.ATK_BREATH_F))
         {
             choice = UnityEngine.Random.Range(0, 6);
@@ -279,6 +285,8 @@ public class DragonBehavior : MonoBehaviour
     {
         usingBreathAttack = true;
         breathTime = 0;
+        breathTimer = 0;
+        breathSwitch = 0;
     }
     public void BreathEnd()
     {
@@ -338,6 +346,85 @@ public class DragonBehavior : MonoBehaviour
                     Destroy(bullet, 20);
                 }
                 breathTime += Time.fixedDeltaTime;
+                break;
+            case DragonColor.GREEN:
+                if(breathTimer <= 0)
+                {
+                    GameObject bullet;
+                    bullet = Instantiate(projectile, transform.Find("Maw Mark").position, transform.Find("Maw Mark").rotation);
+                    bullet.transform.localScale *= 2;
+                    Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+
+                    //no spread for wind direction
+                    Vector2 dir = transform.Find("Maw Mark").up;
+
+                    bulletRB.velocity = dir.normalized * 12;
+                    breathTimer = 0.2f;
+                }
+                breathTimer -= Time.fixedDeltaTime;
+                break;
+            case DragonColor.YELLOW:
+                if (breathTimer <= 0)
+                {
+                    int bolts = 0;
+                    switch (breathSwitch)
+                    {
+                        case 0:
+                            bolts = 3;
+                            break;
+                        case 1:
+                        case 3:
+                            bolts = 4;
+                            break;
+                        case 2:
+                            bolts = 5;
+                            break;
+                    }
+                    breathSwitch++;
+                    breathSwitch %= 4;
+                    for(int i = 0; i < bolts; i++)
+                    {
+                        GameObject bullet;
+                        bullet = Instantiate(projectile, transform.Find("Maw Mark").position, transform.Find("Maw Mark").rotation);
+                        bullet.transform.localScale *= 2;
+                        Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+
+                        //variable spread for lightning direction
+                        Vector2 dir = transform.Find("Maw Mark").up;
+                        Vector2 pdir = Vector2.Perpendicular(dir);
+
+                        pdir = Vector2.Perpendicular(dir) * ((float)bolts / -2.0f + i) * 0.1f;
+
+                        bulletRB.velocity = (dir + pdir).normalized * 18;
+                    }
+                    breathTimer = 0.1f;
+                }
+                breathTimer -= Time.fixedDeltaTime;
+                break;
+            case DragonColor.PURPLE:
+                for (int i = 0; i < 2; i++)
+                {
+                    GameObject bullet;
+                    bullet = Instantiate(projectile, transform.Find("Maw Mark").position, transform.Find("Maw Mark").rotation);
+                    bullet.transform.localScale *= 3;
+                    Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+
+                    //add spread
+                    Vector2 dir = transform.Find("Maw Mark").up;
+                    Vector2 pdir = Vector2.Perpendicular(dir);
+
+                    pdir = Vector2.Perpendicular(dir) * UnityEngine.Random.Range(-0.3f, 0.3f);
+
+                    bulletRB.velocity = (dir + pdir).normalized * 15;
+                    //bulletRB.velocity = firePoint.up * circleBulletForce;
+                    //circleCD = Time.time + circleCDI;
+                    //if (playerSpeed.speed)
+                    //{
+                    //    circleCD = Time.time + (circleCDI * playerSpeed.fireSpeedUp);
+                    //}
+
+                    ///Destroy(bullet, 20);
+                }
                 break;
         }
     }

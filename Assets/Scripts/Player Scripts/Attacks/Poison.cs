@@ -51,18 +51,35 @@ public class Poison : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
         }
+        string name = collision.gameObject.name;
 
-        if(collision.gameObject.tag == "Enemy")
+        //wyrm has to handle damage by itself
+        if(name.IndexOf("wyrm") != -1)
+        {
+            WyrmHeadBehavior wyrm;
+
+            if(name.IndexOf("segment") != -1 || name.IndexOf("tail") != -1)
+                wyrm = collision.gameObject.GetComponent<WyrmSegmentBehavior>().hBehav;
+            else
+                wyrm = collision.gameObject.GetComponent<WyrmHeadBehavior>();
+
+            if (shooting.playerCatalyst.catalyst)
+                wyrm.poisonDamage = boostedDamage;
+            else
+                wyrm.poisonDamage = damage;
+            wyrm.poisonTickInterval = tickSpeed;
+            wyrm.poison = true;
+        }
+
+        if (collision.gameObject.tag == "Enemy")
         {
             if(shooting.poisonUpgraded)
             {
-                string name = collision.gameObject.name;
                 if(name.IndexOf("Wyrm") != -1)
                 {
                     WyrmHeadBehavior wyrmHeadBehavior = collision.gameObject.GetComponent<WyrmHeadBehavior>();
 
-                    wyrmHeadBehavior.poisonDuration = Time.time + slowDuration;
-                    wyrmHeadBehavior.poison = true;
+                    wyrmHeadBehavior.poisonDuration = Time.time + slowDuration;  
                 }
                 else if(name.IndexOf("Drake") != -1)
                 {
@@ -80,15 +97,13 @@ public class Poison : MonoBehaviour
                 }
             }
 
-            if(shooting.playerCatalyst.catalyst)
+            if (name.IndexOf("wyrm") == -1)
             {
-                collision.gameObject.GetComponent<EnemyHealth>().Damage(boostedDamage);
+                if (shooting.playerCatalyst.catalyst)
+                    collision.gameObject.GetComponent<EnemyHealth>().Damage(boostedDamage);
+                else
+                    collision.gameObject.GetComponent<EnemyHealth>().Damage(damage);
             }
-            else
-            {
-                collision.gameObject.GetComponent<EnemyHealth>().Damage(damage);
-            }
-            //Debug.Log("Hit an enemy");
         }
     }
 

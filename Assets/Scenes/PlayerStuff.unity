@@ -19177,6 +19177,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 6473397995143126669, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7816595488355719059, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
       propertyPath: m_Name
       value: EntireMap

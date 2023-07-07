@@ -30,6 +30,7 @@ public class Item : MonoBehaviour
     [Header("Gems")]
     public int gem1val = 10;
     public int gem2val = 50;
+
     bool moving = false;
     void Start()
     {

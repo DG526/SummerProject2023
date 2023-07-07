@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class HUD : MonoBehaviour
     public Ultimate ultimate;
     public PlayerHealth playerHealth;
     public GameObject gem;
+    public PlayerPoints playerPoints;
 
     GameObject player;
 
@@ -36,15 +38,26 @@ public class HUD : MonoBehaviour
     public int health;
     public int numOfHearts;
 
+    public TMP_Text scoreText;
+
+    [SerializeField] private Image cooldown;
+
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        //For Ult Cooldown
+        cooldown.fillAmount = 0.0f;
 
+        //finds player object and resets points
+        player = GameObject.FindWithTag("Player");
+        playerPoints.ResetPoints();
+
+        //grab scripts from player object
         shooting = player.GetComponent<Shooting>();
         ultimate = player.GetComponent<Ultimate>();
         playerHealth = player.GetComponent<PlayerHealth>();
 
+        //finds what the player shoots
         fire1 = shooting.Fire1;
         fire2 = shooting.Fire2;
         ult = ultimate.ultimate;
@@ -89,6 +102,8 @@ public class HUD : MonoBehaviour
 
             SetUltImages();
         }
+
+        UpdateScore();
     }
 
     void SetFireImages()
@@ -144,5 +159,10 @@ public class HUD : MonoBehaviour
         {
             ultImage.sprite = ultBeam;
         }
+    }
+
+    public void UpdateScore()
+    {
+        scoreText.text = "Score: " + playerPoints.GetPoints();
     }
 }

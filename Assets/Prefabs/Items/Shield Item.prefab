@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8733518871132734919
 SpriteRenderer:
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2135585597343286014, guid: 5aa8b770bc43046bc8d993d0d5b7f4a5, type: 3}
-  m_Color: {r: 0.7379927, g: 0.40714365, b: 0.8867924, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6a1c06eba39189e42b84fda5d6afe56f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -123,7 +123,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8828125, y: 1}
+    oldSize: {x: 1.6, y: 1.6}
     newSize: {x: 0.8828125, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -131,12 +131,19 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.43359375, y: 0.25}
-      - {x: -0.43359375, y: -0.25}
-      - {x: 0, y: -0.5}
-      - {x: 0.43359375, y: -0.25}
-      - {x: 0.43359375, y: 0.25}
-      - {x: 0, y: 0.5}
+    - - {x: -0.28329235, y: 0.45352602}
+      - {x: -0.52857196, y: 0.64970016}
+      - {x: -0.6829117, y: 0.4339981}
+      - {x: -0.6156354, y: -0.17480898}
+      - {x: -0.4260143, y: -0.41540217}
+      - {x: -0.007914855, y: -0.65829706}
+      - {x: 0.27189928, y: -0.5108564}
+      - {x: 0.57210374, y: -0.26978707}
+      - {x: 0.66074616, y: 0.04855442}
+      - {x: 0.66592073, y: 0.42967272}
+      - {x: 0.5246146, y: 0.6140833}
+      - {x: 0.27702567, y: 0.4538927}
+      - {x: -0.011872283, y: 0.642467}
   m_UseDelaunayMesh: 0
 --- !u!50 &130846861669082276
 Rigidbody2D:
@@ -177,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb2dd9d33d677c44804dad514f8326f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnetism: 3
+  magnetism: 20
   threshold: 5
   playerHealth: {fileID: 0}
   healing: 1

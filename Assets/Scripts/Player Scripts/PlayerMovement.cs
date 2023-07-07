@@ -14,10 +14,12 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerSpeed playerSpeed;
 
+    GameObject loadout;
     void Start()
     {
         playerHealth = gameObject.GetComponent<PlayerHealth>();
         playerSpeed = gameObject.GetComponent<PlayerSpeed>();
+        loadout = GameObject.Find("LoadOut");
     }
     // Update is called once per frame
     void Update()
@@ -30,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!playerHealth.dead)
+        if (!playerHealth.dead && !loadout.activeInHierarchy)
         {
             Move();
         }
@@ -76,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if(playerSpeed.speed)
         {
             //movement
-            rb.velocity = new Vector2(moveDir.x * (moveSpeed * playerSpeed.speedUp), moveDir.y * (moveSpeed * playerSpeed.speedUp));
+            rb.velocity = new Vector2(moveDir.x * (moveSpeed + playerSpeed.speedUp), moveDir.y * (moveSpeed * playerSpeed.speedUp));
         }
         else
         {

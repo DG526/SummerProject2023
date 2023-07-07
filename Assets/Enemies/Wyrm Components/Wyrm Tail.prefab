@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3808211861271614291}
   m_Layer: 8
   m_Name: Wyrm Tail
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   head: {fileID: 0}
   following: {fileID: 0}
   nextSeg: {fileID: 0}
+  hBehav: {fileID: 0}
 --- !u!50 &-7609426027242169462
 Rigidbody2D:
   serializedVersion: 4

@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
     public Shooting shooting;
     public Ultimate ultimate;
     public PlayerHealth playerHealth;
-
-    List<Image> fullHearts = new List<Image>();
-    List<Image> emptyHearts = new List<Image>();
+    public GameObject gem;
+    public PlayerPoints playerPoints;
 
     GameObject player;
 
@@ -38,18 +38,31 @@ public class HUD : MonoBehaviour
     public int health;
     public int numOfHearts;
 
+    public TMP_Text scoreText;
+
+    [SerializeField] private Image cooldown;
+
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        //For Ult Cooldown
+        cooldown.fillAmount = 0.0f;
 
+        //finds player object and resets points
+        player = GameObject.FindWithTag("Player");
+        playerPoints.ResetPoints();
+
+        //grab scripts from player object
         shooting = player.GetComponent<Shooting>();
         ultimate = player.GetComponent<Ultimate>();
         playerHealth = player.GetComponent<PlayerHealth>();
 
+        //finds what the player shoots
         fire1 = shooting.Fire1;
         fire2 = shooting.Fire2;
         ult = ultimate.ultimate;
+
+        gem = player.transform.GetChild(2).gameObject;
 
         foreach (Transform child in gameObject.transform)
         {
@@ -89,6 +102,8 @@ public class HUD : MonoBehaviour
 
             SetUltImages();
         }
+
+        UpdateScore();
     }
 
     void SetFireImages()
@@ -97,29 +112,35 @@ public class HUD : MonoBehaviour
         if (fire1 == "circle")
         {
             primaryImage.sprite = fire;
+            gem.GetComponent<SpriteRenderer>().color = new Color32(243, 78, 4, 255);
         }
-        if(fire1 == "triangle")
+        else if(fire1 == "triangle")
         {
             primaryImage.sprite = water;
+            gem.GetComponent<SpriteRenderer>().color = Color.cyan;
         }
-        if (fire1 == "lightning")
+        else if (fire1 == "rockDrop")
         {
-            primaryImage.sprite = lightning;
+            primaryImage.sprite = rock;
+            gem.GetComponent<SpriteRenderer>().color = new Color32(237, 72, 241, 150);
         }
         #endregion
 
         #region SecondaryFire
-        if (fire2 == "rockDrop")
+        if (fire2 == "lightning")
         {
-            secondaryImage.sprite = rock;
+            secondaryImage.sprite = lightning;
+            secondaryImage.color = new Color32(255,255, 255, 255);
         }
-        if (fire2 == "poison")
+        else if (fire2 == "poison")
         {
             secondaryImage.sprite = poison;
+            secondaryImage.color = new Color32(237, 72, 241, 150);
         }
-        if (fire2 == "wind")
+        else if (fire2 == "wind")
         {
             secondaryImage.sprite = wind;
+            secondaryImage.color = new Color32(255, 255, 255, 255);
         }
         #endregion
     }
@@ -138,5 +159,10 @@ public class HUD : MonoBehaviour
         {
             ultImage.sprite = ultBeam;
         }
+    }
+
+    public void UpdateScore()
+    {
+        scoreText.text = "Score: " + playerPoints.GetPoints();
     }
 }

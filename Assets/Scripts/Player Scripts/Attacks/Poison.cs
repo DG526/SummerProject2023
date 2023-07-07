@@ -15,6 +15,9 @@ public class Poison : MonoBehaviour
     public float tickDuration = 0.1f;
 
     float tick = 0f;
+
+    //how long enemies are slowed after coming into contact with poison
+    public float slowDuration = 0.3f;
     CircleCollider2D col;
 
     private void Start()
@@ -48,18 +51,59 @@ public class Poison : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
         }
+        string name = collision.gameObject.name;
 
-        if(collision.gameObject.layer == 8 || collision.gameObject.layer == 10)
+        //wyrm has to handle damage by itself
+        if(name.IndexOf("wyrm") != -1)
         {
-            if(shooting.playerCatalyst.catalyst)
-            {
-                collision.gameObject.GetComponent<EnemyHealth>().Damage(boostedDamage);
-            }
+            WyrmHeadBehavior wyrm;
+
+            if(name.IndexOf("segment") != -1 || name.IndexOf("tail") != -1)
+                wyrm = collision.gameObject.GetComponent<WyrmSegmentBehavior>().hBehav;
             else
+                wyrm = collision.gameObject.GetComponent<WyrmHeadBehavior>();
+
+            if (shooting.playerCatalyst.catalyst)
+                wyrm.poisonDamage = boostedDamage;
+            else
+                wyrm.poisonDamage = damage;
+            wyrm.poisonTickInterval = tickSpeed;
+            wyrm.poison = true;
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if(shooting.poisonUpgraded)
             {
-                collision.gameObject.GetComponent<EnemyHealth>().Damage(damage);
+                if(name.IndexOf("Wyrm") != -1)
+                {
+                    WyrmHeadBehavior wyrmHeadBehavior = collision.gameObject.GetComponent<WyrmHeadBehavior>();
+
+                    wyrmHeadBehavior.poisonDuration = Time.time + slowDuration;  
+                }
+                else if(name.IndexOf("Drake") != -1)
+                {
+                    DrakeBehavior drakeBehavior = collision.gameObject.GetComponent<DrakeBehavior>();
+
+                    drakeBehavior.poisonDuration = Time.time + slowDuration;
+                    drakeBehavior.poison = true;
+                }
+                else if(name.IndexOf("Wyvern") != -1)
+                {
+                    WyvernBehavior wyvernBehavior = collision.gameObject.GetComponent<WyvernBehavior>();
+
+                    wyvernBehavior.poisonDuration = Time.time + slowDuration;
+                    wyvernBehavior.poison = true;
+                }
             }
-            //Debug.Log("Hit an enemy");
+
+            if (name.IndexOf("wyrm") == -1)
+            {
+                if (shooting.playerCatalyst.catalyst)
+                    collision.gameObject.GetComponent<EnemyHealth>().Damage(boostedDamage);
+                else
+                    collision.gameObject.GetComponent<EnemyHealth>().Damage(damage);
+            }
         }
     }
 

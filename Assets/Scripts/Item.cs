@@ -7,10 +7,9 @@ public class Item : MonoBehaviour
     private Transform player;
 
     private Rigidbody2D rb;
-    //Force with which item is pulled to the player
-    public float magnetism = 3f;
 
-    //Min distance within which items are attracted to the player
+    [Header ("General")]
+    public float magnetism = 3f;
     public float threshold = 5f;
 
     //distance from player
@@ -19,12 +18,20 @@ public class Item : MonoBehaviour
     //direction to player
     private Vector2 dir = Vector2.zero;
 
+    [Header ("Health Item")]
     public PlayerHealth playerHealth;
     public int healing = 1;
 
+    [Header ("Player Scripts")]
     public PlayerSpeed playerSpeed;
-
     public PlayerCatalyst playerCatalyst;
+    public PlayerPoints playerPoints;
+
+    [Header("Gems")]
+    public int gem1val = 10;
+    public int gem2val = 50;
+
+    bool moving = false;
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
@@ -49,7 +56,11 @@ public class Item : MonoBehaviour
 
             rb.AddForce(dir * magnetism);
         }
-    }
+        else if(distance > threshold && !moving) 
+        { 
+            rb.velocity = Vector2.zero;
+        }
+}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -64,16 +75,14 @@ public class Item : MonoBehaviour
                     Debug.Log(playerHealth.health);
                 }
             }
-
-            if (gameObject.tag == "Speed Potion")
+            else if (gameObject.tag == "Speed Potion")
             {
                 playerSpeed = collision.gameObject.GetComponent<PlayerSpeed>();
                 playerSpeed.speed = true;
                 playerSpeed.speedEnd = Time.time + playerSpeed.speedDuration;
                 Debug.Log("You got a speed potion!");
             }
-
-            if(gameObject.tag == "Catalyst")
+            else if(gameObject.tag == "Catalyst")
             {
                 playerCatalyst = collision.gameObject.GetComponent<PlayerCatalyst>();
                 playerCatalyst.catalyst = true;
@@ -81,8 +90,7 @@ public class Item : MonoBehaviour
                 playerCatalyst.catalystEnd = Time.time + playerCatalyst.catalystDuration;
                 Debug.Log("You picked up a magic catalyst!");
             }
-
-            if(gameObject.tag == "Shield Item")
+            else if(gameObject.tag == "Shield Item")
             {
                 foreach(Transform child in collision.gameObject.transform)
                 {
@@ -103,7 +111,27 @@ public class Item : MonoBehaviour
                     shields.shieldEnd = Time.time + shields.shieldDuration;
                 }
             }
+            else if (gameObject.name.IndexOf("Gem1") != -1)
+            {
+                playerPoints = collision.gameObject.GetComponent<PlayerPoints>();
+                playerPoints.AddPoints(gem1val);
+                Debug.Log("Current Points: " + playerPoints.GetPoints());
+            }
+            else if (gameObject.name.IndexOf("Gem2") != -1)
+            {
+                playerPoints = collision.gameObject.GetComponent<PlayerPoints>();
+                playerPoints.AddPoints(gem2val);
+                Debug.Log("Current Points: " + playerPoints.GetPoints());
+            }
             Destroy(gameObject);
         }
+    }
+
+    public IEnumerator StopMovement(GameObject item, float time)
+    {
+        moving = true;
+        yield return new WaitForSeconds(time);
+        item.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        moving = false;
     }
 }

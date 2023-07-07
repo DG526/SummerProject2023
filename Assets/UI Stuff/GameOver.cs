@@ -33,7 +33,7 @@ public class GameOver : MonoBehaviour
     public void Win()
     {
         Time.timeScale = 0f;
-        loseCanvas.SetActive(true);
+        loseCanvas.SetActive(false);
         winCanvas.SetActive(true);
 
         OpenWinMenu();
@@ -57,7 +57,7 @@ public class GameOver : MonoBehaviour
     {
         Time.timeScale = 0f;
         loseCanvas.SetActive(true);
-        winCanvas.SetActive(true);
+        winCanvas.SetActive(false);
 
         OpenLoseMenu();
     }
@@ -109,6 +109,8 @@ public class GameOver : MonoBehaviour
     //goes to the next level
     public void NextMap()
     {
+        loseCanvas.SetActive(false);
+        winCanvas.SetActive(false);
         openLoadout.OpenLoadout();
     }    
     #endregion

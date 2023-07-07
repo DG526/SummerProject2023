@@ -5,8 +5,13 @@ using UnityEngine;
 public class PlayerPoints : MonoBehaviour
 {
     public int points = 0;
+    public int totalScore = 0;
+    public int highScore = 0;
 
-    public void AddPoints(int val) { points += val; }
+    public void AddPoints(int val) 
+    {
+        points += val;
+    }
 
     public int GetPoints() { return points; }
 

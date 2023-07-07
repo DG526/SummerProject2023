@@ -170,7 +170,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581356551360399131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.38, y: -7.94, z: 0}
+  m_LocalPosition: {x: -1.2, y: -7.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3044,9 +3044,9 @@ MonoBehaviour:
   purpleDragon: {fileID: 2603832404907414713, guid: c8171f1b64b69904b9339f6db2813499, type: 3}
   yellowDragon: {fileID: 2737311625446097767, guid: e52da3d716e25b64c924d7735b77540b, type: 3}
   darkLightDragon: {fileID: 6239853353439661202, guid: 5463507de741e9a449a085c6013c9cb5, type: 3}
-  wyrmBoss: {fileID: 0}
-  drakeBoss: {fileID: 0}
-  wyvernBoss: {fileID: 0}
+  wyrmBoss: {fileID: 582421085050743577, guid: d4fb0ccfaaeb18e4eac2badaaa58512d, type: 3}
+  drakeBoss: {fileID: 238519136251477569, guid: b0796d51178ead140b51eb51784d1f99, type: 3}
+  wyvernBoss: {fileID: 6561270325386862145, guid: 96f3d05f7dee988479328a0b5d0ac107, type: 3}
   spawner: {fileID: 7757739855642946369, guid: bcd841ffde92a144f8fb92c416aef179, type: 3}
   player: {fileID: 0}
   camera: {fileID: 0}
@@ -3177,7 +3177,7 @@ Transform:
   - {fileID: 1114563905421227143}
   - {fileID: 5658773615123066320}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8636570785138828408
 GameObject:

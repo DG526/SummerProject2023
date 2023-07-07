@@ -16257,6 +16257,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1114563905421227143, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114563905421227143, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114563905421227143, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1805703028328935748, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383907370373187610, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
+      propertyPath: maxLevelCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658773615123066320, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658773615123066320, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5658773615123066320, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7816595488355719059, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
       propertyPath: m_Name
       value: EntireMap
@@ -16320,7 +16352,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 250846539809725963, guid: 14592e891f31afa4da233174786c22ad, type: 3}
       propertyPath: m_Name
-      value: Enitire Final Map
+      value: Entire Final Map
       objectReference: {fileID: 0}
     - target: {fileID: 5391651254497879859, guid: 14592e891f31afa4da233174786c22ad, type: 3}
       propertyPath: m_RootOrder

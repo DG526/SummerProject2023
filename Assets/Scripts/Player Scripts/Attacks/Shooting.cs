@@ -153,7 +153,7 @@ public class Shooting : MonoBehaviour
         #region water
         if (type == "triangle" && Time.time > triangleCD)
         {
-            gem.GetComponent<SpriteRenderer>().color = Color.cyan;
+            gem.GetComponent<SpriteRenderer>().color = Color.blue;
             FireTriangle(bullet);
             triangleCD = Time.time + triangleCDI;
             if (playerSpeed.speed)

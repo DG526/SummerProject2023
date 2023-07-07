@@ -201,6 +201,8 @@ MonoBehaviour:
   poison: 0
   poisonDuration: 0
   poisonSlow: 0.5
+  poisonTickInterval: 0
+  poisonDamage: 0
 --- !u!70 &9116891559561628132
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -275,9 +277,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e39025802bc3054898b189f6a3618f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 60
   multiplier: 1
   health: 0
+  spawner: {fileID: 0}
   gem1: {fileID: 3929919800341922367, guid: c5fb0621e0f7a9742b1e3b5822ee4560, type: 3}
   gem2: {fileID: 119683321562045588, guid: 5ab1dcef5681f3e4394949cdf1bb195c, type: 3}
   maxCoins: 4
@@ -289,6 +292,7 @@ MonoBehaviour:
   shield: {fileID: 255283402541676546, guid: 20eb407f7b8ba1c4ab46e68502a5a980, type: 3}
   catalyst: {fileID: 2995952248413867604, guid: 4d8fc1c13cef0fc4eb91fb453643da95, type: 3}
   heart: {fileID: 5986962952591058346, guid: e2440429fba810647a0044f9f6c66b8d, type: 3}
+  chest: {fileID: 2710191179245839861, guid: 1e9c31c24c9f8204295aacbe6d9f227f, type: 3}
   maxItems: 2
   minItems: 1
   speedDropRate: 0.2

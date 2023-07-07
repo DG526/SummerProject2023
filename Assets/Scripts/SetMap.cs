@@ -106,6 +106,25 @@ public class SetMap : MonoBehaviour
                     player.transform.position = child.position;
                     camera.transform.position = new Vector3(child.position.x, child.position.y, camera.transform.position.z);
                 }
+                else if(name.IndexOf("boss") != -1)
+                {
+                    int target = (int)(Random.Range(1, 3));
+                    switch (target)
+                    {
+                        case 1:
+                            spawn = Instantiate(wyrmBoss, child.position, child.rotation);
+                            spawn.GetComponent<SpriteRenderer>().color = GetColor();
+                            break;
+                        case 2:
+                            spawn = Instantiate(drakeBoss, child.position, child.rotation);
+                            spawn.GetComponent<SpriteRenderer>().color = GetColor();
+                            break;
+                        case 3:
+                            spawn = Instantiate(wyvernBoss, child.position, child.rotation);
+                            spawn.GetComponent<SpriteRenderer>().color = GetColor();
+                            break;
+                    }
+                }
                 else if (name.IndexOf("Dragon") != -1)
                 {
                     string color = levelTypes[level];

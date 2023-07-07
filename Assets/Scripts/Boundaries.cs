@@ -18,10 +18,11 @@ public class Boundaries : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if(collision.gameObject == null) return;
         //Debug.Log(collision.gameObject.name);
         int layer = collision.gameObject.layer;
         //player       monster       flying monster
-        if ((layer == 3 || layer == 8 || layer == 10) && (collision.gameObject.GetComponent<DragonBehavior>() == null || collision.GetType() != typeof(PolygonCollider2D)))
+        if ((layer == 3 || layer == 8 || layer == 10) && ((collision.gameObject.GetComponent<DragonBehavior>() == null && collision.gameObject.GetComponent<DarkLightDragonBehavior>() == null) || collision.GetType() != typeof(PolygonCollider2D)))
         {
 
             if(layer == 8 || layer == 10)

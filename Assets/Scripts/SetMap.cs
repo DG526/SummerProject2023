@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SetMap : MonoBehaviour
 {
+    public bool first = true;
+
     [Header ("Bosses")]
     public GameObject redDragon;
     public GameObject greenDragon;
@@ -50,6 +52,12 @@ public class SetMap : MonoBehaviour
 
     public void Set()
     {
+        Debug.Log("Word :3");
+        if (first)
+        {
+            StartCoroutine(MapCheck());
+        }
+
         levelCount++;
         #region clear
         object[] obj = GameObject.FindObjectsOfType(typeof(GameObject));
@@ -162,5 +170,10 @@ public class SetMap : MonoBehaviour
 
 
         return Color.white;
+    }
+    public IEnumerator MapCheck()
+    {
+        yield return new WaitForSeconds(5);
+        first = false;
     }
 }

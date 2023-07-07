@@ -2481,7 +2481,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &222011867
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2835,7 +2835,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score:'
+  m_text: 'Current Score:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 27291e9398d3e684287ba6f6dee17e6f, type: 2}
   m_sharedMaterial: {fileID: -8787498440288110234, guid: 27291e9398d3e684287ba6f6dee17e6f, type: 2}
@@ -2941,8 +2941,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.85859, y: 0.85859, z: 0.85859}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 381959437}
+  m_Children: []
   m_Father: {fileID: 931505851}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4662,8 +4661,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5656, y: 1.5656, z: 1.5656}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1252251665}
+  m_Children: []
   m_Father: {fileID: 188095290}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5754,6 +5752,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 831367954}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1375437537}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
         m_MethodName: NextMap
@@ -6005,6 +6015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadOutCanvas: {fileID: 831367954}
+  map: {fileID: 0}
   fireButton: {fileID: 1340905221}
   waterButton: {fileID: 1325688625}
   earthButton: {fileID: 976516630}
@@ -10679,7 +10690,7 @@ MonoBehaviour:
   loseFirstButton: {fileID: 1172427973}
   winFirstButton: {fileID: 760931648}
   warningButton: {fileID: 1850501629}
-  openLoadout: {fileID: 0}
+  openLoadout: {fileID: 831367956}
   map: {fileID: 0}
 --- !u!1 &1458687775
 GameObject:
@@ -12703,7 +12714,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16732,8 +16743,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5383907370373187610, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
-      propertyPath: maxLevelCount
+      propertyPath: first
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383907370373187610, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
+      propertyPath: level
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383907370373187610, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
+      propertyPath: maxLevelCount
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5658773615123066320, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
       propertyPath: m_LocalScale.x
@@ -16977,6 +16996,10 @@ PrefabInstance:
     - target: {fileID: 4767738261484142100, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505850202712153687, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
+      propertyPath: moveSpeed
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

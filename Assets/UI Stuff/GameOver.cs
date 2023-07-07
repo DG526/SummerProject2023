@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
+
     //Menus
     public GameObject loseCanvas;
     public GameObject winCanvas;
@@ -61,6 +62,8 @@ public class GameOver : MonoBehaviour
         Time.timeScale = 0f;
         loseCanvas.SetActive(true);
         winCanvas.SetActive(false);
+
+        //scoreText.text = "Final Score: " + playerPoints.GetPoints();
 
         OpenLoseMenu();
     }

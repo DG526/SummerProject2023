@@ -9,6 +9,8 @@ public class Loadout : MonoBehaviour
     //Canvas
     [SerializeField] private GameObject loadOutCanvas;
 
+    public SetMap map;
+    
     //Button
     public Button fireButton;
     public Button waterButton;
@@ -54,6 +56,7 @@ public class Loadout : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        map = GameObject.Find("Map").GetComponent<SetMap>();
 
         Time.timeScale = 0f;
         loadOutCanvas.SetActive(true);
@@ -74,6 +77,10 @@ public class Loadout : MonoBehaviour
     public void OpenLoadout()
     {
         EventSystem.current.SetSelectedGameObject(fireButton.gameObject);
+        if (!map.first)
+        {
+            map.Set();
+        }
     }
     public void CheckLoadout()
     {

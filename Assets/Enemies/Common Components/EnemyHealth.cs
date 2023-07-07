@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     public float multiplier = 1;
     public int health;
 
+    public GameOver gameOver;
     SpawnController spawnControl;
     public GameObject spawner;
 
@@ -42,6 +43,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject shield;
     public GameObject catalyst;
     public GameObject heart;
+    public GameObject chest;
 
     [Header ("Number of Items to Drop")]
     public int maxItems = 2;
@@ -71,6 +73,8 @@ public class EnemyHealth : MonoBehaviour
         playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
 
         spawnControl = GameObject.Find("SpawnController").GetComponent<SpawnController>();
+
+        gameOver = GameObject.Find("GameOver").GetComponent<GameOver>();
     }
 
     // Update is called once per frame
@@ -120,16 +124,25 @@ public class EnemyHealth : MonoBehaviour
 
     public void Death()
     {
+        gameOver.defeated += 1;
+
         dead = true;
         if(spawner != null)
         {
             spawner.GetComponent<Spawner>().Remove();
         }
+        if(gameObject.name.IndexOf("chest") == -1 && gameObject.name.IndexOf("spawn") == -1)
         spawnControl.enemyRemove();
 
+        if (gameObject.name.IndexOf("boss") != -1)
+        {
+            Debug.Log("Getting to chest");
+            GameObject thing = Instantiate(chest, gameObject.transform.position, Quaternion.identity);
+        }
+
         int coins = (int)(Random.Range(minCoins, maxCoins));
-        Debug.Log(gameObject.name);
-        Debug.Log("Coins: " + coins);
+        //Debug.Log(gameObject.name);
+        //Debug.Log("Coins: " + coins);
         for (int i = 0; i < coins; i++)
         {
             float coinRange = Random.Range(0f, gem2Drop);

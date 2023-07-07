@@ -12,14 +12,25 @@ public class PlayerHealth : MonoBehaviour
     public bool dead = false;
     public bool grace = false;
     public float graceDuration = 1f;
-    private float graceTime = 0f;
+    public float graceTime = 0f;
 
     public List<Image> hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+
     void Start()
     {
         health = numOfHearts;
+
+        if (gameObject.name.Equals("Player Clone(Clone)"))
+            return;
+        string target;
+        for(int i = 1; i < 9; i++)
+        {
+            target = "Heart" + i;
+            hearts[i -1] = GameObject.Find(target).GetComponent<Image>();
+        }
+        
     }
     void Update()
     {

@@ -54,16 +54,23 @@ public class DragonBehavior : MonoBehaviour
     float breathTimer; // For breath patterns in bursts (Wind)
     int breathSwitch; // For breath patterns with variable amounts of bullets/frame (Lightning)
     bool aggro = false;
+
+    public SetMap map;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        map = GameObject.Find("Map").GetComponent<SetMap>();
         if (!player)
             player = GameObject.FindGameObjectWithTag("Player");
     }
     private void OnDestroy()
     {
+        map.levelTypes.RemoveAt(map.level);
         GameObject.Find("GameOver").GetComponent<GameOver>().WinWaitStart(5);
+        player.GetComponent<PlayerHealth>().health = Mathf.Min(player.GetComponent<PlayerHealth>().health + 2, player.GetComponent<PlayerHealth>().numOfHearts);
+        player.GetComponent<PlayerHealth>().graceTime = Time.time + 5f;
+        player.GetComponent<PlayerHealth>().grace = true;
     }
 
     // Update is called once per frame

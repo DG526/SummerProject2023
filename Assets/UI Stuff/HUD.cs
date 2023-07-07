@@ -4,16 +4,20 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
+    [Header ("Scripts")]
     public Shooting shooting;
     public Ultimate ultimate;
     public PlayerHealth playerHealth;
     public GameObject gem;
+    public PlayerPoints playerPoints;
 
     GameObject player;
 
+    [Header ("Loadout")]
     string fire1;
     string fire2;
     string ult;
@@ -22,6 +26,7 @@ public class HUD : MonoBehaviour
     Image secondaryImage;
     Image ultImage;
 
+    [Header ("Spells")]
     public Sprite fire;
     public Sprite water;
     public Sprite lightning;
@@ -29,22 +34,39 @@ public class HUD : MonoBehaviour
     public Sprite poison;
     public Sprite wind;
 
+    [Header ("Ultimate")]
     public Sprite ultBeam;
     public Sprite ultAOE;
     public Sprite ultClone;
 
+    [Header ("Health")]
     public int health;
     public int numOfHearts;
+
+    public TMP_Text scoreText;
+
+    [Header ("Cooldown")]
+    [SerializeField] private Image cooldownImage;
+    public TMP_Text charge;
+    float cooldown = 0f;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        //For Ult Cooldown
+        cooldownImage.fillAmount = 0.0f;
 
+        //finds player object and resets points
+        player = GameObject.FindWithTag("Player");
+        playerPoints.ResetPoints();
+
+        //grab scripts from player object
         shooting = player.GetComponent<Shooting>();
         ultimate = player.GetComponent<Ultimate>();
         playerHealth = player.GetComponent<PlayerHealth>();
 
+        //finds what the player shoots
         fire1 = shooting.Fire1;
         fire2 = shooting.Fire2;
         ult = ultimate.ultimate;
@@ -68,12 +90,15 @@ public class HUD : MonoBehaviour
                 ultImage = child.gameObject.GetComponent<Image>();
             }
         }
+
+        //sets the images depending the choosen loadout
         SetFireImages();
         SetUltImages();
+
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (fire1 != shooting.Fire1 || fire2 != shooting.Fire2)
         {
@@ -89,6 +114,11 @@ public class HUD : MonoBehaviour
 
             SetUltImages();
         }
+
+        UpdateScore();
+        charge.text = "" + ultimate.charges;
+
+        CheckCooldown();
     }
 
     void SetFireImages()
@@ -144,5 +174,33 @@ public class HUD : MonoBehaviour
         {
             ultImage.sprite = ultBeam;
         }
+    }
+
+    public void UpdateScore()
+    {
+        scoreText.text = "Score: " + playerPoints.GetPoints();
+    }
+
+    public void CheckCooldown()
+    {
+        float test;
+
+        if (ult == "aoe")
+        {
+            cooldown = ultimate.aoeCD - Time.time;
+            cooldown = (float)(cooldown/ultimate.aoeCDI);
+        }
+        if (ult == "clone")
+        {
+            cooldown = ultimate.cloneCD - Time.time;
+            cooldown = (float)(cooldown / ultimate.cloneCDI);
+        }
+        if (ult == "beam")
+        { 
+            cooldown = ultimate.beamCD - Time.time;
+            cooldown = (float)(cooldown / ultimate.beamCDI);
+        }
+
+        cooldownImage.fillAmount = cooldown;
     }
 }

@@ -135,6 +135,7 @@ public class Ultimate : MonoBehaviour
     {
         if (ult == "aoe" && charges > 0)
         {
+            aoeCD = Time.time + aoeCDI;
             charges--;
             if(firstUlt)
             {
@@ -153,6 +154,7 @@ public class Ultimate : MonoBehaviour
 
         if (ult == "clone" && charges > 0)
         {
+            cloneCD = Time.time + cloneCDI;
             charges--;
             if (firstUlt)
             {
@@ -172,6 +174,7 @@ public class Ultimate : MonoBehaviour
 
         if (ult == "beam" && charges > 0)
         {
+            beamCD = Time.time + beamCDI;
             charges--;
             if (firstUlt)
             {
@@ -221,6 +224,7 @@ public class Ultimate : MonoBehaviour
         {
             Beam.transform.localScale = Vector2.Lerp(beamStart, beamSize, currentTime / time);
             Beam.transform.localPosition = Vector2.Lerp(beamStartPos, (new Vector2(0f, beamSize.y) * beamOffet + beamStartPos), currentTime / time);
+            Beam.transform.localPosition = Beam.transform.localPosition + new Vector3(0, 0, -2);
 
             if (beamColor.a > 0.5f && !beamActive)
             {

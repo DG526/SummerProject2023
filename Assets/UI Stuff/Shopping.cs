@@ -31,6 +31,18 @@ public class Shopping : MonoBehaviour
     public int poisonCost;
     public int lightningCost;
 
+    [Header("Price Listings")]
+    public TMP_Text healthCostText;
+    public TMP_Text speedCostText;
+    public TMP_Text ultCostText;
+    public TMP_Text fireCostText;
+    public TMP_Text waterCostText;
+    public TMP_Text earthCostText;
+    public TMP_Text windCostText;
+    public TMP_Text poisonCostText;
+    public TMP_Text lightingCostText;
+
+
     public int maxUltCharges = 2;
 
     [Header ("Player Buttons")]
@@ -48,6 +60,7 @@ public class Shopping : MonoBehaviour
 
     //to be removed
     private bool isPaused;
+    public TMP_Text scoreText;
 
     [Header ("Button Text")]
     public TMP_Text speedText;
@@ -59,33 +72,34 @@ public class Shopping : MonoBehaviour
     public TMP_Text windText;
     public TMP_Text poisonText;
     public TMP_Text lightingText;
-
     // Start is called before the first frame update
     void Start()
     {
+
         player = GameObject.FindWithTag("Player");
         pHealth = player.GetComponent<PlayerHealth>();
         move = player.GetComponent<PlayerMovement>();
         shoot = player.GetComponent<Shooting>();
         ult = player.GetComponent<Ultimate>();
+        points = player.GetComponent<PlayerPoints>();
 
         shopCanvas.SetActive(false);
+
+        //Costs
+        healthCostText.text = "" + healthCost;
+        speedCostText.text = "" + speedCost;
+        ultCostText.text = "" + ultimateCost;
+        fireCostText.text = "" + fireCost;
+        waterCostText.text = "" + waterCost;
+        earthCostText.text = "" + earthCost;
+        windCostText.text = "" + windCost;
+        poisonCostText.text = "" + poisonCost;
+        lightingCostText.text = "" + lightningCost;
     }
 
-    private void Update()
+    public void Update()
     {
-        //For Testing, make it so the shop shows at round 2 and before the final round
-        //Checks if it is paused or not
-        if (InputManagerPause.instance.MenuInput)
-        {
-            if (!isPaused)
-            {
-                OpenShop();
-
-                //freezes everything
-                Time.timeScale = 0f;
-            }
-        }
+        scoreText.text = "" + points.GetPoints();
     }
 
     public void OpenShop()
@@ -94,7 +108,12 @@ public class Shopping : MonoBehaviour
 
         //sets the first button when menu opens
         EventSystem.current.SetSelectedGameObject(healthButton.gameObject);
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
+    }
+
+    public void CloseShop()
+    {
+        shopCanvas.SetActive(false);
     }
 
     public void AddHealth()
@@ -103,6 +122,8 @@ public class Shopping : MonoBehaviour
         {
             points.RemovePoints(healthCost);
             healthCost += healthCostIncrement;
+            healthCostText.text = "" + healthCost;
+
             pHealth.numOfHearts = pHealth.numOfHearts + 1;
             pHealth.health = pHealth.health + 1;
             if (pHealth.numOfHearts == 8)
@@ -119,6 +140,8 @@ public class Shopping : MonoBehaviour
         {
             points.RemovePoints(speedCost);
             speedCost += speedCostIncrement;
+            speedCostText.text = "" + speedCost;
+
             move.moveSpeed = move.moveSpeed + 1.5f;
             if (move.moveSpeed >= 9)
             {

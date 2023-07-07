@@ -9,6 +9,8 @@ public class Loadout : MonoBehaviour
     //Canvas
     [SerializeField] private GameObject loadOutCanvas;
 
+    public SetMap map;
+
     //Button
     public Button fireButton;
     public Button waterButton;
@@ -26,7 +28,7 @@ public class Loadout : MonoBehaviour
     public bool fire2 = false;
     public bool ult = false;
 
-    [Header ("Selected Sprites")]
+    [Header("Selected Sprites")]
     //Change sprite
     public Sprite fireSelected;
     public Sprite waterSelected;
@@ -51,9 +53,11 @@ public class Loadout : MonoBehaviour
     public Sprite cloneSprite;
 
     GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
+        map = GameObject.Find("Map").GetComponent<SetMap>();
 
         Time.timeScale = 0f;
         loadOutCanvas.SetActive(true);
@@ -74,6 +78,14 @@ public class Loadout : MonoBehaviour
     public void OpenLoadout()
     {
         EventSystem.current.SetSelectedGameObject(fireButton.gameObject);
+        Time.timeScale = 0f;
+
+        if (!map.first)
+        {
+            GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>().StopTrack();
+            GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>().PlayTrack(Track.Level);
+            map.Set();
+        }
     }
     public void CheckLoadout()
     {

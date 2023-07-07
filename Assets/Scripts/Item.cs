@@ -30,6 +30,7 @@ public class Item : MonoBehaviour
     [Header("Gems")]
     public int gem1val = 10;
     public int gem2val = 50;
+
     bool moving = false;
     void Start()
     {
@@ -114,13 +115,11 @@ public class Item : MonoBehaviour
             {
                 playerPoints = collision.gameObject.GetComponent<PlayerPoints>();
                 playerPoints.AddPoints(gem1val);
-                Debug.Log("Current Points: " + playerPoints.GetPoints());
             }
             else if (gameObject.name.IndexOf("Gem2") != -1)
             {
                 playerPoints = collision.gameObject.GetComponent<PlayerPoints>();
                 playerPoints.AddPoints(gem2val);
-                Debug.Log("Current Points: " + playerPoints.GetPoints());
             }
             Destroy(gameObject);
         }

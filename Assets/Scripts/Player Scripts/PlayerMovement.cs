@@ -32,15 +32,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!playerHealth.dead && !loadout.activeInHierarchy)
-        {
-            Move();
-        }
-
-        if(playerHealth.dead)
+        if (playerHealth.dead)
         {
             rb.velocity = Vector2.zero;
+            return;
         }
+
+        if (loadout != null && loadout.activeInHierarchy)
+            return;
+
+        Move();
     }
 
     void GetInput()

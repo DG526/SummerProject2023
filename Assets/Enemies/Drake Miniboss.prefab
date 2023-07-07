@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5781743027545632508
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4507148628021299969, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: chest
+      value: 
+      objectReference: {fileID: 2710191179245839861, guid: 1e9c31c24c9f8204295aacbe6d9f227f, type: 3}
+    - target: {fileID: 4507148628021299969, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: maxCoins
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507148628021299969, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: minCoins
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507148628021299969, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: maxHealth
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584293981434268629, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: awarenessType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013294249361281213, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_Name
+      value: Drake Miniboss
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563539734734130029, guid: 6551d62c9f391544689908f432975a59, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6551d62c9f391544689908f432975a59, type: 3}

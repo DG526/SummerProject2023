@@ -8,6 +8,7 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
+    [Header ("Scripts")]
     public Shooting shooting;
     public Ultimate ultimate;
     public PlayerHealth playerHealth;
@@ -16,6 +17,7 @@ public class HUD : MonoBehaviour
 
     GameObject player;
 
+    [Header ("Loadout")]
     string fire1;
     string fire2;
     string ult;
@@ -24,6 +26,7 @@ public class HUD : MonoBehaviour
     Image secondaryImage;
     Image ultImage;
 
+    [Header ("Spells")]
     public Sprite fire;
     public Sprite water;
     public Sprite lightning;
@@ -31,22 +34,28 @@ public class HUD : MonoBehaviour
     public Sprite poison;
     public Sprite wind;
 
+    [Header ("Ultimate")]
     public Sprite ultBeam;
     public Sprite ultAOE;
     public Sprite ultClone;
 
+    [Header ("Health")]
     public int health;
     public int numOfHearts;
 
     public TMP_Text scoreText;
 
-    [SerializeField] private Image cooldown;
+    [Header ("Cooldown")]
+    [SerializeField] private Image cooldownImage;
+    public TMP_Text charge;
+    float cooldown = 0f;
+
 
     // Start is called before the first frame update
     void Start()
     {
         //For Ult Cooldown
-        cooldown.fillAmount = 0.0f;
+        cooldownImage.fillAmount = 0.0f;
 
         //finds player object and resets points
         player = GameObject.FindWithTag("Player");
@@ -81,12 +90,15 @@ public class HUD : MonoBehaviour
                 ultImage = child.gameObject.GetComponent<Image>();
             }
         }
+
+        //sets the images depending the choosen loadout
         SetFireImages();
         SetUltImages();
+
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (fire1 != shooting.Fire1 || fire2 != shooting.Fire2)
         {
@@ -104,6 +116,9 @@ public class HUD : MonoBehaviour
         }
 
         UpdateScore();
+        charge.text = "" + ultimate.charges;
+
+        CheckCooldown();
     }
 
     void SetFireImages()
@@ -164,5 +179,33 @@ public class HUD : MonoBehaviour
     public void UpdateScore()
     {
         scoreText.text = "Score: " + playerPoints.GetPoints();
+    }
+
+    public void CheckCooldown()
+    {
+        float test;
+
+        if (ult == "aoe")
+        {
+            Debug.Log(ultimate.aoeCDI);
+            cooldown = ultimate.aoeCD - Time.time;
+            cooldown = (float)(cooldown/ultimate.aoeCDI);
+        }
+        if (ult == "clone")
+        {
+            Debug.Log(ultimate.cloneCDI);
+            cooldown = ultimate.cloneCD - Time.time;
+            cooldown = (float)(cooldown / ultimate.cloneCDI);
+        }
+        if (ult == "beam")
+        { 
+            Debug.Log(ultimate.beamCDI);
+            cooldown = ultimate.beamCD - Time.time;
+            cooldown = (float)(cooldown / ultimate.beamCDI);
+        }
+
+        cooldownImage.fillAmount = cooldown;
+
+        Debug.Log(cooldownImage.fillAmount);
     }
 }

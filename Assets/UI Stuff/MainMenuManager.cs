@@ -21,6 +21,7 @@ public class MainMenuManager : MonoBehaviour
     //Starts the game
     public void Start()
     {
+        //calls the function and holds that function for that many seconds
         mainMenu.SetActive(true);
         settings.SetActive(false);
         howToPlay.SetActive(false);

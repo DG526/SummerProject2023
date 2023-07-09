@@ -67,6 +67,7 @@ public class DragonBehavior : MonoBehaviour
     private void OnDestroy()
     {
         map.levelTypes.RemoveAt(map.level);
+        if(GameObject.Find("GameOver") != null && GameObject.Find("GameOver").GetComponent<GameOver>() != null)
         GameObject.Find("GameOver").GetComponent<GameOver>().WinWaitStart(5);
         player.GetComponent<PlayerHealth>().health = Mathf.Min(player.GetComponent<PlayerHealth>().health + 2, player.GetComponent<PlayerHealth>().numOfHearts);
         player.GetComponent<PlayerHealth>().graceTime = Time.time + 5f;

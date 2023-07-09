@@ -7,6 +7,7 @@ public enum Track
 {
     None,
     Title,
+    Shop,
     Level,
     Boss,
     FinalBoss,
@@ -16,8 +17,8 @@ public enum Track
 public class BGMLooper : MonoBehaviour
 {
     public Track firstTrack, currentTrack;
-    public AudioClip titleTheme, levelTheme, bossTheme, finalBossTheme, gameOverTheme, victoryTheme;
-    public float titleLoopPoint = 57.6f, levelLoopPoint = 72.0f, bossLoopPoint = 64.0f, finalBossLoopPoint = 76.8f;
+    public AudioClip titleTheme, levelTheme, shopTheme, bossTheme, finalBossTheme, gameOverTheme, victoryTheme;
+    public float titleLoopPoint = 57.6f, shopLoopPoint = 36, levelLoopPoint = 72.0f, bossLoopPoint = 64.0f, finalBossLoopPoint = 76.8f;
     AudioSource sourceA, sourceB;
     bool onB;
     bool firstFrame = true;
@@ -27,10 +28,10 @@ public class BGMLooper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sourceA = gameObject.AddComponent<AudioSource>();
-        sourceA.volume = 0.3f;
-        sourceB = gameObject.AddComponent<AudioSource>();
-        sourceB.volume = 0.3f;
+        sourceA = gameObject.GetComponents<AudioSource>()[0];
+        //sourceA.volume = 0.3f;
+        sourceB = gameObject.GetComponents<AudioSource>()[1];
+        //sourceB.volume = 0.3f;
         PlayTrack(firstTrack);
     }
 
@@ -99,6 +100,9 @@ public class BGMLooper : MonoBehaviour
                 case Track.Title:
                     sourceB.clip = titleTheme;
                     break;
+                case Track.Shop:
+                    sourceB.clip = shopTheme;
+                    break;
                 case Track.Level:
                     sourceB.clip = levelTheme;
                     break;
@@ -111,6 +115,9 @@ public class BGMLooper : MonoBehaviour
                 case Track.GameOver:
                     sourceB.clip = gameOverTheme;
                     break;
+                case Track.Victory:
+                    sourceB.clip = victoryTheme;
+                    break;
             }
             sourceB.Play();
         }
@@ -120,6 +127,9 @@ public class BGMLooper : MonoBehaviour
             {
                 case Track.Title:
                     sourceA.clip = titleTheme;
+                    break;
+                case Track.Shop:
+                    sourceA.clip = shopTheme;
                     break;
                 case Track.Level:
                     sourceA.clip = levelTheme;
@@ -133,6 +143,9 @@ public class BGMLooper : MonoBehaviour
                 case Track.GameOver:
                     sourceA.clip = gameOverTheme;
                     break;
+                case Track.Victory:
+                    sourceA.clip = victoryTheme;
+                    break;
             }
             sourceA.Play();
         }
@@ -140,6 +153,9 @@ public class BGMLooper : MonoBehaviour
         {
             case Track.Title:
                 loopTimer = titleLoopPoint;
+                break;
+                case Track.Shop:
+                loopTimer = shopLoopPoint;
                 break;
                 case Track.Level:
                 loopTimer = levelLoopPoint;
@@ -151,6 +167,7 @@ public class BGMLooper : MonoBehaviour
                 loopTimer = finalBossLoopPoint;
                 break;
             case Track.GameOver:
+            case Track.Victory:
             case Track.None:
                 loopTimer = -1;
                 break;

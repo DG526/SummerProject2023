@@ -207,7 +207,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10000
+  m_Mass: 1000000
   m_LinearDrag: 0
   m_AngularDrag: 1000000
   m_GravityScale: 0
@@ -487,6 +487,7 @@ MonoBehaviour:
   maxHealth: 25000
   multiplier: 1
   health: 0
+  gameOver: {fileID: 0}
   spawner: {fileID: 0}
   gem1: {fileID: 3929919800341922367, guid: c5fb0621e0f7a9742b1e3b5822ee4560, type: 3}
   gem2: {fileID: 119683321562045588, guid: 5ab1dcef5681f3e4394949cdf1bb195c, type: 3}

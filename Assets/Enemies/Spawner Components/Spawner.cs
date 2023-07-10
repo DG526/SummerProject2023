@@ -81,7 +81,7 @@ public class Spawner : MonoBehaviour
         Vector3 mod = (SpawnPoint.up + pdir).normalized * dist;
         if (spawn > drakeRate)
         {
-            enemy = Instantiate(wyvern, SpawnPoint.position + mod, SpawnPoint.rotation);
+            enemy = Instantiate(wyvern, SpawnPoint.position + mod + new Vector3(0,0,-0.5f), SpawnPoint.rotation);
             enemy.GetComponent<EnemyHealth>().spawner = gameObject;
             if(map != null)
                 enemy.GetComponent<SpriteRenderer>().color = map.GetColor();

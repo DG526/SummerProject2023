@@ -9,6 +9,7 @@ public class Ultimate : MonoBehaviour
     public Shooting shooting;
     public GameObject clone;
     public PlayerHealth playerHealth;
+    public AudioManager audio;
 
     [Header ("Clone")]
     public float cloneCDI = 30f;
@@ -64,6 +65,8 @@ public class Ultimate : MonoBehaviour
         playerHealth = gameObject.GetComponent<PlayerHealth>();
 
         shooting = GetComponent<Shooting>();
+
+        audio = GameObject.Find("Audio").GetComponent<AudioManager>();
 
         charges = maxCharges;
 
@@ -137,7 +140,10 @@ public class Ultimate : MonoBehaviour
         {
             aoeCD = Time.time + aoeCDI;
             charges--;
-            if(firstUlt)
+
+            //audio
+            audio.PlaySFX(audio.light);
+            if (firstUlt)
             {
                 FindNextCharge();
                 firstUlt = false;
@@ -156,6 +162,9 @@ public class Ultimate : MonoBehaviour
         {
             cloneCD = Time.time + cloneCDI;
             charges--;
+
+            //audio
+            audio.PlaySFX(audio.light);
             if (firstUlt)
             {
                 FindNextCharge();
@@ -176,6 +185,9 @@ public class Ultimate : MonoBehaviour
         {
             beamCD = Time.time + beamCDI;
             charges--;
+
+            //audio
+            audio.PlaySFX(audio.light);
             if (firstUlt)
             {
                 FindNextCharge();

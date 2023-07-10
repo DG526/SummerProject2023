@@ -8,6 +8,8 @@ public class Shooting : MonoBehaviour
     public PlayerHealth playerHealth;
     public PlayerSpeed playerSpeed;
     public PlayerCatalyst playerCatalyst;
+    //audio
+    public AudioManager audio;
 
     [Header("Prefabs and Transforms")]
     public Transform firePoint;
@@ -82,6 +84,8 @@ public class Shooting : MonoBehaviour
         playerSpeed = gameObject.GetComponent<PlayerSpeed>();
         playerCatalyst = GetComponent<PlayerCatalyst>();
         loadout = GameObject.Find("LoadOut");
+
+        audio = GameObject.Find("Audio").GetComponent<AudioManager>();
     }
     // Update is called once per frame
     void Update()
@@ -117,6 +121,9 @@ public class Shooting : MonoBehaviour
         #region fireball
         if (type == "circle" && Time.time > circleCD)
         {
+            //test
+            audio.PlaySFX(audio.fire);
+
             gem.GetComponent<SpriteRenderer>().color = new Color32(243,78,4,255);
             bullet = Instantiate(circleBullet, firePoint.position, firePoint.rotation);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
@@ -152,6 +159,9 @@ public class Shooting : MonoBehaviour
         #region water
         if (type == "triangle" && Time.time > triangleCD)
         {
+            //test
+            audio.PlaySFX(audio.water);
+
             gem.GetComponent<SpriteRenderer>().color = Color.blue;
             FireTriangle(bullet);
             triangleCD = Time.time + triangleCDI;
@@ -165,6 +175,9 @@ public class Shooting : MonoBehaviour
         #region poison
         if (type == "poison" && Time.time > poisonCD)
         {
+            //test
+            audio.PlaySFX(audio.poison);
+
             bullet = Instantiate(poisonBullet, firePoint.position, firePoint.rotation);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<Poison>().shooting = this;
@@ -193,6 +206,9 @@ public class Shooting : MonoBehaviour
         #region rockDrop
         if (type.IndexOf("rock") != -1  && Time.time > rockCD)
         {
+            //test
+            audio.PlaySFX(audio.earth);
+
             //firePoint.rotation changed to 0
             gem.GetComponent<SpriteRenderer>().color = new Color32(188, 127, 100, 255);
             bullet = Instantiate(rockDrop, firePoint.position + firePoint.up * rockDist, new Quaternion(0,0,0,0));
@@ -219,6 +235,9 @@ public class Shooting : MonoBehaviour
         #region wind
         if (type == "wind" && Time.time > windCD)
         {
+            //test
+            audio.PlaySFX(audio.wind);
+
             bullet = Instantiate(wind, firePoint.position, firePoint.rotation);
             gem.GetComponent<SpriteRenderer>().color = new Color32(42, 255, 216, 255);
             if (playerCatalyst.catalyst)
@@ -248,6 +267,9 @@ public class Shooting : MonoBehaviour
         #region lightning
         if (type == "lightning" && Time.time > lightningCD)
         {
+            //test
+            audio.PlaySFX(audio.lightning);
+
             bullet = Instantiate(lightning, firePoint.position, firePoint.rotation);
             Rigidbody2D lightningRB = bullet.GetComponent<Rigidbody2D>();
             gem.GetComponent<SpriteRenderer>().color = new Color32(255, 251, 0, 255);

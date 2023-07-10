@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     public float multiplier = 1;
     public int health;
 
+    public AudioManager audio;
     public GameOver gameOver;
     SpawnController spawnControl;
     public GameObject spawner;
@@ -74,6 +75,9 @@ public class EnemyHealth : MonoBehaviour
 
         spawnControl = GameObject.Find("SpawnController").GetComponent<SpawnController>();
 
+        //Gets audio 
+        audio = GameObject.Find("Audio").GetComponent<AudioManager>();
+
         gameOver = GameObject.Find("GameOver").GetComponent<GameOver>();
     }
 
@@ -125,6 +129,9 @@ public class EnemyHealth : MonoBehaviour
     public void Death()
     {
         gameOver.defeated += 1;
+
+        //sound effect when dies
+        audio.PlaySFX(audio.enemyDeath);
 
         dead = true;
         if(spawner != null)

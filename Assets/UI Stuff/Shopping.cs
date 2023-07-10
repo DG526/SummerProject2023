@@ -9,12 +9,14 @@ using System.Net.NetworkInformation;
 public class Shopping : MonoBehaviour
 {
     [Header ("Player")]
+    public GameObject player;
+
     public PlayerHealth pHealth;
     public Shooting shoot;
     public PlayerMovement move;
     public Ultimate ult;
     public PlayerPoints points;
-    public GameObject player;
+    public AudioManager audio;
 
     [SerializeField] private GameObject shopCanvas;
 
@@ -41,7 +43,6 @@ public class Shopping : MonoBehaviour
     public TMP_Text windCostText;
     public TMP_Text poisonCostText;
     public TMP_Text lightingCostText;
-
 
     public int maxUltCharges = 2;
 
@@ -82,6 +83,7 @@ public class Shopping : MonoBehaviour
         shoot = player.GetComponent<Shooting>();
         ult = player.GetComponent<Ultimate>();
         points = player.GetComponent<PlayerPoints>();
+        audio = GameObject.Find("Audio").GetComponent<AudioManager>();
 
         shopCanvas.SetActive(false);
 
@@ -101,6 +103,12 @@ public class Shopping : MonoBehaviour
     {
         scoreText.text = "" + points.GetPoints();
     }
+
+    public void PlaySound()
+    {
+        audio.PlaySFX(audio.buy);
+    }
+
 
     public void OpenShop()
     {

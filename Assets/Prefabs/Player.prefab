@@ -5300,7 +5300,7 @@ Transform:
   - {fileID: 1289595972511790238}
   - {fileID: 178932712924082736}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3244008386322180221
 SpriteRenderer:
@@ -5367,7 +5367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 3557685604673690757}
-  moveSpeed: 5
+  moveSpeed: 12
   rb: {fileID: 952979684238027788}
   playerSpeed: {fileID: 0}
 --- !u!114 &6566468037653931324
@@ -5477,6 +5477,7 @@ MonoBehaviour:
   dead: 0
   grace: 0
   graceDuration: 1
+  graceTime: 0
   hearts:
   - {fileID: 0}
   - {fileID: 0}
@@ -5501,6 +5502,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
+  totalScore: 0
+  highScore: 0
 --- !u!114 &6388839294459175891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5514,7 +5517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  speedUp: 2.5
+  speedUp: 1.5
   fireSpeedUp: 1
   speedDuration: 10
   speedEnd: 0
@@ -5882,7 +5885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  shieldDuration: 5
+  shieldDuration: 20
   shieldEnd: 0
   rotationSpeed: 180
 --- !u!50 &628905105646733673

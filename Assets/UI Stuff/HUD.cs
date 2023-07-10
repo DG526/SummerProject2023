@@ -183,7 +183,6 @@ public class HUD : MonoBehaviour
 
     public void CheckCooldown()
     {
-        float test;
 
         if (ult == "aoe")
         {

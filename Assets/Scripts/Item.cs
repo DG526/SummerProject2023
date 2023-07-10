@@ -5,6 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     private Transform player;
+    public AudioManager audio;
 
     private Rigidbody2D rb;
 
@@ -34,6 +35,7 @@ public class Item : MonoBehaviour
     bool moving = false;
     void Start()
     {
+        audio = GameObject.Find("Audio").GetComponent<AudioManager>();
         player = GameObject.FindWithTag("Player").transform;
 
         if (player == null)
@@ -54,7 +56,7 @@ public class Item : MonoBehaviour
             dir = player.position - transform.position;
             dir = dir.normalized;
 
-            rb.AddForce(dir * magnetism);
+            rb.velocity = (dir * magnetism);
         }
         else if(distance > threshold && !moving) 
         { 
@@ -68,6 +70,9 @@ public class Item : MonoBehaviour
         {
             if (gameObject.tag == "Healing Heart")
             {
+                //plays sounds
+                audio.PlaySFX(audio.powerUp);
+
                 playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
                 if (playerHealth.health < playerHealth.numOfHearts)
                 {
@@ -77,6 +82,9 @@ public class Item : MonoBehaviour
             }
             else if (gameObject.tag == "Speed Potion")
             {
+                //plays sound
+                audio.PlaySFX(audio.powerUp);
+
                 playerSpeed = collision.gameObject.GetComponent<PlayerSpeed>();
                 playerSpeed.speed = true;
                 playerSpeed.speedEnd = Time.time + playerSpeed.speedDuration;
@@ -84,6 +92,9 @@ public class Item : MonoBehaviour
             }
             else if(gameObject.tag == "Catalyst")
             {
+                //plays sound
+                audio.PlaySFX(audio.powerUp);
+
                 playerCatalyst = collision.gameObject.GetComponent<PlayerCatalyst>();
                 playerCatalyst.catalyst = true;
                 
@@ -92,7 +103,10 @@ public class Item : MonoBehaviour
             }
             else if(gameObject.tag == "Shield Item")
             {
-                foreach(Transform child in collision.gameObject.transform)
+                //plays sound
+                audio.PlaySFX(audio.powerUp);
+
+                foreach (Transform child in collision.gameObject.transform)
                 {
                     //Debug.Log(child.name);
 
@@ -115,11 +129,15 @@ public class Item : MonoBehaviour
             {
                 playerPoints = collision.gameObject.GetComponent<PlayerPoints>();
                 playerPoints.AddPoints(gem1val);
+
+                audio.PlaySFX(audio.gemPickUp);
             }
             else if (gameObject.name.IndexOf("Gem2") != -1)
             {
                 playerPoints = collision.gameObject.GetComponent<PlayerPoints>();
                 playerPoints.AddPoints(gem2val);
+
+                audio.PlaySFX(audio.gemPickUp);
             }
             Destroy(gameObject);
         }

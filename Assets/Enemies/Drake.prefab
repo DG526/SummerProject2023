@@ -113,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 6013294249361281213}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.03, y: -1.63, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3827491506588820835}
@@ -294,7 +294,9 @@ MonoBehaviour:
   maxHealth: 50
   multiplier: 1
   health: 0
+  gameOver: {fileID: 0}
   spawner: {fileID: 0}
+  deathSound: {fileID: 0}
   gem1: {fileID: 3929919800341922367, guid: c5fb0621e0f7a9742b1e3b5822ee4560, type: 3}
   gem2: {fileID: 119683321562045588, guid: 5ab1dcef5681f3e4394949cdf1bb195c, type: 3}
   maxCoins: 4

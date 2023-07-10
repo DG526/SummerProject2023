@@ -111,9 +111,12 @@ public class GameOver : MonoBehaviour
     #region First Button Clicked
     private void OpenLoseMenu()
     {
+        GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>().StopTrack();
+        GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>().PlayTrack(Track.GameOver);
+
         loseCanvas.SetActive(true);
         winCanvas.SetActive(false);
-        textCanvas.SetActive(false);
+        textCanvas.SetActive(true);
         ShowText();
 
         //sets the first button when menu opens

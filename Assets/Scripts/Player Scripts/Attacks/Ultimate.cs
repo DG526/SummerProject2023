@@ -43,6 +43,9 @@ public class Ultimate : MonoBehaviour
 
     //script specific
     GameObject AoE;
+    bool AoEactive = false;
+
+    bool cloneActive = false;
 
     GameObject Beam;
     bool beamActive;
@@ -133,16 +136,18 @@ public class Ultimate : MonoBehaviour
 
     void FireUltimate(string ult)
     {
-        if (ult == "aoe" && charges > 0)
+        if (ult == "aoe" && charges > 0 && !AoEactive)
         {
             aoeCD = Time.time + aoeCDI;
+            if (charges == maxCharges)
+                FindNextCharge();
             charges--;
             if(firstUlt)
             {
                 FindNextCharge();
                 firstUlt = false;
             }
-
+            AoEactive = true;
             //aoeCD = Time.time + aoeCDI;
 
             if (!AoE.activeInHierarchy)
@@ -152,9 +157,11 @@ public class Ultimate : MonoBehaviour
             StartCoroutine(ScaleOverTime(aoeTime));
         }
 
-        if (ult == "clone" && charges > 0)
+        if (ult == "clone" && charges > 0 && !cloneActive)
         {
             cloneCD = Time.time + cloneCDI;
+            if (charges == maxCharges)
+                FindNextCharge();
             charges--;
             if (firstUlt)
             {
@@ -168,13 +175,18 @@ public class Ultimate : MonoBehaviour
             //change clone loadout to player loadout
             spawnClone.GetComponent<Shooting>().Fire1 = shooting.Fire1;
             spawnClone.GetComponent <Shooting>().Fire2 = shooting.Fire2;
+            spawnClone.GetComponent<PlayerMovement>().moveSpeed = gameObject.GetComponent<PlayerMovement>().moveSpeed;
 
+            cloneActive= true;
+            StartCoroutine(Clone(cloneDuration));
             Destroy(spawnClone, cloneDuration);
         }
 
-        if (ult == "beam" && charges > 0)
+        if (ult == "beam" && charges > 0 && !beamActive)
         {
             beamCD = Time.time + beamCDI;
+            if (charges == maxCharges)
+                FindNextCharge();
             charges--;
             if (firstUlt)
             {
@@ -208,6 +220,7 @@ public class Ultimate : MonoBehaviour
         } while (currentTime < time);
 
         AoE.transform.localScale = originalScale;
+        AoEactive = false;
         AoE.SetActive(false);
     }
 
@@ -267,5 +280,11 @@ public class Ultimate : MonoBehaviour
         {
             nextCharge = Time.time + beamCDI;
         }
+    }
+
+    IEnumerator Clone(float time)
+    {
+        yield return new WaitForSeconds(time);
+        cloneActive = false;
     }
 }

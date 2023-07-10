@@ -5367,7 +5367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 3557685604673690757}
-  moveSpeed: 7.5
+  moveSpeed: 12
   rb: {fileID: 952979684238027788}
   playerSpeed: {fileID: 0}
 --- !u!114 &6566468037653931324
@@ -5885,7 +5885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  shieldDuration: 5
+  shieldDuration: 20
   shieldEnd: 0
   rotationSpeed: 180
 --- !u!50 &628905105646733673

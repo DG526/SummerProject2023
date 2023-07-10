@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb2dd9d33d677c44804dad514f8326f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnetism: 10
-  threshold: 5
+  magnetism: 15
+  threshold: 7.5
   playerHealth: {fileID: 0}
   healing: 1
   playerSpeed: {fileID: 0}

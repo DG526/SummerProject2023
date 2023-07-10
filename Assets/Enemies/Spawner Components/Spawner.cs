@@ -44,6 +44,11 @@ public class Spawner : MonoBehaviour
         player = GameObject.Find("Player");
 
         map = GameObject.Find("Map").GetComponent<SetMap>();
+
+        /*while(controller.enemyCheck(1) && local < localLimit/2)
+        {
+            Spawn();
+        }*/
     }
 
     // Update is called once per frame
@@ -100,5 +105,10 @@ public class Spawner : MonoBehaviour
             if (map != null)
                 enemy.GetComponent<SpriteRenderer>().color = map.GetColor();
         }
+    }
+
+    private Vector3 FindSpawnPoint()
+    {
+        return Vector3.zero;
     }
 }

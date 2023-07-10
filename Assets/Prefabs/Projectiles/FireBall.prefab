@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shooting: {fileID: 0}
-  damage: 8
+  damage: 20
 --- !u!50 &7809942955387848775
 Rigidbody2D:
   serializedVersion: 4

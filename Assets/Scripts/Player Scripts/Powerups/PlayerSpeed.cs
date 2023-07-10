@@ -8,7 +8,7 @@ public class PlayerSpeed : MonoBehaviour
     public bool speed = false;
 
     //movement speed buff increase
-    public float speedUp = 2.5f;
+    public float speedUp = 1.5f;
 
     //fire rate increase
     public float fireSpeedUp = 0.5f;

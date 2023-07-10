@@ -72,6 +72,8 @@ public class Shopping : MonoBehaviour
     public TMP_Text windText;
     public TMP_Text poisonText;
     public TMP_Text lightingText;
+
+    public float speedCap = 15f;
     // Start is called before the first frame update
     void Start()
     {
@@ -143,7 +145,7 @@ public class Shopping : MonoBehaviour
             speedCostText.text = "" + speedCost;
 
             move.moveSpeed = move.moveSpeed + 1.5f;
-            if (move.moveSpeed >= 9)
+            if (move.moveSpeed >= speedCap)
             {
                 speedText.text = "Sold Out!";
                 speedButton.interactable = false;

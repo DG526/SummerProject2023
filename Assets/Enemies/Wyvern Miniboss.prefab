@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 450
       objectReference: {fileID: 0}
+    - target: {fileID: 1187810842885672319, guid: b98fb9853752b74498e5f405826d6cd0, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ad3bd90d776fa5458abf50b8db87b93, type: 3}
     - target: {fileID: 8824022792102667430, guid: b98fb9853752b74498e5f405826d6cd0, type: 3}
       propertyPath: m_Name
       value: Wyvern Miniboss

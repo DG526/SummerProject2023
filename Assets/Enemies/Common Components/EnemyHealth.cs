@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public GameObject lingerer;
+    public AudioClip deathSound;
     GameObject redirection;
     bool hasParts;
     GameObject[] partsToDestroy;
@@ -79,6 +81,11 @@ public class EnemyHealth : MonoBehaviour
         audio = GameObject.Find("Audio").GetComponent<AudioManager>();
 
         gameOver = GameObject.Find("GameOver").GetComponent<GameOver>();
+
+        if (redirection == null && deathSound.loadState == AudioDataLoadState.Unloaded)
+        {
+            deathSound.LoadAudioData();
+        }
     }
 
     // Update is called once per frame
@@ -131,7 +138,10 @@ public class EnemyHealth : MonoBehaviour
         gameOver.defeated += 1;
 
         //sound effect when dies
-        audio.PlaySFX(audio.enemyDeath);
+        //audio.PlaySFX(audio.enemyDeath);
+        GameObject audioPlayer = Instantiate(lingerer, transform.position, Quaternion.identity);
+        audioPlayer.GetComponent<AudioSource>().clip = deathSound;
+        audioPlayer.GetComponent<AudioSource>().Play();
 
         dead = true;
         if(spawner != null)

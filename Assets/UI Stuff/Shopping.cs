@@ -119,11 +119,21 @@ public class Shopping : MonoBehaviour
         //sets the first button when menu opens
         EventSystem.current.SetSelectedGameObject(healthButton.gameObject);
         Time.timeScale = 0f;
+
+        //Play shop music
+        BGMLooper bgm = GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>();
+        bgm.StopTrack();
+        bgm.PlayTrack(Track.Shop);
     }
 
     public void CloseShop()
     {
         shopCanvas.SetActive(false);
+
+        //Play Level 
+        BGMLooper bgm = GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>();
+        bgm.StopTrack();
+        bgm.PlayTrack(Track.Level);
     }
 
     public void AddHealth()

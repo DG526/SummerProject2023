@@ -51,6 +51,10 @@ public class GameOver : MonoBehaviour
     {
         OpenWinMenu();
         Time.timeScale = 0f;
+
+        BGMLooper bgm = GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>();
+        bgm.StopTrack();
+        bgm.PlayTrack(Track.Victory);
     }
     public void WinWaitStart(float seconds)
     {
@@ -79,6 +83,10 @@ public class GameOver : MonoBehaviour
     {
         OpenLoseMenu();
         Time.timeScale = 0f;
+
+        BGMLooper bgm = GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>();
+        bgm.StopTrack();
+        bgm.PlayTrack(Track.GameOver);
     }
 
     public void OpenCongrats()
@@ -93,6 +101,10 @@ public class GameOver : MonoBehaviour
         Time.timeScale = 0f;
 
         EventSystem.current.SetSelectedGameObject(congratsButton);
+
+        BGMLooper bgm = GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>();
+        bgm.StopTrack();
+        bgm.PlayTrack(Track.Victory);
     }
     #endregion
 

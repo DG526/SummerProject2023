@@ -4446,6 +4446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BGM Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4191705102782718998, guid: 595b2078d75c9db48be11a6b2d2c7bf3, type: 3}
+      propertyPath: firstTrack
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6753397115383274314, guid: 595b2078d75c9db48be11a6b2d2c7bf3, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -19410,7 +19414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5383907370373187610, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
       propertyPath: maxLevelCount
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5658773615123066320, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
       propertyPath: m_LocalScale.x

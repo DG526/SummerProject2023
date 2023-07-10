@@ -7670,7 +7670,7 @@ AudioSource:
   m_GameObject: {fileID: 956001625}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -1893823597147235667, guid: 8bdcac123bac1d349a7525caa817e6e8, type: 2}
+  OutputAudioMixerGroup: {fileID: 291160876802118579, guid: 0b2702a9bd0c1454b99b96e760c28eb6, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -14224,6 +14224,7 @@ MonoBehaviour:
   windText: {fileID: 136396412}
   poisonText: {fileID: 1842447569}
   lightingText: {fileID: 332286118}
+  speedCap: 15
 --- !u!1 &1712709983
 GameObject:
   m_ObjectHideFlags: 0
@@ -19414,7 +19415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5383907370373187610, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
       propertyPath: maxLevelCount
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5658773615123066320, guid: 2e44fab0298953946b8832a3b17ce5f4, type: 3}
       propertyPath: m_LocalScale.x

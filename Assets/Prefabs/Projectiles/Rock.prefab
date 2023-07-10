@@ -212,4 +212,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptStop: 0.01
   shooting: {fileID: 0}
-  damage: 40
+  damage: 80

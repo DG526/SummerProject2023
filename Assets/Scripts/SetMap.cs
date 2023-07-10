@@ -53,11 +53,13 @@ public class SetMap : MonoBehaviour
 
     public void Set()
     {
+
         if (first)
         {
             StartCoroutine(MapCheck());
         }
 
+        level = (int)(UnityEngine.Random.Range(0, levelTypes.Count - 1));
         levelCount++;
         #region clear
         object[] obj = GameObject.FindObjectsOfType(typeof(GameObject));
@@ -102,7 +104,6 @@ public class SetMap : MonoBehaviour
         {
             foreach (Transform child in gameObject.transform)
             {
-                level = (int)(UnityEngine.Random.Range(0, levelTypes.Count - 1));
                 string name = child.gameObject.name;
 
                 GameObject spawn;
@@ -162,28 +163,28 @@ public class SetMap : MonoBehaviour
             switch (colPick)
             {
                 case 0:
-                    return Color.red;
+                    return new Color32(255, 84, 84, 255);
                 case 1:
-                    return Color.green;
+                    return new Color32(154, 255, 154, 255);
                 case 2:
-                    return Color.blue;
+                    return new Color32(39, 93, 248, 255);
                 case 3:
-                    return Color.yellow;
+                    return new Color32(255, 255, 50, 255);
                 case 4:
                     return new Color32(164, 0, 255, 255);
             }
         }
         string color = levelTypes[level];
         if (color == "red")
-            return Color.red;
+            return new Color32 (255,84,84,255);
         if (color == "green")
-            return Color.green;
+            return new Color32 (154,255,154,255);
         if (color == "blue")
-            return Color.blue;
+            return new Color32 (39,93,248,255);
         if (color == "yellow")
-            return Color.yellow;
+            return new Color32 (255,255,50,255);
         if (color == "purple")
-            return new Color32(164, 0, 255, 255);
+            return new Color32(164,0,255,255);
 
 
         return Color.white;

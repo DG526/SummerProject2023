@@ -56,7 +56,7 @@ public class Item : MonoBehaviour
             dir = player.position - transform.position;
             dir = dir.normalized;
 
-            rb.AddForce(dir * magnetism);
+            rb.velocity = (dir * magnetism);
         }
         else if(distance > threshold && !moving) 
         { 

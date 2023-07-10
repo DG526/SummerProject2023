@@ -132,7 +132,7 @@ public class DragonBehavior : MonoBehaviour
 
     void Plan()
     {
-        Debug.Log("Planning");
+        //Debug.Log("Planning");
         int choice = UnityEngine.Random.Range(0, 6);
         while((choice > 3 && lastPlan == DragonAction.ATK_BREATH_F))
         {
@@ -161,7 +161,7 @@ public class DragonBehavior : MonoBehaviour
         }
         lastPlan = plan;
         action = DragonAction.THINKING;
-        Debug.Log("Done planning.");
+        //Debug.Log("Done planning.");
     }
     public void StartRotation_Left()
     {
@@ -177,7 +177,7 @@ public class DragonBehavior : MonoBehaviour
     }
     public void Rest()
     {
-        Debug.Log("Preparing to rest.");
+        //Debug.Log("Preparing to rest.");
         DragonAction newAction = action;
         switch (action)
         {
@@ -202,7 +202,7 @@ public class DragonBehavior : MonoBehaviour
                 break;
         }
         action = newAction;
-        Debug.Log("Resting for " + restCountdown + " cycles.");
+        //Debug.Log("Resting for " + restCountdown + " cycles.");
         if (restCountdown <= 0)
             Plan();
         else

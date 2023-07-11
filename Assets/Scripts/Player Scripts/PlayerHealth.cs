@@ -91,6 +91,8 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("You took " + damage + " damage!");
             grace = true;
             graceTime = Time.time + graceDuration;
+            if (health > 0)
+                GetComponent<AudioSource>().Play();
         }
         else
         {

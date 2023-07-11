@@ -147,9 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e39025802bc3054898b189f6a3618f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lingerer: {fileID: 6672540586249575663, guid: b840a0863c3227146948a43e02c81ff1, type: 3}
+  deathSound: {fileID: 8300000, guid: 7a4ab0fc535b57d4aa07f660eac730d1, type: 3}
   maxHealth: 30
   multiplier: 1
   health: 0
+  audio: {fileID: 0}
   gameOver: {fileID: 0}
   spawner: {fileID: 0}
   gem1: {fileID: 3929919800341922367, guid: c5fb0621e0f7a9742b1e3b5822ee4560, type: 3}

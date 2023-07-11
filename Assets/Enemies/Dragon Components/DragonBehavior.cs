@@ -4,6 +4,15 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
+public enum DragonSound
+{
+    FOOTSTEP,
+    CLAW,
+    BITE,
+    INHALE,
+    BREATH,
+    BREATH2
+}
 public enum DragonColor
 {
     RED,
@@ -54,6 +63,8 @@ public class DragonBehavior : MonoBehaviour
     float breathTimer; // For breath patterns in bursts (Wind)
     int breathSwitch; // For breath patterns with variable amounts of bullets/frame (Lightning)
     bool aggro = false;
+    public AudioClip sndClaw, sndBite, sndFootstep, sndInhale, sndBreath;
+    AudioSource[] sources;
 
     public SetMap map;
     // Start is called before the first frame update
@@ -63,6 +74,17 @@ public class DragonBehavior : MonoBehaviour
         map = GameObject.Find("Map").GetComponent<SetMap>();
         if (!player)
             player = GameObject.FindGameObjectWithTag("Player");
+        sources = GetComponents<AudioSource>();
+        if (sndBite)
+            sndBite.LoadAudioData();
+        if (sndClaw)
+            sndClaw.LoadAudioData();
+        if (sndFootstep)
+            sndFootstep.LoadAudioData();
+        if (sndInhale)
+            sndInhale.LoadAudioData();
+        if (sndBreath)
+            sndBreath.LoadAudioData();
     }
     private void OnDestroy()
     {
@@ -444,5 +466,36 @@ public class DragonBehavior : MonoBehaviour
             GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>().StopTrack();
             GameObject.FindGameObjectWithTag("BGM Player").GetComponent<BGMLooper>().PlayTrack(Track.Boss);
         }
+    }
+    public void PlaySound(DragonSound sound)
+    {
+        AudioSource source = sources[0];
+        AudioClip clip = sndFootstep;
+        switch (sound)
+        {
+            case DragonSound.FOOTSTEP:
+                source = sources[0];
+                clip = sndFootstep;
+                break;
+            case DragonSound.CLAW:
+                source = sources[1];
+                clip = sndClaw;
+                break;
+            case DragonSound.BITE:
+                source = sources[1];
+                clip = sndBite;
+                break;
+            case DragonSound.INHALE:
+                source = sources[1];
+                clip = sndInhale;
+                break;
+            case DragonSound.BREATH:
+            case DragonSound.BREATH2:
+                source = sources[1];
+                clip = sndBreath;
+                break;
+        }
+        source.clip = clip;
+        source.Play();
     }
 }

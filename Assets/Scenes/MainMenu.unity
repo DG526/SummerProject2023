@@ -1842,7 +1842,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 46f5e247498b39b45afb8fcc52feeac9, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -2413,13 +2413,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 679600828}
+  - {fileID: 1828123302}
   - {fileID: 68369317}
   - {fileID: 373793447}
   - {fileID: 497230548}
   - {fileID: 688542950}
   - {fileID: 2146315384}
-  - {fileID: 679600828}
-  - {fileID: 1828123302}
   m_Father: {fileID: 1514878859}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

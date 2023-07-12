@@ -15,4 +15,8 @@ public class SplashPicker : MonoBehaviour
     {
         
     }
+    private void OnEnable()
+    {
+        GetComponent<Animator>().SetInteger("Dragon", UnityEngine.Random.Range(1, 6));
+    }
 }

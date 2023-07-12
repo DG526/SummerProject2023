@@ -88,6 +88,11 @@ public class DragonBehavior : MonoBehaviour
     }
     private void OnDestroy()
     {
+        //turns off the enemy health
+        HUD ui = GameObject.Find("HUD").GetComponent<HUD>();
+
+        ui.isHealthBar = false;
+        ui.healthBar.SetActive(false);
         Spawner.canSpawn = false;
         map.levelTypes.RemoveAt(map.level);
         if(GameObject.Find("GameOver") != null && GameObject.Find("GameOver").GetComponent<GameOver>() != null)

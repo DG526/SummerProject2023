@@ -11,10 +11,14 @@ public enum AwarenessType
 public class EnemyAwareness : MonoBehaviour
 {
     public AwarenessType awarenessType;
+    public HUD hud;
+
     MonoBehaviour behaviour;
     // Start is called before the first frame update
     void Start()
     {
+        hud = GameObject.Find("HUD").GetComponent<HUD>();
+
         if(GetComponent<WyrmHeadBehavior>() != null)
         {
             behaviour = GetComponent<WyrmHeadBehavior>();
@@ -50,6 +54,12 @@ public class EnemyAwareness : MonoBehaviour
     }
     private void OnBecameVisible()
     {
+        //if the gameobject is a dragon
+        if (behaviour.gameObject.name.IndexOf("Dragon") != -1)
+        {
+            hud.isHealthBar = true;
+        }
+
         behaviour.enabled = true;
         if (GetComponent<Animator>() != null)
             GetComponent<Animator>().enabled = true;

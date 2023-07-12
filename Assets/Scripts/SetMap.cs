@@ -6,6 +6,7 @@ using UnityEngine;
 public class SetMap : MonoBehaviour
 {
     public bool first = true;
+    public HUD hud;
 
     [Header("Bosses")]
     public GameObject redDragon;
@@ -40,10 +41,11 @@ public class SetMap : MonoBehaviour
     public List<string> levelTypes = new List<string>();
     int levelCount = 0;
     GameObject finalMap;
-    bool final = false;
+    public bool final = false;
     // Start is called before the first frame update
     void Start()
     {
+        hud = GameObject.Find("HUD").GetComponent<HUD>();
         player = GameObject.Find("Player");
         camera = Camera.main;
         finalMap = GameObject.Find("Final Map");
@@ -61,11 +63,12 @@ public class SetMap : MonoBehaviour
     public void Set()
     {
         Spawner.canSpawn = true;
-
         if (first)
         {
             StartCoroutine(MapCheck());
         }
+
+        
 
         level = (int)(UnityEngine.Random.Range(0, levelTypes.Count));
         levelCount++;
@@ -102,6 +105,7 @@ public class SetMap : MonoBehaviour
                 else if (name.IndexOf("Dragon") != -1)
                 {
                     spawn = Instantiate(darkLightDragon, child.position, child.rotation);
+                    hud.bossHealth = spawn.GetComponent<EnemyHealth>();
                 }
             }
         }
@@ -151,26 +155,31 @@ public class SetMap : MonoBehaviour
                     {
                         spawn = Instantiate(redDragon, child.position, child.rotation);
                         gameObject.GetComponent<SpriteRenderer>().sprite = redMap;
+                        hud.bossHealth = spawn.GetComponent<EnemyHealth>();
                     }
                     if (color == "green")
                     {
                         spawn = Instantiate(greenDragon, child.position, child.rotation);
                         gameObject.GetComponent<SpriteRenderer>().sprite = greenMap;
+                        hud.bossHealth = spawn.GetComponent<EnemyHealth>();
                     }
                     if (color == "blue")
                     {
                         spawn = Instantiate(blueDragon, child.position, child.rotation);
                         gameObject.GetComponent<SpriteRenderer>().sprite = blueMap;
+                        hud.bossHealth = spawn.GetComponent<EnemyHealth>();
                     }
                     if (color == "yellow")
                     {
                         spawn = Instantiate(yellowDragon, child.position, child.rotation);
                         gameObject.GetComponent<SpriteRenderer>().sprite = yellowMap;
+                        hud.bossHealth = spawn.GetComponent<EnemyHealth>();
                     }
                     if (color == "purple")
                     {
                         spawn = Instantiate(purpleDragon, child.position, child.rotation);
                         gameObject.GetComponent<SpriteRenderer>().sprite = purpleMap;
+                        hud.bossHealth = spawn.GetComponent<EnemyHealth>();
                     }
                 }
             }

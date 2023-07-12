@@ -88,6 +88,7 @@ public class DragonBehavior : MonoBehaviour
     }
     private void OnDestroy()
     {
+        Spawner.canSpawn = false;
         map.levelTypes.RemoveAt(map.level);
         if(GameObject.Find("GameOver") != null && GameObject.Find("GameOver").GetComponent<GameOver>() != null)
         GameObject.Find("GameOver").GetComponent<GameOver>().WinWaitStart(5);
@@ -266,6 +267,7 @@ public class DragonBehavior : MonoBehaviour
     }
     void Advance()
     {
+        RotateTowardPlayer();
         RotateTowardPlayer();
         rb.MovePosition(transform.position + transform.up * Time.fixedDeltaTime * maxMoveSpeed / (rage > 0 ? 1 : 2));
         GetComponent<Animator>().SetFloat("Speed", rage > 0 ? 2 : 1);

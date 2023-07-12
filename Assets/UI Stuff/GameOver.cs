@@ -28,6 +28,7 @@ public class GameOver : MonoBehaviour
 
     [Header("Misc")]
     public GameObject map;
+    public SetMap setMap;
     public TMP_Text scoreText;
     public TMP_Text enemiesDef;
 
@@ -44,6 +45,7 @@ public class GameOver : MonoBehaviour
         congratsCanvas.SetActive(false);
 
         map = GameObject.Find("Map");
+        setMap = map.GetComponent<SetMap>();
     }
 
     #region Screen
@@ -76,7 +78,14 @@ public class GameOver : MonoBehaviour
             isWaiting = false;
             yield return new WaitForSecondsRealtime(seconds);
         }
-        Win();
+        if (!setMap.final)
+        {
+            Win();
+        }
+        else
+        {
+            OpenCongrats();
+        }
     }
 
     public void Lose()

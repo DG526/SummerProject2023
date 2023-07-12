@@ -40,6 +40,8 @@ public class Spawner : MonoBehaviour
     SetMap map;
     bool first = true;
     float firstThresh;
+
+    public static bool canSpawn = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +63,7 @@ public class Spawner : MonoBehaviour
         distance = Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.y), new Vector2(transform.position.x, transform.position.y));
         direction = player.transform.position - SpawnPoint.position;
         direction.Normalize();
+        direction.z = 0;
 
         if(distance <= firstThresh && first)
         {
@@ -91,6 +94,7 @@ public class Spawner : MonoBehaviour
 
     public void Spawn ()
     {
+        if (!canSpawn) return;
         controller.enemyAdd(1);
         local++;
         float spawn = Random.Range(0f, wyvernRate);

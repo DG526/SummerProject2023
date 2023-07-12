@@ -45,6 +45,7 @@ public class DarkLightDragonBehavior : MonoBehaviour
     }
     private void OnDestroy()
     {
+        Spawner.canSpawn = false;
         GameObject.Find("GameOver").GetComponent<GameOver>().WinWaitStart(5);
         player.GetComponent<PlayerHealth>().graceTime = Time.time + 5.2f;
         player.GetComponent<PlayerHealth>().grace = true;
@@ -196,6 +197,7 @@ public class DarkLightDragonBehavior : MonoBehaviour
     }
     void Advance()
     {
+        RotateTowardPlayer();
         RotateTowardPlayer();
         rb.MovePosition(transform.position + transform.up * Time.fixedDeltaTime * maxMoveSpeed / (rage > 0 ? 1 : 2));
         GetComponent<Animator>().SetFloat("Speed", rage > 0 ? 2 : 1);

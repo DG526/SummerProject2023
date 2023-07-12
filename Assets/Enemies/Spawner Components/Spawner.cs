@@ -38,6 +38,8 @@ public class Spawner : MonoBehaviour
     public int localLimit = 10;
     int local = 0;
     SetMap map;
+    bool first = true;
+    float firstThresh;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,10 +52,7 @@ public class Spawner : MonoBehaviour
         map = GameObject.Find("Map").GetComponent<SetMap>();
 
         SpawnPoint = gameObject.transform;
-        while(controller.enemyCheck(1) && local < startCount)
-        {
-            Spawn();
-        }
+        firstThresh = threshold * 2f;
     }
 
     // Update is called once per frame
@@ -63,6 +62,14 @@ public class Spawner : MonoBehaviour
         direction = player.transform.position - SpawnPoint.position;
         direction.Normalize();
 
+        if(distance <= firstThresh && first)
+        {
+            while (controller.enemyCheck(1) && local < startCount)
+            {
+                Spawn();
+            }
+            first = false;
+        }
         if (distance <= threshold && spawnTime < Time.time)
         {
             if (controller.enemyCheck(1) && Check(1))

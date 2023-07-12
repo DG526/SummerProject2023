@@ -60,6 +60,7 @@ public class SetMap : MonoBehaviour
 
     public void Set()
     {
+        Spawner.canSpawn = true;
 
         if (first)
         {
@@ -187,7 +188,7 @@ public class SetMap : MonoBehaviour
                 case 0:
                     return new Color32(255, 84, 84, 255);
                 case 1:
-                    return new Color32(154, 255, 154, 255);
+                    return new Color32(107, 132, 116, 255);
                 case 2:
                     return new Color32(39, 93, 248, 255);
                 case 3:
@@ -200,7 +201,7 @@ public class SetMap : MonoBehaviour
         if (color == "red")
             return new Color32 (255,84,84,255);
         if (color == "green")
-            return new Color32 (154,255,154,255);
+            return new Color32(107, 132, 116, 255);
         if (color == "blue")
             return new Color32 (39,93,248,255);
         if (color == "yellow")

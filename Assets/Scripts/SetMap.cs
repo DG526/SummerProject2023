@@ -20,6 +20,13 @@ public class SetMap : MonoBehaviour
     public GameObject drakeBoss;
     public GameObject wyvernBoss;
 
+    [Header("Maps")]
+    public Sprite redMap;
+    public Sprite greenMap;
+    public Sprite blueMap;
+    public Sprite purpleMap;
+    public Sprite yellowMap;
+
     [Header("Spawner")]
     public GameObject spawner;
 
@@ -59,7 +66,7 @@ public class SetMap : MonoBehaviour
             StartCoroutine(MapCheck());
         }
 
-        level = (int)(UnityEngine.Random.Range(0, levelTypes.Count - 1));
+        level = (int)(UnityEngine.Random.Range(0, levelTypes.Count));
         levelCount++;
         #region clear
         object[] obj = GameObject.FindObjectsOfType(typeof(GameObject));
@@ -140,15 +147,30 @@ public class SetMap : MonoBehaviour
                 {
                     string color = levelTypes[level];
                     if (color == "red")
+                    {
                         spawn = Instantiate(redDragon, child.position, child.rotation);
+                        gameObject.GetComponent<SpriteRenderer>().sprite = redMap;
+                    }
                     if (color == "green")
+                    {
                         spawn = Instantiate(greenDragon, child.position, child.rotation);
+                        gameObject.GetComponent<SpriteRenderer>().sprite = greenMap;
+                    }
                     if (color == "blue")
+                    {
                         spawn = Instantiate(blueDragon, child.position, child.rotation);
+                        gameObject.GetComponent<SpriteRenderer>().sprite = blueMap;
+                    }
                     if (color == "yellow")
+                    {
                         spawn = Instantiate(yellowDragon, child.position, child.rotation);
+                        gameObject.GetComponent<SpriteRenderer>().sprite = yellowMap;
+                    }
                     if (color == "purple")
+                    {
                         spawn = Instantiate(purpleDragon, child.position, child.rotation);
+                        gameObject.GetComponent<SpriteRenderer>().sprite = purpleMap;
+                    }
                 }
             }
         }

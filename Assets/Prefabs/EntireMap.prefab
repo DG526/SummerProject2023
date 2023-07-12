@@ -3081,6 +3081,11 @@ MonoBehaviour:
   wyrmBoss: {fileID: 582421085050743577, guid: d4fb0ccfaaeb18e4eac2badaaa58512d, type: 3}
   drakeBoss: {fileID: 238519136251477569, guid: b0796d51178ead140b51eb51784d1f99, type: 3}
   wyvernBoss: {fileID: 6561270325386862145, guid: 96f3d05f7dee988479328a0b5d0ac107, type: 3}
+  redMap: {fileID: 21300000, guid: be5b2e9058c27f14d8a3049fc3c3db66, type: 3}
+  greenMap: {fileID: 21300000, guid: e18c01155358d5248ad15f2a9da6213d, type: 3}
+  blueMap: {fileID: 21300000, guid: 982cf9d48458e4b419b55b1ba30b61f2, type: 3}
+  purpleMap: {fileID: 21300000, guid: 199a7a11b118f434e8b37b2cef6ce0ea, type: 3}
+  yellowMap: {fileID: 21300000, guid: 9fb1b752ae28c1c4395cce2f6e12b602, type: 3}
   spawner: {fileID: 7757739855642946369, guid: bcd841ffde92a144f8fb92c416aef179, type: 3}
   player: {fileID: 0}
   camera: {fileID: 0}

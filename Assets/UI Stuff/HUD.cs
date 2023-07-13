@@ -15,6 +15,7 @@ public class HUD : MonoBehaviour
     public GameObject gem;
     public PlayerPoints playerPoints;
     public EnemyHealth bossHealth;
+    public Texture2D cursor;
 
     GameObject player;
 
@@ -62,6 +63,9 @@ public class HUD : MonoBehaviour
     {
         //For Ult Cooldown
         cooldownImage.fillAmount = 0.0f;
+
+        //Changes cusor's appearance
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
 
         //finds player object and resets points
         player = GameObject.FindWithTag("Player");

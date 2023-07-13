@@ -18,9 +18,14 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject settingsButton;
     [SerializeField] private GameObject creditsButton;
 
+
+    public Texture2D cursor;
+
     //Starts the game
     public void Start()
     {
+        Cursor.SetCursor(cursor, Vector2.zero, CursorMode.ForceSoftware);
+
         //calls the function and holds that function for that many seconds
         mainMenu.SetActive(true);
         settings.SetActive(false);

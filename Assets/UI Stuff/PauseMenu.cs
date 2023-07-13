@@ -15,8 +15,6 @@ public class PauseMenu : MonoBehaviour
     //sets the first button
     [SerializeField] private GameObject pauseFirstButton;
     [SerializeField] private GameObject settingFirstButton;
-    [SerializeField] private GameObject loseFirstButton;
-    [SerializeField] private GameObject winFirstButton;
 
     private bool isPaused;
 

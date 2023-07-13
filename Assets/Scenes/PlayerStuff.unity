@@ -3400,7 +3400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -807, y: 415}
+  m_AnchoredPosition: {x: -817, y: 432}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &270350009
@@ -8029,6 +8029,7 @@ MonoBehaviour:
   gem: {fileID: 0}
   playerPoints: {fileID: 2008602363}
   bossHealth: {fileID: 0}
+  cursor: {fileID: 2800000, guid: 248ca69be13e9e840b8868e228f8e859, type: 3}
   fire: {fileID: 21300000, guid: 885f0914860acfa44a0cd557142c5532, type: 3}
   water: {fileID: 21300000, guid: 2a8d6d155de88df43b1830c49a1cdeb0, type: 3}
   lightning: {fileID: 21300000, guid: 867fa3ff10fe3fc4da04f06c111ee742, type: 3}
@@ -10836,7 +10837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -686, y: 232}
+  m_AnchoredPosition: {x: -689, y: 254}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156574040

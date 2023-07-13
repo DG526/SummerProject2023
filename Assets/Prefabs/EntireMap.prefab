@@ -78,7 +78,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1114563905421227143
 Transform:
   m_ObjectHideFlags: 0
@@ -3072,6 +3072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   first: 1
+  hud: {fileID: 0}
   redDragon: {fileID: 3628013872347301243, guid: a75f6f296b351f94590555737bca528b, type: 3}
   greenDragon: {fileID: 1118573141670411861, guid: e2ec0b3d150fd8c42857ca7589181cf1, type: 3}
   blueDragon: {fileID: 1788184328360024534, guid: f65803947df904f48a6c9c296add26f6, type: 3}
@@ -3092,6 +3093,7 @@ MonoBehaviour:
   maxLevelCount: 3
   level: 0
   levelTypes: []
+  final: 0
 --- !u!1 &6717504041445226942
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,7 +3118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6717504041445226942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.15, y: -1.82, z: 0}
+  m_LocalPosition: {x: -0.42, y: -1.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

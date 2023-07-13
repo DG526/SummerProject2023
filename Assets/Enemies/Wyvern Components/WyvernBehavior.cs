@@ -26,6 +26,9 @@ public class WyvernBehavior : MonoBehaviour
     public float poisonDuration = 0f;
     public float poisonSlow = 0.5f;
     float fSpeedSlowed, bSpeedSlowed;
+
+    Collider2D[] hits;
+    bool inMap;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +63,17 @@ public class WyvernBehavior : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        hits = Physics2D.OverlapCircleAll(transform.position, 0.1f);
+        foreach(Collider2D hit in hits)
+        {
+            if(hit.gameObject.name.IndexOf("Map") != -1)
+            {
+                inMap = true;
+                break;
+            }
+        }
+        if (!inMap)
+            transform.position = transform.position + transform.up * 2f;
         if(lightningStunned)
             return;
         float distToPlayer = Vector2.Distance(transform.position, player.transform.position);

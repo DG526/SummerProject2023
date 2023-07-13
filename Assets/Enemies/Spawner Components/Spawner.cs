@@ -133,20 +133,33 @@ public class Spawner : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(input, spawnRadius);
         int attempts = 0;
         Vector3 og = input;
+        bool inMap = false;
+        
         while(attempts < maxSpawnAttempts)
         {
+            foreach (Collider2D hit in hits)
+            {
+                //Debug.Log(hit.gameObject.name);
+                if (hit.gameObject.name.IndexOf("Map") != -1)
+                {
+                    inMap = true;
+                    //Debug.Log("Valid");
+                    break;
+                }
+            }
             attempts++;
             if(hits.Length > 1)
             {
                 input *= spawnRadius;
                 hits = Physics2D.OverlapCircleAll(input, spawnRadius);
             }
-            else if (hits.Length == 1)
+            else if (hits.Length == 1 && inMap)
             { 
                 return input;
             }
+            inMap = false;
         }
-        if(hits.Length == 0)
+        if(!inMap)
         {
             return SpawnPoint.position;
         }

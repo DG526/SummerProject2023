@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,13 +15,37 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerSpeed playerSpeed;
 
+    public InputActionAsset inputs;
+    InputAction IAMove, IAMouseLook, IAControllerLook;
+
     GameObject loadout;
+
+    private void Awake()
+    {
+        IAMove = inputs.FindAction("Level Actions/Movement");
+        IAControllerLook = inputs.FindAction("Level Actions/Look1");
+        IAMouseLook = inputs.FindAction("Level Actions/Look2");
+    }
     void Start()
     {
         playerHealth = gameObject.GetComponent<PlayerHealth>();
         playerSpeed = gameObject.GetComponent<PlayerSpeed>();
         loadout = GameObject.Find("LoadOut");
     }
+
+    private void OnEnable()
+    {
+        IAMove.Enable();
+        IAMouseLook.Enable();
+        IAControllerLook.Enable();
+    }
+    private void OnDisable()
+    {
+        IAMove.Disable();
+        IAMouseLook.Disable();
+        IAControllerLook.Disable();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -44,6 +69,26 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
 
+    void GetInput()
+    {
+        //movement
+        moveDir = Vector2.zero;
+        if (IAMove.ReadValue<Vector2>() != Vector2.zero)
+        {
+            moveDir = IAMove.ReadValue<Vector2>();
+        }
+
+        //looking
+        if (IAControllerLook.triggered)
+            lookDir = IAControllerLook.ReadValue<Vector2>();
+        else if (IAMouseLook.triggered)
+        {
+            Vector3 mouse = Input.mousePosition;
+            mouse = Camera.main.ScreenToWorldPoint(mouse);
+            lookDir = new Vector2(mouse.x - transform.position.x, mouse.y - transform.position.y);
+        }
+    }
+    /* // OLD INPUT METHOD
     void GetInput()
     {
         //movement
@@ -72,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
             lookDir = new Vector2(mouse.x - transform.position.x, mouse.y - transform.position.y);
         }
     }
-
+    */
 
     void Move()
     {

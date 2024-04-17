@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Ultimate : MonoBehaviour
 {
@@ -61,8 +62,22 @@ public class Ultimate : MonoBehaviour
     float nextCharge = 0f;
     bool firstUlt = true;
 
+    public InputActionAsset inputs;
+    InputAction IAUltiFire;
     GameObject loadout;
     //BoxCollider2D beamCollider;
+    private void Awake()
+    {
+        IAUltiFire = inputs.FindAction("Level Actions/Fire Ultimate");
+    }
+    private void OnEnable()
+    {
+        IAUltiFire.Enable();
+    }
+    private void OnDisable()
+    {
+        IAUltiFire.Disable();
+    }
     void Start()
     {
         playerHealth = gameObject.GetComponent<PlayerHealth>();
@@ -106,7 +121,7 @@ public class Ultimate : MonoBehaviour
 
         if (!playerHealth.dead && !loadout.activeInHierarchy)
         {
-            if (Input.GetButtonDown("Jump"))
+            if (IAUltiFire.triggered)
             {
                 FireUltimate(ultimate);
             }

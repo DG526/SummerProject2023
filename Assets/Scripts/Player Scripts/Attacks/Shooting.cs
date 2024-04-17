@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Shooting : MonoBehaviour
 {
@@ -77,7 +78,27 @@ public class Shooting : MonoBehaviour
     public string Fire2 = "triangle";
 
 
+    public InputActionAsset inputs;
+    InputAction IAPrimFire, IASecoFire, IAUltiFire;
     GameObject loadout;
+    private void Awake()
+    {
+        IAPrimFire = inputs.FindAction("Level Actions/Fire Primary");
+        IASecoFire = inputs.FindAction("Level Actions/Fire Secondary");
+        IAUltiFire = inputs.FindAction("Level Actions/Fire Ultimate");
+    }
+    private void OnEnable()
+    {
+        IAPrimFire.Enable();
+        IASecoFire.Enable();
+        IAUltiFire.Enable();
+    }
+    private void OnDisable()
+    {
+        IAPrimFire.Disable();
+        IASecoFire.Disable();
+        IAUltiFire.Disable();
+    }
     void Start()
     {
         playerHealth = gameObject.GetComponent<PlayerHealth>();
@@ -99,17 +120,25 @@ public class Shooting : MonoBehaviour
         if (loadout != null && loadout.activeInHierarchy)
             return;
 
-            //left click
-            if (Input.GetButton("Fire1") && !Input.GetButton("Fire2"))
-            {
-                Fire(Fire1);
-            }
+        //primary
+        if (IAPrimFire.IsPressed())
+            Fire(Fire1);
+        else if (IASecoFire.IsPressed())
+            Fire(Fire2);
 
-            //right click
-            if (Input.GetButton("Fire2") && !Input.GetButton("Fire1"))
-            {
-                Fire(Fire2);
-            }
+        /* //OLD INPUT METHODS
+        //left click
+        if (Input.GetButton("Fire1") && !Input.GetButton("Fire2"))
+        {
+            Fire(Fire1);
+        }
+
+        //right click
+        if (Input.GetButton("Fire2") && !Input.GetButton("Fire1"))
+        {
+            Fire(Fire2);
+        }
+        */
     }
 
     void Fire(string type)

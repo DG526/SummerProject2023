@@ -214,7 +214,7 @@
                 {
                     "name": "",
                     "id": "0a5a6fa4-49af-4b71-a440-582a777df8bc",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -236,7 +236,7 @@
                 {
                     "name": "",
                     "id": "6b8e4b6f-89b0-4405-a56b-0e2b84ad327b",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -269,7 +269,7 @@
                 {
                     "name": "Modifier",
                     "id": "d5817a60-1e90-4d9b-b285-39dc59e494ed",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -280,7 +280,7 @@
                 {
                     "name": "Button",
                     "id": "b2087d3a-2a25-45a5-b4b8-4f2f5f0fd4f5",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

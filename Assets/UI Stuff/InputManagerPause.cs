@@ -13,6 +13,8 @@ public class InputManagerPause : MonoBehaviour
 
     private InputAction pAction;
 
+    InputAction IAPause;
+
     private void Awake()
     {
         if (instance == null)
@@ -20,12 +22,18 @@ public class InputManagerPause : MonoBehaviour
             instance = this;
         }
 
-        pInput = GetComponent<PlayerInput>();
-        pAction = pInput.actions["MenuOpenClose"];
-        }
+        //pInput = GetComponent<PlayerInput>();
+        //pAction = pInput.actions["MenuOpenClose"];
+
+        IAPause = new InputAction();
+        IAPause.AddBinding("<Keyboard>/escape");
+        IAPause.AddBinding("<Gamepad>/start");
+        IAPause.Enable();
+    }
 
     private void Update()
     {
-        MenuInput = pAction.WasPerformedThisFrame();
+        //MenuInput = pAction.WasPerformedThisFrame();
+        MenuInput = IAPause.triggered;
     }
 }

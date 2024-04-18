@@ -5371,6 +5371,7 @@ MonoBehaviour:
   moveSpeed: 12
   rb: {fileID: 952979684238027788}
   playerSpeed: {fileID: 0}
+  inputs: {fileID: -944628639613478452, guid: 25f4be5e97a314845934537308d79d99, type: 3}
 --- !u!114 &6566468037653931324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5426,6 +5427,7 @@ MonoBehaviour:
   lightningUpgraded: 0
   Fire1: rockDrop
   Fire2: poison
+  inputs: {fileID: -944628639613478452, guid: 25f4be5e97a314845934537308d79d99, type: 3}
 --- !u!114 &8078588443737594384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5463,6 +5465,7 @@ MonoBehaviour:
   maxCharges: 1
   charges: 1
   ultimate: clone
+  inputs: {fileID: -944628639613478452, guid: 25f4be5e97a314845934537308d79d99, type: 3}
 --- !u!114 &3557685604673690757
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -92,6 +92,9 @@ public class Loadout : MonoBehaviour
         if (fire1 && fire2 && ult)
         {
             loadOutCanvas.SetActive(false);
+            GameObject title = GameObject.Find("LevelTitle");
+            if (title)
+                title.GetComponent<LevelIntroText>().enabled = true;
             Time.timeScale = 1f;
         }
     }

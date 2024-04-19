@@ -11,7 +11,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - UNDERLAY_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -75,7 +76,7 @@ Material:
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
     - _ScaleRatioB: 0.6770833
-    - _ScaleRatioC: 0.6770833
+    - _ScaleRatioC: 0.5331365
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -88,7 +89,7 @@ Material:
     - _StencilWriteMask: 255
     - _TextureHeight: 512
     - _TextureWidth: 512
-    - _UnderlayDilate: 0.4
+    - _UnderlayDilate: 0.77
     - _UnderlayOffsetX: 0
     - _UnderlayOffsetY: 0
     - _UnderlaySoftness: 0.5
@@ -118,11 +119,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: pixelblaze SDF
+  m_Name: pixelblaze Var
   m_EditorClassIdentifier: 
-  hashCode: 1634068969
+  hashCode: 1634066717
   material: {fileID: -8787498440288110234}
-  materialHashCode: 726287785
+  materialHashCode: 1114074269
   m_Version: 1.1.0
   m_SourceFontFileGUID: 93935e3a29e48f149bb41940166ccf14
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 93935e3a29e48f149bb41940166ccf14, type: 3}

@@ -23,6 +23,8 @@ public class DarkLightDragonBehavior : MonoBehaviour
     bool aggro = false;
     public AudioClip sndClaw, sndBite, sndFootstep, sndInhale, sndBreath, sndBreath2;
     AudioSource[] sources;
+    public bool AoEHit = false; //if true, the aoe ult will not hit the dragon
+    public float AoEReset;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +57,9 @@ public class DarkLightDragonBehavior : MonoBehaviour
         DestroyImmediate(GetComponent<PolygonCollider2D>());
         gameObject.AddComponent<PolygonCollider2D>();
         GetComponent<PolygonCollider2D>().isTrigger = true;
+
+        if(AoEHit && Time.time > AoEReset)
+            AoEHit = false;
 
         if (action == DragonAction.IDLE || action == DragonAction.IDLE_TRACKING || action == DragonAction.WALKING_F || action == DragonAction.WALKING_B || action == DragonAction.THINKING)
             ActionStart();

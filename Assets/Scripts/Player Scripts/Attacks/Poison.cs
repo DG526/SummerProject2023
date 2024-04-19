@@ -11,8 +11,13 @@ public class Poison : MonoBehaviour
     int boostedDamage;
     public float lifetime = 5f;
     //determines how fast poison does damage
-    public float tickSpeed = 0.3f;
+    public float tickSpeed = 0.25f;
     public float tickDuration = 0.1f;
+    public float slowedSpeedMod = 0.25f;
+    public Vector3 up;
+    public float originalForce;
+    float slowedSpeed;
+    bool damaging;
 
     float tick = 0f;
 
@@ -26,15 +31,26 @@ public class Poison : MonoBehaviour
         col = GetComponent<CircleCollider2D>();
         boostedDamage = (int)(damage * shooting.playerCatalyst.catalystFactor);
         Destroy(gameObject, lifetime);
+
+        slowedSpeed = originalForce * slowedSpeedMod;
     }
 
     private void Update()
     {
+        
         if(Time.time > tick)
         {
             tick = Time.time + tickSpeed;
             col.enabled = true;
             StartCoroutine(TickDamage(tickDuration));
+        }
+
+        if (rb.velocity != Vector2.zero)
+        {
+            if (damaging)
+                rb.velocity = up * slowedSpeed;
+            else
+                rb.velocity = up * originalForce;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -69,6 +85,8 @@ public class Poison : MonoBehaviour
                 wyrm.poisonDamage = damage;
             wyrm.poisonTickInterval = tickSpeed;
             wyrm.poison = true;
+
+            damaging = true;
         }
 
         if (collision.gameObject.tag == "Enemy")
@@ -105,10 +123,13 @@ public class Poison : MonoBehaviour
                     collision.gameObject.GetComponent<EnemyHealth>().Damage(damage);
             }
         }
+
+        damaging = true;
     }
 
     IEnumerator TickDamage(float time)
     {
+        damaging = false;
         yield return new WaitForSeconds(time);
         
         col.enabled = false;

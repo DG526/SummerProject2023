@@ -5368,7 +5368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 3557685604673690757}
-  moveSpeed: 12
+  moveSpeed: 5
   rb: {fileID: 952979684238027788}
   playerSpeed: {fileID: 0}
   inputs: {fileID: -944628639613478452, guid: 25f4be5e97a314845934537308d79d99, type: 3}

@@ -210,6 +210,8 @@ public class Shooting : MonoBehaviour
             bullet = Instantiate(poisonBullet, firePoint.position, firePoint.rotation);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bullet.GetComponent<Poison>().shooting = this;
+            bullet.GetComponent<Poison>().up = firePoint.up;
+            bullet.GetComponent<Poison>().originalForce = poisonForce;
             gem.GetComponent<SpriteRenderer>().color = new Color32(237, 72, 241, 150);
 
             if(poisonUpgraded)

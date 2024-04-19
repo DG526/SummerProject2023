@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,11 +10,12 @@ public class RockDrop : MonoBehaviour
 
     //public PlayerCatalyst playerCatalyst;
 
-    public Vector2 destinationScale = new Vector2(0.5f, 0.5f);
+    Vector2 destinationScale = new Vector2(1f, 1f);
     // Start is called before the first frame update
     void Start()
     {
         timeToLive = shooting.rockTime;
+        //Debug.Log(timeToLive);
 
         /*if(playerCatalyst == null )
         {
@@ -38,7 +40,7 @@ public class RockDrop : MonoBehaviour
     IEnumerator ScaleOverTime(float time)
     {
         Vector2 originalScale = gameObject.transform.localScale;
-
+        Debug.Log(destinationScale);
 
         float currentTime = 0f;
 
@@ -46,6 +48,7 @@ public class RockDrop : MonoBehaviour
         {
             gameObject.transform.localScale = Vector2.Lerp(originalScale, destinationScale, currentTime / time);
             currentTime += Time.deltaTime;
+            //Debug.Log(gameObject.transform.localScale);
             yield return null;
         } while (currentTime < time);
     }

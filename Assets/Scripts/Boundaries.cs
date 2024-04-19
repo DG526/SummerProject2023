@@ -24,18 +24,22 @@ public class Boundaries : MonoBehaviour
         //player       monster       flying monster
         if ((layer == 3 || layer == 8 || layer == 10) && ((collision.gameObject.GetComponent<DragonBehavior>() == null && collision.gameObject.GetComponent<DarkLightDragonBehavior>() == null) || collision.GetType() != typeof(PolygonCollider2D)))
         {
+            if (collision.gameObject == null) return;
 
-            if(layer == 8 || layer == 10)
+            if (layer == 8 || layer == 10)
             {
-                collision.gameObject.transform.up = new Vector2(player.transform.position.x - collision.gameObject.transform.position.x, player.transform.position.y - collision.gameObject.transform.position.y);
+                if (collision.gameObject != null)
+                    collision.gameObject.transform.up = new Vector2(player.transform.position.x - collision.gameObject.transform.position.x, player.transform.position.y - collision.gameObject.transform.position.y);
             }
 
+            //if (collision.gameObject == null) return;
             Vector2 up = new Vector2(player.transform.position.x - collision.gameObject.transform.position.x, player.transform.position.y - collision.gameObject.transform.position.y);
 
             RaycastHit2D[] playerHit = Physics2D.RaycastAll(player.transform.position, up * -1, 100f, 3);
 
             foreach (RaycastHit2D i in playerHit) 
             {
+                if (collision.gameObject == null) return;
                 if (i.collider == map)
                     continue;
                 //Debug.Log(i.transform.name);

@@ -177,7 +177,7 @@ public class HUD : MonoBehaviour
             if (bossHealth.gameObject.name.IndexOf("Green") != -1)
             {
                 enemyName.text = "Typhoon Dragon: Whiillex";
-                healthBar.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color32(154, 255, 154, 255);
+                healthBar.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color32(26, 92, 26, 255);
             }
             if (bossHealth.gameObject.name.IndexOf("Dark") != -1)
             {

@@ -251,6 +251,7 @@ public class Shooting : MonoBehaviour
 
             RockDrop script = bullet.GetComponent<RockDrop>();
             script.shooting = gameObject.GetComponent<Shooting>();
+            script.destinationScale = rock.transform.localScale;
             
 
             StartCoroutine(Rock(bullet));

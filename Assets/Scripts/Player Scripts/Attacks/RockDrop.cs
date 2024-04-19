@@ -10,7 +10,7 @@ public class RockDrop : MonoBehaviour
 
     //public PlayerCatalyst playerCatalyst;
 
-    Vector2 destinationScale = new Vector2(1f, 1f);
+    public Vector2 destinationScale = new Vector2(1f, 1f);
     // Start is called before the first frame update
     void Start()
     {

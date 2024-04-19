@@ -65,7 +65,8 @@ public class DragonBehavior : MonoBehaviour
     bool aggro = false;
     public AudioClip sndClaw, sndBite, sndFootstep, sndInhale, sndBreath;
     AudioSource[] sources;
-
+    public bool AoEHit = false; //if true, the aoe ult will not hit the dragon
+    public float AoEReset;
     public SetMap map;
     // Start is called before the first frame update
     void Start()
@@ -128,7 +129,10 @@ public class DragonBehavior : MonoBehaviour
         gameObject.AddComponent<PolygonCollider2D>();
         GetComponent<PolygonCollider2D>().isTrigger = true;
 
-        if(action == DragonAction.IDLE || action == DragonAction.IDLE_TRACKING || action == DragonAction.WALKING_F || action == DragonAction.WALKING_B || action == DragonAction.THINKING)
+        if (AoEHit && Time.time > AoEReset)
+            AoEHit = false;
+
+        if (action == DragonAction.IDLE || action == DragonAction.IDLE_TRACKING || action == DragonAction.WALKING_F || action == DragonAction.WALKING_B || action == DragonAction.THINKING)
             ActionStart();
 
         switch (action)

@@ -149,7 +149,7 @@ public class Shopping : MonoBehaviour
             if (pHealth.numOfHearts == 8)
             {
                 healthText.text = "Sold Out!";
-                healthButton.interactable = false;
+                healthButton.enabled = false;
             }
         }
     }
@@ -166,7 +166,7 @@ public class Shopping : MonoBehaviour
             if (move.moveSpeed >= speedCap)
             {
                 speedText.text = "Sold Out!";
-                speedButton.interactable = false;
+                speedButton.enabled = false;
             }
         }
     }
@@ -180,7 +180,8 @@ public class Shopping : MonoBehaviour
             if (ult.maxCharges == maxUltCharges)
             {
                 ultText.text = "Sold Out!";
-                ultButton.interactable = false;
+                ultButton.enabled = false;
+                healthButton.transform.GetChild(1).gameObject.GetComponent<Image>().color = Color.gray;
             }
         }
     }
@@ -193,7 +194,7 @@ public class Shopping : MonoBehaviour
             shoot.circleSpread = shoot.circleSpread * 0.5f;
             shoot.circleUpgraded = true;
             fireText.text = "Sold Out!";
-            fireButton.interactable = false;
+            fireButton.enabled = false;
         }
     }
 
@@ -206,7 +207,7 @@ public class Shopping : MonoBehaviour
             shoot.numBullets = shoot.numBullets + 4;
             shoot.triangleSpreadInterval = shoot.triangleSpreadInterval + 0.05f;
             waterText.text = "Sold Out!";
-            waterButton.interactable = false;
+            waterButton.enabled = false;
         }
     }
     public void EarthUpgrade()
@@ -219,7 +220,7 @@ public class Shopping : MonoBehaviour
             shoot.rockUpgraded = true;
 
             earthText.text = "Sold Out!";
-            earthButton.interactable = false;
+            earthButton.enabled = false;
         }
     }
     public void WindUpgrade()

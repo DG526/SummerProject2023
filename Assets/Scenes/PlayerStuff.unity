@@ -19807,6 +19807,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b9ea50d1a2ba24aad0e3b4075f8187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2008602364
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008602358}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 30199849d58aafa43a3e03b872206c41, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2012071311
 GameObject:
   m_ObjectHideFlags: 0
@@ -21343,7 +21364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776281760952695892, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3776281760952695892, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -21351,7 +21372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776281760952695892, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3776281760952695892, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -21367,7 +21388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3776281760952695892, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -360
       objectReference: {fileID: 0}
     - target: {fileID: 4767738261484142100, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
       propertyPath: m_Name
@@ -21384,5 +21405,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4767738261484142100, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2008602364}
   m_SourcePrefab: {fileID: 100100000, guid: fa235f7e206bd2c408aac6b38023246a, type: 3}

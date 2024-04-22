@@ -77,7 +77,7 @@ public class Item : MonoBehaviour
                 if (playerHealth.health < playerHealth.numOfHearts)
                 {
                     playerHealth.health = playerHealth.health + 1;
-                    Debug.Log(playerHealth.health);
+                    //Debug.Log(playerHealth.health);
                 }
             }
             else if (gameObject.tag == "Speed Potion")
@@ -88,7 +88,18 @@ public class Item : MonoBehaviour
                 playerSpeed = collision.gameObject.GetComponent<PlayerSpeed>();
                 playerSpeed.speed = true;
                 playerSpeed.speedEnd = Time.time + playerSpeed.speedDuration;
-                Debug.Log("You got a speed potion!");
+
+                if (collision.gameObject.GetComponent<Ultimate>().cloneActive)
+                {
+                    GameObject clone = GameObject.Find("Player Clone(Clone)");
+                    if (clone != null)
+                    {
+                        PlayerSpeed cloneSpeed = clone.GetComponent<PlayerSpeed>();
+                        cloneSpeed.speedEnd = playerSpeed.speedEnd;
+                        cloneSpeed.speed = true;
+                    }
+                }
+                //Debug.Log("You got a speed potion!");
             }
             else if(gameObject.tag == "Catalyst")
             {
@@ -99,7 +110,18 @@ public class Item : MonoBehaviour
                 playerCatalyst.catalyst = true;
                 
                 playerCatalyst.catalystEnd = Time.time + playerCatalyst.catalystDuration;
-                Debug.Log("You picked up a magic catalyst!");
+                //Debug.Log("You picked up a magic catalyst!");
+
+                if (collision.gameObject.GetComponent<Ultimate>().cloneActive)
+                {
+                    GameObject clone = GameObject.Find("Player Clone(Clone)");
+                    if (clone != null)
+                    {
+                        PlayerCatalyst cloneCatalyst = clone.GetComponent<PlayerCatalyst>();
+                        cloneCatalyst.catalystEnd = playerCatalyst.catalystEnd;
+                        cloneCatalyst.catalyst = true;
+                    }
+                }
             }
             else if(gameObject.tag == "Shield Item")
             {
@@ -123,6 +145,32 @@ public class Item : MonoBehaviour
                     Shields shields = child.GetComponent<Shields>();
                     shields.active = true;
                     shields.shieldEnd = Time.time + shields.shieldDuration;
+                }
+
+                if (collision.gameObject.GetComponent<Ultimate>().cloneActive)
+                {
+                    GameObject clone = GameObject.Find("Player Clone(Clone)");
+                    if (clone != null)
+                    {
+                        foreach (Transform child in clone.transform)
+                        {
+                            //Debug.Log(child.name);
+
+                            if (child.name != "Shields")
+                            {
+                                continue;
+                            }
+
+                            if (!child.gameObject.activeInHierarchy)
+                            {
+                                child.gameObject.SetActive(true);
+                            }
+
+                            Shields shields = child.GetComponent<Shields>();
+                            shields.active = true;
+                            shields.shieldEnd = Time.time + shields.shieldDuration;
+                        }
+                    }
                 }
             }
             else if (gameObject.name.IndexOf("Gem1") != -1)

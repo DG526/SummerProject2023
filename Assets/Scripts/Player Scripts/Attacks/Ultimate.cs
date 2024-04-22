@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -47,7 +48,7 @@ public class Ultimate : MonoBehaviour
     GameObject AoE;
     bool AoEactive = false;
 
-    bool cloneActive = false;
+    public bool cloneActive = false;
 
     GameObject Beam;
     bool beamActive;
@@ -196,13 +197,54 @@ public class Ultimate : MonoBehaviour
 
             GameObject spawnClone = Instantiate(clone, gameObject.transform.position + cloneSpawnPos, gameObject.transform.rotation);
 
+            Shooting cloneShoot = spawnClone.GetComponent<Shooting>();
+
             //change clone loadout to player loadout
-            spawnClone.GetComponent<Shooting>().Fire1 = shooting.Fire1;
-            spawnClone.GetComponent <Shooting>().Fire2 = shooting.Fire2;
+            cloneShoot.Fire1 = shooting.Fire1;
+            cloneShoot.Fire2 = shooting.Fire2;
             spawnClone.GetComponent<PlayerMovement>().moveSpeed = gameObject.GetComponent<PlayerMovement>().moveSpeed;
 
-            cloneActive= true;
-            StartCoroutine(Clone(cloneDuration));
+            cloneShoot.circleUpgraded = shooting.circleUpgraded;
+            cloneShoot.numBullets = shooting.numBullets;
+            cloneShoot.rockUpgraded = shooting.rockUpgraded;
+            cloneShoot.windUpgraded = shooting.windUpgraded;
+            cloneShoot.poisonUpgraded = shooting.poisonUpgraded;
+            cloneShoot.lightningUpgraded = shooting.lightningUpgraded;
+
+            /*Shields cloneShield = spawnClone.GetComponent<Shields>();
+            Shields playerShield = gameObject.GetComponent<Shields>();
+            cloneShield.shieldEnd = playerShield.shieldEnd;
+            cloneShield.active = playerShield.active;
+
+            if(cloneShield.active) 
+            {
+                foreach(Transform child in spawnClone.transform)
+                {
+                    if (child.name != "Shields")
+                    {
+                        continue;
+                    }
+
+                    if (!child.gameObject.activeInHierarchy)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                }
+            }*/
+
+            PlayerCatalyst clonePlayerCatalyst = spawnClone.GetComponent<PlayerCatalyst>();
+            PlayerCatalyst playerCatalyst = gameObject.GetComponent<PlayerCatalyst>();
+            clonePlayerCatalyst.catalystEnd = playerCatalyst.catalystEnd;
+            clonePlayerCatalyst.catalyst = playerCatalyst.catalyst;
+
+            PlayerSpeed clonePlayerSpeed = spawnClone.GetComponent<PlayerSpeed>();
+            PlayerSpeed playerSpeed = gameObject.GetComponent<PlayerSpeed>();
+            clonePlayerSpeed.speedEnd = playerSpeed.speedEnd;
+            clonePlayerSpeed.speed = playerSpeed.speed;
+
+            cloneActive = true;
+            StartCoroutine(Clone(cloneDuration, spawnClone));
+            //Debug.Log("Getting here");
             Destroy(spawnClone, cloneDuration);
         }
 
@@ -309,9 +351,12 @@ public class Ultimate : MonoBehaviour
         }
     }
 
-    IEnumerator Clone(float time)
+    IEnumerator Clone(float time, GameObject clone)
     {
+        //Debug.Log("Clone start");
         yield return new WaitForSeconds(time);
+        //Debug.Log("Clone Waited");
+        //Destroy(clone);
         cloneActive = false;
     }
 }

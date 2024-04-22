@@ -18,6 +18,9 @@ public class PlayerHealth : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    public AudioSource pain;
+    public AudioSource death;
+
     void Start()
     {
         health = numOfHearts;
@@ -25,12 +28,12 @@ public class PlayerHealth : MonoBehaviour
         if (gameObject.name.Equals("Player Clone(Clone)"))
             return;
         string target;
-        for(int i = 1; i < 9; i++)
+        for (int i = 1; i < 9; i++)
         {
             target = "Heart" + i;
-            hearts[i -1] = GameObject.Find(target).GetComponent<Image>();
+            hearts[i - 1] = GameObject.Find(target).GetComponent<Image>();
         }
-        
+
     }
     void Update()
     {
@@ -45,7 +48,13 @@ public class PlayerHealth : MonoBehaviour
         {
             dead = true;
             Debug.Log("You Died!");
-            GameObject.Find("GameOver").GetComponent<GameOver>().Lose();
+
+            StartCoroutine(StartGameover(1.5f));
+        }
+
+        if (dead)
+        {
+            gameObject.transform.Rotate(0, 0, 3f);
         }
 
         #region Health
@@ -57,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
         //Health
         for (int i = 0; i < hearts.Count; i++)
         {
-            if(i <health)
+            if (i < health)
             {
                 hearts[i].sprite = fullHeart;
             }
@@ -77,7 +86,7 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
-        
+
         #endregion
     }
 
@@ -92,7 +101,9 @@ public class PlayerHealth : MonoBehaviour
             grace = true;
             graceTime = Time.time + graceDuration;
             if (health > 0)
-                GetComponent<AudioSource>().Play();
+                pain.Play();
+            else if (health == 0)
+                death.Play();
         }
         else
         {
@@ -105,4 +116,11 @@ public class PlayerHealth : MonoBehaviour
         health = numOfHearts;
         dead = false;
     }
+
+    private IEnumerator StartGameover(float time)
+    {
+        yield return new WaitForSeconds(time);
+        GameObject.Find("GameOver").GetComponent<GameOver>().Lose();
+    }
+
 }

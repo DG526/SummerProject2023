@@ -63,6 +63,12 @@ public class WyvernBehavior : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (player.GetComponent<PlayerHealth>().dead)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
         hits = Physics2D.OverlapCircleAll(transform.position, 0.1f);
         foreach(Collider2D hit in hits)
         {

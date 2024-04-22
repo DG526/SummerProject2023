@@ -96,6 +96,12 @@ public class WyrmHeadBehavior : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (player.GetComponent<PlayerHealth>().dead)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+
         if (Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.y), new Vector2(transform.position.x, transform.position.y)) > 0.5f)
             Slither();
     }

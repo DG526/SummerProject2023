@@ -58,6 +58,7 @@ public class Shopping : MonoBehaviour
     public Button windButton;
     public Button poisonButton;
     public Button lightingButton;
+    public Button closeShop;
 
     //to be removed
     private bool isPaused;
@@ -74,10 +75,21 @@ public class Shopping : MonoBehaviour
     public TMP_Text poisonText;
     public TMP_Text lightingText;
 
+    private List<Button> buttons = new List<Button>();
+
     public float speedCap = 15f;
     // Start is called before the first frame update
     void Start()
     {
+        buttons.Add(healthButton);
+        buttons.Add(speedButton);
+        buttons.Add(ultButton);
+        buttons.Add(fireButton);
+        buttons.Add(waterButton);
+        buttons.Add(earthButton);
+        buttons.Add(windButton);
+        buttons.Add(poisonButton);
+        buttons.Add(lightingButton);
 
         player = GameObject.FindWithTag("Player");
         pHealth = player.GetComponent<PlayerHealth>();
@@ -109,6 +121,31 @@ public class Shopping : MonoBehaviour
     public void PlaySound()
     {
         audio.PlaySFX(audio.buy);
+    }
+
+    public void FindUsableButton(Button current)
+    {
+        int currentPosition = buttons.IndexOf(current);
+        int testIndex;
+        Button button;
+        for(int i = 0; i < buttons.Count; i++)
+        {
+            //looks for the next button available
+            testIndex = i + currentPosition;
+            if (testIndex >= buttons.Count)
+            {
+                testIndex = testIndex % buttons.Count;
+            }
+
+            button = buttons[testIndex];
+            if (button.interactable)
+            {
+                EventSystem.current.SetSelectedGameObject(button.gameObject);
+                return;
+            }
+        }
+
+        EventSystem.current.SetSelectedGameObject(closeShop.gameObject);
     }
 
 
@@ -150,6 +187,7 @@ public class Shopping : MonoBehaviour
             {
                 healthText.text = "Sold Out!";
                 healthButton.interactable = false;
+                FindUsableButton(healthButton);
             }
         }
     }
@@ -167,6 +205,7 @@ public class Shopping : MonoBehaviour
             {
                 speedText.text = "Sold Out!";
                 speedButton.interactable = false;
+                FindUsableButton(speedButton);
             }
         }
     }
@@ -181,6 +220,7 @@ public class Shopping : MonoBehaviour
             {
                 ultText.text = "Sold Out!";
                 ultButton.interactable = false;
+                FindUsableButton(ultButton);
             }
         }
     }
@@ -194,6 +234,7 @@ public class Shopping : MonoBehaviour
             shoot.circleUpgraded = true;
             fireText.text = "Sold Out!";
             fireButton.interactable = false;
+            FindUsableButton(fireButton);
         }
     }
 
@@ -207,6 +248,7 @@ public class Shopping : MonoBehaviour
             shoot.triangleSpreadInterval = shoot.triangleSpreadInterval + 0.05f;
             waterText.text = "Sold Out!";
             waterButton.interactable = false;
+            FindUsableButton(waterButton);
         }
     }
     public void EarthUpgrade()
@@ -220,6 +262,7 @@ public class Shopping : MonoBehaviour
 
             earthText.text = "Sold Out!";
             earthButton.interactable = false;
+            FindUsableButton(earthButton);
         }
     }
     public void WindUpgrade()
@@ -232,6 +275,7 @@ public class Shopping : MonoBehaviour
 
             windText.text = "Sold Out!";
             windButton.interactable = false;
+            FindUsableButton(windButton);
         }
     }
     public void PoisonUpgrade()
@@ -243,6 +287,7 @@ public class Shopping : MonoBehaviour
             shoot.poisonUpgraded = true;
             poisonText.text = "Sold Out!";
             poisonButton.interactable = false;
+            FindUsableButton(poisonButton);
         }
     }
     public void LightingUpgrade()
@@ -254,6 +299,7 @@ public class Shopping : MonoBehaviour
             shoot.lightningUpgraded = true;
             lightingText.text = "Sold Out!";
             lightingButton.interactable = false;
+            FindUsableButton(lightingButton);
         }
     }
 

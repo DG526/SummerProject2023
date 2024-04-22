@@ -54,6 +54,11 @@ public class DarkLightDragonBehavior : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (player.GetComponent<PlayerHealth>().dead)
+        {
+            return;
+        }
+
         DestroyImmediate(GetComponent<PolygonCollider2D>());
         gameObject.AddComponent<PolygonCollider2D>();
         GetComponent<PolygonCollider2D>().isTrigger = true;

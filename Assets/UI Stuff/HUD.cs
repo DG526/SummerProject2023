@@ -194,16 +194,19 @@ public class HUD : MonoBehaviour
         #region PrimaryFire
         if (fire1 == "circle")
         {
+            primaryImage.color = Color.white;
             primaryImage.sprite = fire;
             gem.GetComponent<SpriteRenderer>().color = new Color32(243, 78, 4, 255);
         }
         else if(fire1 == "triangle")
         {
+            primaryImage.color = Color.white;
             primaryImage.sprite = water;
             gem.GetComponent<SpriteRenderer>().color = Color.cyan;
         }
         else if (fire1 == "rockDrop")
         {
+            primaryImage.color = Color.white;
             primaryImage.sprite = rock;
             gem.GetComponent<SpriteRenderer>().color = new Color32(237, 72, 241, 150);
         }

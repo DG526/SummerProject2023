@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public AudioClip deathSound;
     GameObject redirection;
     bool hasParts;
-    GameObject[] partsToDestroy;
+    public GameObject[] partsToDestroy;
     public int maxHealth;
     public float multiplier = 1;
     public int health;

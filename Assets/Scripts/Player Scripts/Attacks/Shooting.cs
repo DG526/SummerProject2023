@@ -95,6 +95,8 @@ public class Shooting : MonoBehaviour
     }
     private void OnDisable()
     {
+        if (tag == "Player Clone")
+            return;
         IAPrimFire.Disable();
         IASecoFire.Disable();
         IAUltiFire.Disable();

@@ -548,6 +548,8 @@ MonoBehaviour:
   sndInhale: {fileID: 8300000, guid: a7488c74c235dac4f82f80145c21d8f2, type: 3}
   sndBreath: {fileID: 8300000, guid: 7fd4ee21044cf0d4bad1ce2925bed47e, type: 3}
   sndBreath2: {fileID: 8300000, guid: f3b271d30701e9b42b12da774700cce1, type: 3}
+  AoEHit: 0
+  AoEReset: 0
 --- !u!114 &7304525130507544686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,6 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lingerer: {fileID: 6672540586249575663, guid: b840a0863c3227146948a43e02c81ff1, type: 3}
   deathSound: {fileID: 8300000, guid: e8549d9ff660fb6479e5c0e4b874d0ab, type: 3}
+  partsToDestroy: []
   maxHealth: 25000
   multiplier: 1
   health: 0
@@ -603,6 +606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   awarenessType: 1
+  hud: {fileID: 0}
 --- !u!82 &6554943204272933530
 AudioSource:
   m_ObjectHideFlags: 0

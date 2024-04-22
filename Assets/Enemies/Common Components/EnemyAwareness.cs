@@ -12,7 +12,8 @@ public class EnemyAwareness : MonoBehaviour
 {
     public AwarenessType awarenessType;
     public HUD hud;
-
+    bool sighted = false;
+    float killtime = 10f;
     MonoBehaviour behaviour;
     // Start is called before the first frame update
     void Start()
@@ -50,10 +51,22 @@ public class EnemyAwareness : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!sighted && awarenessType == AwarenessType.HuntAtStart)
+        {
+            killtime -= Time.deltaTime;
+            if(killtime < 0)
+            {
+                foreach(GameObject p in GetComponent<EnemyHealth>().partsToDestroy)
+                {
+                    Destroy(p);
+                }
+                Destroy(gameObject);
+            }
+        }
     }
     private void OnBecameVisible()
     {
+        sighted = true;
         //if the gameobject is a dragon
         if (behaviour.gameObject.name.IndexOf("Dragon") != -1)
         {

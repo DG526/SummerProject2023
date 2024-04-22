@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnDisable()
     {
+        if (tag == "Player Clone")
+            return;
         IAMove.Disable();
         IAMouseLook.Disable();
         IAControllerLook.Disable();

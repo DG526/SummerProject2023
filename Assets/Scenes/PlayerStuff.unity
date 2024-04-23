@@ -15237,6 +15237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2008602358}
+  loadout: {fileID: 0}
   pHealth: {fileID: 0}
   shoot: {fileID: 0}
   move: {fileID: 0}
@@ -15246,15 +15247,15 @@ MonoBehaviour:
   shopCanvas: {fileID: 2033264444}
   healthCost: 500
   healthCostIncrement: 300
-  speedCost: 300
-  speedCostIncrement: 200
-  ultimateCost: 1500
-  fireCost: 750
-  waterCost: 750
-  earthCost: 750
-  windCost: 750
-  poisonCost: 750
-  lightningCost: 750
+  speedCost: 800
+  speedCostIncrement: 800
+  ultimateCost: 2500
+  fireCost: 1500
+  waterCost: 1500
+  earthCost: 1500
+  windCost: 1500
+  poisonCost: 1500
+  lightningCost: 1500
   healthCostText: {fileID: 2146584526}
   speedCostText: {fileID: 1941736991}
   ultCostText: {fileID: 1681416674}
@@ -15285,7 +15286,8 @@ MonoBehaviour:
   windText: {fileID: 136396412}
   poisonText: {fileID: 1842447569}
   lightingText: {fileID: 332286118}
-  speedCap: 15
+  speedCap: 8.5
+  allUpgrades: 0
 --- !u!1 &1712709983
 GameObject:
   m_ObjectHideFlags: 0

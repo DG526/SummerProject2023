@@ -10,6 +10,7 @@ public class Shopping : MonoBehaviour
 {
     [Header ("Player")]
     public GameObject player;
+    public GameObject loadout;
 
     public PlayerHealth pHealth;
     public Shooting shoot;
@@ -77,7 +78,8 @@ public class Shopping : MonoBehaviour
 
     private List<Button> buttons = new List<Button>();
 
-    public float speedCap = 15f;
+    public float speedCap;
+    public bool allUpgrades;
     // Start is called before the first frame update
     void Start()
     {
@@ -145,12 +147,20 @@ public class Shopping : MonoBehaviour
             }
         }
 
+        allUpgrades = true;
         EventSystem.current.SetSelectedGameObject(closeShop.gameObject);
     }
 
 
     public void OpenShop()
     {
+        /*if (allUpgrades)
+        {
+            CloseShop();
+            loadout.GetComponent<Loadout>().OpenLoadout();
+            return;
+        }*/
+
         shopCanvas.SetActive(true);
 
         //sets the first button when menu opens
@@ -185,6 +195,7 @@ public class Shopping : MonoBehaviour
             pHealth.health = pHealth.health + 1;
             if (pHealth.numOfHearts == 8)
             {
+                healthCostText.text = "";
                 healthText.text = "Sold Out!";
                 healthButton.interactable = false;
                 FindUsableButton(healthButton);
@@ -200,9 +211,11 @@ public class Shopping : MonoBehaviour
             speedCost += speedCostIncrement;
             speedCostText.text = "" + speedCost;
 
-            move.moveSpeed = move.moveSpeed + 1.5f;
+            move.moveSpeed = move.moveSpeed + 1f;
             if (move.moveSpeed >= speedCap)
             {
+                move.moveSpeed = speedCap;
+                speedCostText.text = "";
                 speedText.text = "Sold Out!";
                 speedButton.interactable = false;
                 FindUsableButton(speedButton);
@@ -218,6 +231,7 @@ public class Shopping : MonoBehaviour
             ult.maxCharges = ult.maxCharges + 1;
             if (ult.maxCharges == maxUltCharges)
             {
+                ultCostText.text = "";
                 ultText.text = "Sold Out!";
                 ultButton.interactable = false;
                 FindUsableButton(ultButton);
@@ -232,6 +246,8 @@ public class Shopping : MonoBehaviour
             points.RemovePoints(fireCost);
             shoot.circleSpread = shoot.circleSpread * 0.5f;
             shoot.circleUpgraded = true;
+
+            fireCostText.text = "";
             fireText.text = "Sold Out!";
             fireButton.interactable = false;
             FindUsableButton(fireButton);
@@ -246,6 +262,8 @@ public class Shopping : MonoBehaviour
             points.RemovePoints(waterCost);
             shoot.numBullets = shoot.numBullets + 4;
             shoot.triangleSpreadInterval = shoot.triangleSpreadInterval + 0.05f;
+
+            waterCostText.text = "";
             waterText.text = "Sold Out!";
             waterButton.interactable = false;
             FindUsableButton(waterButton);
@@ -260,6 +278,7 @@ public class Shopping : MonoBehaviour
             shoot.rockCDI = shoot.rockCDI * 0.75f;
             shoot.rockUpgraded = true;
 
+            earthCostText.text = "";
             earthText.text = "Sold Out!";
             earthButton.interactable = false;
             FindUsableButton(earthButton);
@@ -273,6 +292,7 @@ public class Shopping : MonoBehaviour
             points.RemovePoints(windCost);
             shoot.windUpgraded = true;
 
+            windCostText.text = "";
             windText.text = "Sold Out!";
             windButton.interactable = false;
             FindUsableButton(windButton);
@@ -285,6 +305,8 @@ public class Shopping : MonoBehaviour
         {
             points.RemovePoints(poisonCost);
             shoot.poisonUpgraded = true;
+
+            poisonCostText.text = "";
             poisonText.text = "Sold Out!";
             poisonButton.interactable = false;
             FindUsableButton(poisonButton);
@@ -297,6 +319,8 @@ public class Shopping : MonoBehaviour
         {
             points.RemovePoints(lightningCost);
             shoot.lightningUpgraded = true;
+
+            lightingCostText.text = "";
             lightingText.text = "Sold Out!";
             lightingButton.interactable = false;
             FindUsableButton(lightingButton);

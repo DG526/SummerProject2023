@@ -53,6 +53,7 @@ public class Loadout : MonoBehaviour
     public Sprite cloneSprite;
 
     GameObject player;
+    public bool checkLoadout;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +80,7 @@ public class Loadout : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(fireButton.gameObject);
         Time.timeScale = 0f;
+        checkLoadout = true;
 
         if (!map.first)
         {
@@ -91,6 +93,7 @@ public class Loadout : MonoBehaviour
     {
         if (fire1 && fire2 && ult)
         {
+            checkLoadout = false;
             loadOutCanvas.SetActive(false);
             GameObject title = GameObject.Find("LevelTitle");
             if (title)

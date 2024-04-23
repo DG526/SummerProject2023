@@ -202,13 +202,13 @@ public class HUD : MonoBehaviour
         {
             primaryImage.color = Color.white;
             primaryImage.sprite = water;
-            gem.GetComponent<SpriteRenderer>().color = Color.cyan;
+            gem.GetComponent<SpriteRenderer>().color = Color.blue;
         }
         else if (fire1 == "rockDrop")
         {
             primaryImage.color = Color.white;
             primaryImage.sprite = rock;
-            gem.GetComponent<SpriteRenderer>().color = new Color32(237, 72, 241, 150);
+            gem.GetComponent<SpriteRenderer>().color = new Color32(188, 127, 100, 255);
         }
         #endregion
 

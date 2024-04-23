@@ -7256,6 +7256,7 @@ MonoBehaviour:
   aoeSprite: {fileID: 21300000, guid: 4b81c4b942e07fb4dbb17e5dc2e40372, type: 3}
   beamSprite: {fileID: 21300000, guid: d2e4275497d3e2e44b66b60c8f96cda5, type: 3}
   cloneSprite: {fileID: 21300000, guid: 774a908fb593dfd45bd24b4690c47ad9, type: 3}
+  checkLoadout: 0
 --- !u!1 &838133661
 GameObject:
   m_ObjectHideFlags: 0
@@ -7713,7 +7714,7 @@ RectTransform:
   - {fileID: 921419147}
   - {fileID: 301409283}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9795,8 +9796,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00012207031, y: -3.1672974}
+  m_SizeDelta: {x: 367.6819, y: 164.2832}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1054583771
 MonoBehaviour:
@@ -12507,7 +12508,7 @@ Transform:
   - {fileID: 956001627}
   - {fileID: 545379590}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1383224276
 MonoBehaviour:
@@ -15237,6 +15238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2008602358}
+  loadout: {fileID: 0}
   pHealth: {fileID: 0}
   shoot: {fileID: 0}
   move: {fileID: 0}
@@ -15246,15 +15248,15 @@ MonoBehaviour:
   shopCanvas: {fileID: 2033264444}
   healthCost: 500
   healthCostIncrement: 300
-  speedCost: 300
-  speedCostIncrement: 200
-  ultimateCost: 1500
-  fireCost: 750
-  waterCost: 750
-  earthCost: 750
-  windCost: 750
-  poisonCost: 750
-  lightningCost: 750
+  speedCost: 800
+  speedCostIncrement: 800
+  ultimateCost: 2500
+  fireCost: 1500
+  waterCost: 1500
+  earthCost: 1500
+  windCost: 1500
+  poisonCost: 1500
+  lightningCost: 1500
   healthCostText: {fileID: 2146584526}
   speedCostText: {fileID: 1941736991}
   ultCostText: {fileID: 1681416674}
@@ -15285,7 +15287,8 @@ MonoBehaviour:
   windText: {fileID: 136396412}
   poisonText: {fileID: 1842447569}
   lightingText: {fileID: 332286118}
-  speedCap: 15
+  speedCap: 8.5
+  allUpgrades: 0
 --- !u!1 &1712709983
 GameObject:
   m_ObjectHideFlags: 0
@@ -17361,9 +17364,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1375437537}
-        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
-        m_MethodName: NextMap
+      - m_Target: {fileID: 1383224276}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayStartGameSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17373,9 +17376,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1383224276}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlayStartGameSound
+      - m_Target: {fileID: 1054583769}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1375437537}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
+        m_MethodName: OpenWinMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20611,6 +20626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7275b1a040ef843bc073ceab17ea87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadout: {fileID: 0}
   pauseCanvas: {fileID: 1313497835}
   settingsCanvas: {fileID: 1279778144}
   pauseFirstButton: {fileID: 1254299449}
@@ -20693,7 +20709,7 @@ RectTransform:
   - {fileID: 1313497836}
   - {fileID: 1279778145}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

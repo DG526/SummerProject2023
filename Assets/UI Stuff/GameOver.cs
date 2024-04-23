@@ -131,7 +131,7 @@ public class GameOver : MonoBehaviour
         //sets the first button when menu opens
         EventSystem.current.SetSelectedGameObject(loseFirstButton);
     }
-    private void OpenWinMenu()
+    public void OpenWinMenu()
     {
         loseCanvas.SetActive(false);
         winCanvas.SetActive(true);
@@ -152,7 +152,7 @@ public class GameOver : MonoBehaviour
 
 
         //sets the first button when menu opens
-        EventSystem.current.SetSelectedGameObject(winFirstButton);
+        EventSystem.current.SetSelectedGameObject(warningButton);
     }
     #endregion
 

@@ -154,6 +154,12 @@ public class GameOver : MonoBehaviour
         //sets the first button when menu opens
         EventSystem.current.SetSelectedGameObject(winFirstButton);
     }
+    public void OpenHighScores()
+    {
+        HighScoreBehavior.recentScore = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPoints>().points;
+        SceneManager.LoadScene("HighScores");
+        Time.timeScale = 1f;
+    }
     #endregion
 
     #region Navigation

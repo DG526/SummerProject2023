@@ -133,4 +133,11 @@ public class MainMenuManager : MonoBehaviour
     }
     #endregion
 
+    #region Highscores
+    public void OpenHighScores()
+    {
+        HighScoreBehavior.recentScore = -1;
+        SceneManager.LoadScene("HighScores");
+    }
+    #endregion
 }

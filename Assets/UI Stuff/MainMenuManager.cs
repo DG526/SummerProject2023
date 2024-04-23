@@ -17,6 +17,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject howToPlayButton;
     [SerializeField] private GameObject settingsButton;
     [SerializeField] private GameObject creditsButton;
+    [SerializeField] private GameObject howtoPlayNext;
 
 
     public Texture2D cursor;
@@ -64,6 +65,11 @@ public class MainMenuManager : MonoBehaviour
 
         //sets the first button when menu opens
         EventSystem.current.SetSelectedGameObject(howToPlayButton);
+    }
+
+    public void NextPageHTP()
+    {
+        EventSystem.current.SetSelectedGameObject(howtoPlayNext);
     }
 
     private void OpenSettings()
